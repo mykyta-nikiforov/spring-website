@@ -4,7 +4,7 @@
   <groupId>io.nikiforovpizza.springapplication</groupId>
   <artifactId>edu-platform</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
   
   <name>edu-platform</name>
   <description>Educational platform built on Spring.</description>
@@ -17,48 +17,81 @@
   </parent>
 
  <properties>
-  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  	<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-  	<java.version>1.8</java.version>
+	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	<java.version>1.8</java.version>
   </properties>
   
   <dependencies>
-  	<dependency>
-	  	<groupId>org.springframework.boot</groupId>
-	  	<artifactId>spring-boot-starter-web</artifactId>
-  	</dependency>
-  	<dependency>
-	  	<groupId>org.springframework.boot</groupId>
-	  	<artifactId>spring-boot-starter-data-jpa</artifactId>
-  	</dependency>
-  	<dependency>
-	  	<groupId>org.springframework.boot</groupId>
-	  	<artifactId>spring-boot-starter-actuator</artifactId>
-  	</dependency>
-  	
-  	<dependency>
-	  	<groupId>org.apache.derby</groupId>
-	  	<artifactId>derby</artifactId>
-	  	<scope>runtime</scope>
-  	</dependency>
-  	
-  	<dependency>
-	  	<groupId>org.springframework.boot</groupId>
-	  	<artifactId>spring-boot-starter-test</artifactId>
-	  	<scope>test</scope>
-  	</dependency>
-  	
-  	
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-web</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-data-jpa</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-actuator</artifactId>
+	</dependency>
+
+      <!-- Tomcat Embed -->
+      <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-tomcat</artifactId>
+          <scope>provided</scope>
+      </dependency>
+      <!-- JSTL -->
+      <dependency>
+          <groupId>javax.servlet</groupId>
+          <artifactId>jstl</artifactId>
+      </dependency>
+
+      <!-- To compile JSP files -->
+      <dependency>
+          <groupId>org.apache.tomcat.embed</groupId>
+          <artifactId>tomcat-embed-jasper</artifactId>
+          <!--<scope>provided</scope>-->
+      </dependency>
+
+	<!--- Database -->
+	<dependency>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+		<version>6.0.6</version>
+	</dependency>
+
+
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-test</artifactId>
+		<scope>test</scope>
+	</dependency>
+
+      <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-devtools</artifactId>
+      </dependency>
+
+
   </dependencies>
   
   <build>
-  	<plugins>
-  		<plugin>
-  			<groupId>org.springframework.boot</groupId>
-  			<artifactId>spring-boot-maven-plugin</artifactId>
-  		</plugin>
-  	</plugins>
+	<plugins>
+		<plugin>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-maven-plugin</artifactId>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>repackage</goal>
+                    </goals>
+                </execution>
+            </executions>
+		</plugin>
+	</plugins>
   </build>
-  
+
 </project>
 
