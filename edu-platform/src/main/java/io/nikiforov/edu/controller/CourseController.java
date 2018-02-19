@@ -14,39 +14,39 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class CourseController {
-	
-	@Autowired
-	private CourseService courseService;
+    
+    @Autowired
+    private CourseService courseService;
 
-	@GetMapping("/courses")
+    @GetMapping("/courses")
     @ResponseBody
-	public List<Course> getCources(){
-		return courseService.getAllCourses();
-	}
-	
-	@GetMapping("/courses/{id}")
+    public List<Course> getCources(){
+        return courseService.getAllCourses();
+    }
+    
+    @GetMapping("/courses/{id}")
     @ResponseBody
-	public Course getCourse(@PathVariable int id) {
-		return courseService.getCourse(id);
-	}
-	
-	@PostMapping("/courses")
+    public Course getCourse(@PathVariable int id) {
+        return courseService.getCourse(id);
+    }
+    
+    @PostMapping("/courses")
     @ResponseBody
-	public void addCourse(@RequestBody Course course) {
-		courseService.addCourse(course);
-	}
-	
-	@RequestMapping(method=RequestMethod.PUT, value="/courses/{id}")
+    public void addCourse(@RequestBody Course course) {
+        courseService.addCourse(course);
+    }
+    
+    @RequestMapping(method=RequestMethod.PUT, value="/courses/{id}")
     @ResponseBody
-	public void updateCourse(@RequestBody Course course, @PathVariable int id) {
-		courseService.updateCourse(course);
-	}
-	
-	@RequestMapping(method=RequestMethod.DELETE, value="/courses/{id}")
+    public void updateCourse(@RequestBody Course course, @PathVariable int id) {
+        courseService.updateCourse(course);
+    }
+    
+    @RequestMapping(method=RequestMethod.DELETE, value="/courses/{id}")
     @ResponseBody
-	public void deleteCourse(@PathVariable int id) {
-		courseService.deleteCourse(id);
-	}
+    public void deleteCourse(@PathVariable int id) {
+        courseService.deleteCourse(id);
+    }
 
     @RequestMapping("/allCourses")
     public String mainPage(HttpServletRequest request) {
@@ -54,17 +54,38 @@ public class CourseController {
         return "allCourses";
     }
 
-	@GetMapping("/courseManage")
+    @GetMapping("/course-manage")
     public String courseManage(Model model){
+        model.addAttribute("allcourses", courseService.getAllCourses());
         model.addAttribute("course", new Course());
-	    return "courseManage";
+        return "courseManage";
     }
 
     @PostMapping("/addCourse")
     public String addNewCourse(@ModelAttribute("course") Course course){
-        courseService.addCourse(new Course(course));
-        return "courseManage";
+        courseService.addCourse(course);
+        return "redirect:/course-manage";
     }
+
+    @GetMapping("/delete-course")
+    public String deleteCourseById(@RequestParam int id){
+        courseService.deleteCourse(id);
+        return "redirect:/course-manage";
+    }
+
+    @GetMapping("/edit-course")
+    public String editCoursePage(@RequestParam int id, Model model){
+        model.addAttribute("course", courseService.getCourse(id));
+        return "editCourse";
+    }
+
+    @PostMapping("/update-course")
+    public String updateCourse(@ModelAttribute("course") Course course){
+        courseService.updateCourse(course);
+        return "redirect:/course-manage";
+    }
+
+
 
 
 }

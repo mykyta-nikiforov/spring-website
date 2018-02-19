@@ -13,14 +13,8 @@ public class Course {
 	private String name;
 	private String description;
 	
-	
 	public Course() {
 	}
-
-    public Course(Course course) {
-        this.name = course.name;
-        this.description = course.description;
-    }
 
     public Course(int id, String name, String description) {
 		super();
@@ -47,6 +41,4 @@ public class Course {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	
 }

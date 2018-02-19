@@ -21,7 +21,7 @@
                 <a class="nav-link text-light" href="allCourses">All courses</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-light" href="courseManage">Manage</a>
+                <a class="nav-link text-light" href="course-manage">Manage</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-light" href="#">Schedule</a>
