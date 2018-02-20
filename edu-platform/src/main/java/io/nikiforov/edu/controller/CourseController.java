@@ -4,6 +4,7 @@ import java.util.List;
 
 import io.nikiforov.edu.entity.Course;
 import io.nikiforov.edu.entity.Lecture;
+import io.nikiforov.edu.model.LectureInfo;
 import io.nikiforov.edu.service.CourseService;
 import io.nikiforov.edu.service.LectureService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,8 +82,9 @@ public class CourseController {
     public String editCoursePage(@RequestParam int id, Model model){
         model.addAttribute("course", courseService.getCourse(id));
         model.addAttribute("lectures", lectureService.getAllLectures(id));
-
-        model.addAttribute("newLecture", new Lecture());
+        LectureInfo lectureInfo = new LectureInfo();
+        lectureInfo.setCourseId(id);
+        model.addAttribute("newLecture", lectureInfo);
         return "editCourse";
     }
 

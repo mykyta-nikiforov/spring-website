@@ -3,6 +3,8 @@ package io.nikiforov.edu.controller;
 import java.util.List;
 
 import io.nikiforov.edu.entity.Lecture;
+import io.nikiforov.edu.model.LectureInfo;
+import io.nikiforov.edu.service.CourseService;
 import io.nikiforov.edu.service.LectureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -47,13 +49,10 @@ public class LectureController {
     }
 
     @PostMapping("/add-lecture")
-    public String addLecture(@ModelAttribute("newLecture") Lecture lecture,
-                             @ModelAttribute("course") Course course){
-        System.out.println(course);
-        System.out.println(lecture);
-        lecture.setCourse(course);
-        lectureService.addLecture(lecture);
-        return "redirect:/edit-course?id=" + course.getId();
+    public String addLecture(@ModelAttribute("newLecture") LectureInfo lectureInfo){
+        System.out.println(lectureInfo);
+        lectureService.saveLectureFromModel(lectureInfo);
+        return "forward:/edit-course?id=" + lectureInfo.getCourseId();
     }
 
 
