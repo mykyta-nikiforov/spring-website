@@ -8,7 +8,7 @@
     </div>
 
     <br>
-    <div class="container text-center" class="coursesDiv">
+    <div class="container text-center">
         <h3>Courses</h3>
         <hr>
         <div class="table-responsive">

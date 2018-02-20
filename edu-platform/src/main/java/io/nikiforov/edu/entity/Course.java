@@ -1,9 +1,7 @@
 package io.nikiforov.edu.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Course {
@@ -12,7 +10,13 @@ public class Course {
 	private int id;
 	private String name;
 	private String description;
-	
+
+
+//    private List<Lecture> lectures;
+
+//    private Teacher lecturer;
+//	private Teacher labAssistant;
+
 	public Course() {
 	}
 
@@ -41,4 +45,13 @@ public class Course {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }

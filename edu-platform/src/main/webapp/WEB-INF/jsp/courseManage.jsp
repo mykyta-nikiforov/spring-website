@@ -6,7 +6,7 @@
     <h3>Manage Courses</h3>
     <hr>
     <h4>Add new course</h4>
-    <sf:form method="post" action="addCourse" modelAttribute="course">
+    <sf:form method="post" action="add-course" modelAttribute="course">
         <input type="hidden" name="id" value="${course.id}">
         <div class="form-group row">
             <label class="col-form-label col-md-3">Name</label>

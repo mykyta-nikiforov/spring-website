@@ -1,15 +1,11 @@
 package io.nikiforov.edu.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 import io.nikiforov.edu.entity.Course;
 
 @Entity
-public class Lesson {
+public class Lecture {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
@@ -17,15 +13,13 @@ public class Lesson {
 	private String description;
 	
 	@ManyToOne
+    @JoinColumn(name="course_id")
 	private Course course;
-	
-	
-	
 
-	public Lesson() {
+	public Lecture() {
 	}
 	
-	public Lesson(int id, String name, String description, int courseId) {
+	public Lecture(int id, String name, String description, int courseId) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -59,4 +53,14 @@ public class Lesson {
 	public void setCourse(Course course) {
 		this.course = course;
 	}
+
+    @Override
+    public String toString() {
+        return "Lecture{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", course=" + course +
+                '}';
+    }
 }

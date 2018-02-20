@@ -3,7 +3,9 @@ package io.nikiforov.edu.controller;
 import java.util.List;
 
 import io.nikiforov.edu.entity.Course;
+import io.nikiforov.edu.entity.Lecture;
 import io.nikiforov.edu.service.CourseService;
+import io.nikiforov.edu.service.LectureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,8 @@ public class CourseController {
     
     @Autowired
     private CourseService courseService;
+    @Autowired
+    private LectureService lectureService;
 
     @GetMapping("/courses")
     @ResponseBody
@@ -61,7 +65,7 @@ public class CourseController {
         return "courseManage";
     }
 
-    @PostMapping("/addCourse")
+    @PostMapping("/add-course")
     public String addNewCourse(@ModelAttribute("course") Course course){
         courseService.addCourse(course);
         return "redirect:/course-manage";
@@ -76,6 +80,9 @@ public class CourseController {
     @GetMapping("/edit-course")
     public String editCoursePage(@RequestParam int id, Model model){
         model.addAttribute("course", courseService.getCourse(id));
+        model.addAttribute("lectures", lectureService.getAllLectures(id));
+
+        model.addAttribute("newLecture", new Lecture());
         return "editCourse";
     }
 
