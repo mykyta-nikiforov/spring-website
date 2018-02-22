@@ -1,6 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@include file="templates/header.jsp"%>
-<link href="static/css/open-iconic-bootstrap.css" rel="stylesheet">
+<link href="/static/css/open-iconic-bootstrap.css" rel="stylesheet">
 
 <div class="container ">
     <h3>Manage Courses</h3>
@@ -50,8 +50,8 @@
                     <td>${course.id}</td>
                     <td>${course.name}</td>
                     <td>${course.description}</td>
-                    <td><a href="edit-course?id=${course.id}"><span class="oi oi-action-redo"></span></a></td>
-                    <td><a href="delete-course?id=${course.id}"><span class="oi oi-trash"></span></a></td>
+                    <td><a href="/edit-course/${course.id}"><span class="oi oi-action-redo"></span></a></td>
+                    <td><a href="/delete-course?id=${course.id}"><span class="oi oi-trash"></span></a></td>
                 </tr>
             </c:forEach>
             </tbody>

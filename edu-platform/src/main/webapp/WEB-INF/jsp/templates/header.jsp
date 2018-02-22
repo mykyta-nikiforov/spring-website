@@ -9,7 +9,7 @@
     <meta http-equiv="Cache-Control" content="no-cache">
     <meta http-equiv="Expires" content="Sat, 01 Dec 2001 00:00:00 GMT">
 
-    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
 <body>
@@ -18,10 +18,10 @@
         <a href="#" class="navbar-brand" >Edu-platform</a>
         <ul class="nav justify-content-center">
             <li class="nav-item">
-                <a class="nav-link text-light" href="allCourses">All courses</a>
+                <a class="nav-link text-light" href="/all-courses">All courses</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-light" href="course-manage">Manage</a>
+                <a class="nav-link text-light" href="/course-manage">Manage</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-light" href="#">Schedule</a>

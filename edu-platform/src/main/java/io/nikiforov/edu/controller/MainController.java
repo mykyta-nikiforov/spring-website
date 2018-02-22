@@ -15,7 +15,7 @@ public class MainController {
 
     @GetMapping("/")
     public String homePage(){
-        return "redirect:/allCourses";
+        return "redirect:/all-courses";
     }
 	
 }

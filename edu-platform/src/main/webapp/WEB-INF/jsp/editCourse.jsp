@@ -4,7 +4,7 @@
 <div class="container ">
     <h3>Edit course</h3>
 
-    <sf:form method="post" action="update-course" modelAttribute="course">
+    <sf:form method="post" action="/update-course" modelAttribute="course">
         <input type="hidden" name="id" value="${course.id}">
         <div class="form-group row">
             <label class="col-form-label col-md-3">Name</label>
@@ -55,25 +55,25 @@
 <hr>
 <div class="container ">
     <h3>Add new lecture</h3>
-    <sf:form method="post" action="add-lecture" modelAttribute="newLecture">
-        <input type="hidden" name="courseId" path="courseId" value="${newLecture.courseId}">
-        <div class="form-group row">
-            <label class="col-form-label col-md-3">Name</label>
-            <div class="col-md-5">
-                <sf:input type="text" class="form-control" path="name" value="${newLecture.name}"/>
+        <sf:form method="post" action="/add-lecture" modelAttribute="newLecture">
+            <input type="hidden" name="courseId" path="courseId" value="${newLecture.courseId}">
+            <div class="form-group row">
+                <label class="col-form-label col-md-3">Name</label>
+                <div class="col-md-5">
+                    <sf:input type="text" class="form-control" path="name" value="${newLecture.name}"/>
+                </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <label class="col-form-label col-md-3">Description</label>
-            <div class="col-md-5">
-                <sf:input type="text" class="form-control" path="description"
-                          value="${newLecture.description}"/>
+            <div class="form-group row">
+                <label class="col-form-label col-md-3">Description</label>
+                <div class="col-md-5">
+                    <sf:input type="text" class="form-control" path="description"
+                              value="${newLecture.description}"/>
+                </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <input type="submit" class="btn btn-dark" value="Add"/>
-        </div>
-    </sf:form>
+            <div class="form-group row">
+                <input type="submit" class="btn btn-dark" value="Add"/>
+            </div>
+        </sf:form>
 </div>
 
 

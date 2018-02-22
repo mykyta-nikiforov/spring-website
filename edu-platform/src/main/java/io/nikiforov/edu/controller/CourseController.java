@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -53,7 +54,7 @@ public class CourseController {
         courseService.deleteCourse(id);
     }
 
-    @RequestMapping("/allCourses")
+    @RequestMapping("/all-courses")
     public String mainPage(HttpServletRequest request) {
         request.setAttribute("courses", courseService.getAllCourses());
         return "allCourses";
@@ -78,8 +79,8 @@ public class CourseController {
         return "redirect:/course-manage";
     }
 
-    @GetMapping("/edit-course")
-    public String editCoursePage(@RequestParam int id, Model model){
+    @GetMapping("/edit-course/{id}")
+    public String editCoursePage(@PathVariable int id, Model model){
         model.addAttribute("course", courseService.getCourse(id));
         model.addAttribute("lectures", lectureService.getAllLectures(id));
         LectureInfo lectureInfo = new LectureInfo();
@@ -91,10 +92,7 @@ public class CourseController {
     @PostMapping("/update-course")
     public String updateCourse(@ModelAttribute("course") Course course){
         courseService.updateCourse(course);
-        return "redirect:/course-manage";
+        return "redirect:/edit-course/" + course.getId();
     }
-
-
-
 
 }
