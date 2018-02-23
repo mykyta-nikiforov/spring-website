@@ -24,7 +24,7 @@
                     <c:forEach var="course" items="${courses}">
                         <tr>
                             <td>${course.id}</td>
-                            <td>${course.name}</td>
+                            <td><a href="/course-${course.id}">${course.name}</a></td>
                             <td>${course.description}</td>
                         </tr>
                     </c:forEach>

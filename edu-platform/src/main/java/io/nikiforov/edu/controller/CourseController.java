@@ -57,14 +57,14 @@ public class CourseController {
     @RequestMapping("/all-courses")
     public String mainPage(HttpServletRequest request) {
         request.setAttribute("courses", courseService.getAllCourses());
-        return "allCourses";
+        return "coursesPage";
     }
 
     @GetMapping("/course-manage")
-    public String courseManage(Model model){
+    public String coursesManage(Model model){
         model.addAttribute("allcourses", courseService.getAllCourses());
         model.addAttribute("course", new Course());
-        return "courseManage";
+        return "coursesManage";
     }
 
     @PostMapping("/add-course")
@@ -86,13 +86,20 @@ public class CourseController {
         LectureInfo lectureInfo = new LectureInfo();
         lectureInfo.setCourseId(id);
         model.addAttribute("newLecture", lectureInfo);
-        return "editCourse";
+        return "courseEdit";
     }
 
     @PostMapping("/update-course")
     public String updateCourse(@ModelAttribute("course") Course course){
         courseService.updateCourse(course);
         return "redirect:/edit-course/" + course.getId();
+    }
+
+    @GetMapping("/course-{id}")
+    public String coursePage(@PathVariable int id, Model model){
+        model.addAttribute("course", courseService.getCourse(id));
+        model.addAttribute("lectures", lectureService.getAllLectures(id));
+        return "coursePage";
     }
 
 }
