@@ -11,8 +11,8 @@ public class Course {
 	private String name;
 	private String description;
 
-
-//    private List<Lecture> lectures;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "course")
+    private List<Lecture> lectures;
 
 //    private Teacher lecturer;
 //	private Teacher labAssistant;
