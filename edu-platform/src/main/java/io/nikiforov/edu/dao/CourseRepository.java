@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 
 public interface CourseRepository extends CrudRepository<Course, Integer>{
 
-    @Query("select c from Lecture l inner join l.course_id c where " +
+    @Query("select c from Course c left join c.lectures l where " +
             "l.id = :lecture_id")
     Course findCourseByLectureId(@Param("lecture_id") int id);
 }

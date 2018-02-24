@@ -40,7 +40,6 @@
                 <th>Id</th>
                 <th>Name</th>
                 <th>Description</th>
-                <th>Update</th>
                 <th>Delete</th>
             </tr>
             </thead>
@@ -48,9 +47,8 @@
             <c:forEach var="course" items="${allcourses}">
                 <tr>
                     <td>${course.id}</td>
-                    <td>${course.name}</td>
+                    <td><a href="/courses-manage/${course.id}">${course.name}</a></td>
                     <td>${course.description}</td>
-                    <td><a href="/edit-course/${course.id}"><span class="oi oi-action-redo"></span></a></td>
                     <td><a href="/delete-course?id=${course.id}"><span class="oi oi-trash"></span></a></td>
                 </tr>
             </c:forEach>

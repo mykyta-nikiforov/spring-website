@@ -24,35 +24,35 @@ public class CourseController {
     @Autowired
     private LectureService lectureService;
 
-    @GetMapping("/courses")
-    @ResponseBody
-    public List<Course> getCources(){
-        return courseService.getAllCourses();
-    }
-    
-    @GetMapping("/courses/{id}")
-    @ResponseBody
-    public Course getCourse(@PathVariable int id) {
-        return courseService.getCourse(id);
-    }
-    
-    @PostMapping("/courses")
-    @ResponseBody
-    public void addCourse(@RequestBody Course course) {
-        courseService.addCourse(course);
-    }
-    
-    @RequestMapping(method=RequestMethod.PUT, value="/courses/{id}")
-    @ResponseBody
-    public void updateCourse(@RequestBody Course course, @PathVariable int id) {
-        courseService.updateCourse(course);
-    }
-    
-    @RequestMapping(method=RequestMethod.DELETE, value="/courses/{id}")
-    @ResponseBody
-    public void deleteCourse(@PathVariable int id) {
-        courseService.deleteCourse(id);
-    }
+//    @GetMapping("/courses")
+//    @ResponseBody
+//    public List<Course> getCources(){
+//        return courseService.getAllCourses();
+//    }
+//
+//    @GetMapping("/courses/{id}")
+//    @ResponseBody
+//    public Course getCourse(@PathVariable int id) {
+//        return courseService.getCourse(id);
+//    }
+//
+//    @PostMapping("/courses")
+//    @ResponseBody
+//    public void addCourse(@RequestBody Course course) {
+//        courseService.addCourse(course);
+//    }
+//
+//    @RequestMapping(method=RequestMethod.PUT, value="/courses/{id}")
+//    @ResponseBody
+//    public void updateCourse(@RequestBody Course course, @PathVariable int id) {
+//        courseService.updateCourse(course);
+//    }
+//
+//    @RequestMapping(method=RequestMethod.DELETE, value="/courses/{id}")
+//    @ResponseBody
+//    public void deleteCourse(@PathVariable int id) {
+//        courseService.deleteCourse(id);
+//    }
 
     @RequestMapping("/all-courses")
     public String mainPage(HttpServletRequest request) {
@@ -60,7 +60,7 @@ public class CourseController {
         return "coursesPage";
     }
 
-    @GetMapping("/course-manage")
+    @GetMapping("/courses-manage")
     public String coursesManage(Model model){
         model.addAttribute("allcourses", courseService.getAllCourses());
         model.addAttribute("course", new Course());
@@ -70,16 +70,16 @@ public class CourseController {
     @PostMapping("/add-course")
     public String addNewCourse(@ModelAttribute("course") Course course){
         courseService.addCourse(course);
-        return "redirect:/course-manage";
+        return "redirect:/courses-manage";
     }
 
     @GetMapping("/delete-course")
     public String deleteCourseById(@RequestParam int id){
         courseService.deleteCourse(id);
-        return "redirect:/course-manage";
+        return "redirect:/courses-manage";
     }
 
-    @GetMapping("/edit-course/{id}")
+    @GetMapping("/courses-manage/{id}")
     public String editCoursePage(@PathVariable int id, Model model){
         model.addAttribute("course", courseService.getCourse(id));
         model.addAttribute("lectures", lectureService.getAllLectures(id));
@@ -92,7 +92,7 @@ public class CourseController {
     @PostMapping("/update-course")
     public String updateCourse(@ModelAttribute("course") Course course){
         courseService.updateCourse(course);
-        return "redirect:/edit-course/" + course.getId();
+        return "redirect:/courses-manage/" + course.getId();
     }
 
     @GetMapping("/course-{id}")

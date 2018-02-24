@@ -5,7 +5,7 @@
     <h3>Edit lecture</h3>
 
     <sf:form method="post" action="/update-lecture" modelAttribute="lecture">
-        <input type="hidden" name="id" value="${lecture.course.id}">
+        <input type="hidden" name="id" value="${lecture.id}">
         <div class="form-group row">
             <label class="col-form-label col-md-3">Name</label>
             <div class="col-md-5">

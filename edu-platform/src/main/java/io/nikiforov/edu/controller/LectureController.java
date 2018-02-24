@@ -1,7 +1,5 @@
 package io.nikiforov.edu.controller;
 
-import java.util.List;
-
 import io.nikiforov.edu.entity.Lecture;
 import io.nikiforov.edu.model.LectureInfo;
 import io.nikiforov.edu.service.CourseService;
@@ -10,12 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import io.nikiforov.edu.entity.Course;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class LectureController {
@@ -26,42 +19,11 @@ public class LectureController {
     @Autowired
     private CourseService courseService;
 
-//    @GetMapping("/courses/{id}/lectures")
-//    @ResponseBody
-//    public List<Lecture> getAllLectures(@PathVariable int id){
-//        return lectureService.getAllLectures(id);
-//    }
-//
-//    @GetMapping("/courses/{courseId}/lectures/{id}")
-//    @ResponseBody
-//    public Lecture getLecture(@PathVariable int id) {
-//        return lectureService.getLecture(id);
-//    }
-//
-//    @PostMapping("/courses/{courseId}/lectures")
-//    @ResponseBody
-//    public void addLecture(@RequestBody Lecture lecture, @PathVariable int courseId) {
-//        lecture.setCourse(new Course(courseId, "", ""));
-//        lectureService.addLecture(lecture);
-//    }
-//
-//    @RequestMapping(method=RequestMethod.PUT, value="/courses/{courseId}/lectures/{id}")
-//    public void updateLecture(@RequestBody Lecture lecture, @PathVariable int courseId,
-//                             @PathVariable int id) {
-//        lecture.setCourse(new Course(courseId, "", ""));
-//        lectureService.updateLecture(lecture);
-//    }
-//
-//    @RequestMapping(method=RequestMethod.DELETE, value="/courses/{courseId}/lectures/{id}")
-//    public void deleteCourse(@PathVariable int id) {
-//        lectureService.deleteLecture(id);
-//    }
-
     @PostMapping("/add-lecture")
     public String addLecture(@ModelAttribute("newLecture") LectureInfo lectureInfo) {
         System.out.println(lectureInfo);
         lectureService.saveLectureFromModel(lectureInfo);
-        return "redirect:/edit-course/" + lectureInfo.getCourseId();
+        return "redirect:/courses-manage/" + lectureInfo.getCourseId();
     }
 
     //TODO make smthn with {course-id}
@@ -76,18 +38,25 @@ public class LectureController {
     @GetMapping("/edit-lecture/{id}")
     public String editCoursePage(@PathVariable int id, Model model) {
         model.addAttribute("lecture", lectureService.getLecture(id));
+        System.out.println(lectureService.getLecture(id).toString());
         return "lectureEdit";
     }
 
     @PostMapping("/update-lecture")
     public String updateLecture(@ModelAttribute("lecture") Lecture lecture){
+        /* Lecture from model doesn't have course. Firstly, we find course,
+         * set it to lecture, and only then update the lecture. */
+        Course course = courseService.getCourseByLectureId(lecture.getId());
+        lecture.setCourse(course);
         lectureService.updateLecture(lecture);
-        return "redirect:/course-1/" + lecture.getId();
+        return "redirect:/courses-manage/" + course.getId();
     }
 
-    @PostMapping("/delete-lecture")
+    @GetMapping("/delete-lecture")
     public String deleteLecture(@RequestParam("id") int id) {
+        // Get course of this lecture
         Course course = courseService.getCourseByLectureId(id);
-        return "/edit-course/" + course.getId();
+        lectureService.deleteLecture(id);
+        return "redirect:/courses-manage/" + course.getId();
     }
 }
