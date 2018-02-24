@@ -23,19 +23,13 @@
             <c:forEach var="lecture" items="${lectures}">
                 <tr>
                     <td>${lecture.id}</td>
-                    <td>${lecture.name}</td>
+                    <td><a href="/course-${course.id}/${lecture.id}">${lecture.name}</a></td>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
     </div>
 </div>
-
-
-
-
-
-
 
 
 <%@include file="templates/footer.jsp"%>

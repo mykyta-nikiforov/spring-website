@@ -37,6 +37,8 @@
                 <th>Id</th>
                 <th>Name</th>
                 <th>Description</th>
+                <th>Update</th>
+                <th>Delete</th>
             </tr>
             </thead>
             <tbody>
@@ -45,6 +47,9 @@
                     <td>${lecture.id}</td>
                     <td>${lecture.name}</td>
                     <td>${lecture.description}</td>
+                    <td><a href="/edit-lecture/${lecture.id}"><span class="oi oi-action-redo"></span></a></td>
+                    <td><a href="/delete-lecture?id=${lecture.id}"><span class="oi oi-trash"></span></a></td>
+
                 </tr>
             </c:forEach>
             </tbody>
