@@ -8,6 +8,7 @@ import io.nikiforov.edu.model.LectureInfo;
 import io.nikiforov.edu.service.CourseService;
 import io.nikiforov.edu.service.LectureService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -102,4 +103,16 @@ public class CourseController {
         return "coursePage";
     }
 
+    @GetMapping("/admin")
+    @ResponseBody
+    public String securedPage(){
+        return "Secured page";
+    }
+
+    @PreAuthorize("hasAnyRole('ADMIN')")
+    @ResponseBody
+    @GetMapping("/testAdmin")
+    public String securedTestPage(){
+        return "securedTestPage";
+    }
 }
