@@ -12,10 +12,8 @@ public class User {
     private String password;
     private String name;
     private String lastName;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles;
+    @Enumerated(EnumType.STRING)
+    private Role role = Role.ROLE_USER;
 
     public User() {
     }
@@ -26,7 +24,7 @@ public class User {
         this.password = user.password;
         this.name = user.name;
         this.lastName = user.lastName;
-        this.roles = user.roles;
+        this.role = user.role;
     }
 
     public int getId() {
@@ -69,11 +67,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
+    public Role getRole() {
+        return role;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

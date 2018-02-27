@@ -102,17 +102,4 @@ public class CourseController {
         model.addAttribute("lectures", lectureService.getAllLectures(id));
         return "coursePage";
     }
-
-    @GetMapping("/admin")
-    @ResponseBody
-    public String securedPage(){
-        return "Secured page";
-    }
-
-    @PreAuthorize("hasAnyRole('ADMIN')")
-    @ResponseBody
-    @GetMapping("/testAdmin")
-    public String securedTestPage(){
-        return "securedTestPage";
-    }
 }
