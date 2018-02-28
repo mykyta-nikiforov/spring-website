@@ -12,8 +12,10 @@ public class User {
     private String password;
     private String name;
     private String lastName;
-    @Enumerated(EnumType.STRING)
-    private Role role = Role.ROLE_USER;
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
 
     public User() {
     }
@@ -24,7 +26,7 @@ public class User {
         this.password = user.password;
         this.name = user.name;
         this.lastName = user.lastName;
-        this.role = user.role;
+        this.roles = user.roles;
     }
 
     public int getId() {
@@ -67,11 +69,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public Role getRole() {
-        return role;
+    public Set<Role> getRoles() {
+        return roles;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }
