@@ -1,35 +1,29 @@
 package io.nikiforov.edu.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
-public class Teacher {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+//@PrimaryKeyJoinColumn(name="id")
+public class Teacher extends User{
     private String name;
     private String surname;
     // e.g. "Professor", "PhD", "Docent"
     private String degree;
 
-    public Teacher(String name, String surname, String degree) {
-        this.name = name;
-        this.surname = surname;
-        this.degree = degree;
-    }
-
     public Teacher() {
     }
 
-    public int getId() {
-        return id;
+
+    public Teacher(String email, String password, boolean enabled,
+                   boolean accountNonExpired, boolean credentialsNonExpired,
+                   boolean accountNonLocked, Set<Role> roles) {
+        super(email, password, enabled, accountNonExpired, credentialsNonExpired,
+                accountNonLocked, roles);
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public Teacher(String username, String password, Set<Role> roles) {
+        super(username, password, roles);
     }
 
     public String getName() {

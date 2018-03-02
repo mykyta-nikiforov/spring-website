@@ -1,23 +1,28 @@
 package io.nikiforov.edu.service.impl;
 
+import io.nikiforov.edu.dao.RoleRepository;
 import io.nikiforov.edu.dao.UserRepository;
-import io.nikiforov.edu.entity.CustomUserDetails;
+import io.nikiforov.edu.entity.Role;
+import io.nikiforov.edu.entity.Teacher;
 import io.nikiforov.edu.entity.User;
 import io.nikiforov.edu.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class UserServiceImpl implements UserService, UserDetailsService{
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    RoleRepository roleRepository;
 
     @Override
     public List<User> findAll() {
@@ -31,10 +36,22 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Optional<User> optionalUser = userRepository.findByEmail(email);
+        User user = userRepository.findByEmail(email);
 
-        optionalUser
-                .orElseThrow(() -> new UsernameNotFoundException("Email not found."));
-        return optionalUser.map(CustomUserDetails::new).get();
+        if (user == null) {
+            throw new UsernameNotFoundException("Cannot find email");
+        } else{
+
+            String role = user.getRoles().iterator().next().getRole();
+            switch (role){
+                case "TEACHER":
+                    Set<Role> roles = new HashSet<>();
+                    roles.add(roleRepository.findByRole("TEACHER"));
+                    return new Teacher(user.getUsername(),
+                            user.getPassword(), roles);
+            }
+
+        }
+        return null;
     }
 }
