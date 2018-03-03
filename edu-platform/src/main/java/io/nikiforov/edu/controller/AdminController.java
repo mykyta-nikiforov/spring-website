@@ -1,9 +1,11 @@
 package io.nikiforov.edu.controller;
 
 import io.nikiforov.edu.entity.Role;
+import io.nikiforov.edu.entity.Student;
 import io.nikiforov.edu.entity.Teacher;
 import io.nikiforov.edu.entity.User;
 import io.nikiforov.edu.service.RoleService;
+import io.nikiforov.edu.service.StudentService;
 import io.nikiforov.edu.service.TeacherService;
 import io.nikiforov.edu.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,22 +34,27 @@ public class AdminController {
     TeacherService teacherService;
 
     @Autowired
+    StudentService studentService;
+
+    @Autowired
     PasswordEncoder passwordEncoder;
 
     @GetMapping("/admin/users-manage")
     public String manageUsersPage(Model model){
-        model.addAttribute("users", userService.findAll());
-        model.addAttribute("newUser", new User());
+        model.addAttribute("student", studentService.findAll());
+        model.addAttribute("newStudent", new Student());
         return "usersManage";
     }
 
-    @PostMapping("/admin/add-user")
-    public String addUser(@ModelAttribute("newUser") User user){
+    @PostMapping("/admin/add-student")
+    public String addUser(@ModelAttribute("newStudent") Student modelStudent){
         Set<Role> roleSet = new HashSet<>();
-        roleSet.add(roleService.getRole("USER"));
-        user.setRoles(roleSet);
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userService.save(user);
+        roleSet.add(roleService.getRole("STUDENT"));
+        Student result = new Student(modelStudent.getEmail(),
+                passwordEncoder.encode(modelStudent.getPassword()), roleSet);
+        result.setName(modelStudent.getName());
+
+        studentService.save(modelStudent);
         return "redirect:/admin/users-manage";
     }
 
@@ -60,12 +67,13 @@ public class AdminController {
     }
 
     @PostMapping("/admin/add-teacher")
-    public String addTeacher(@ModelAttribute("newTeacher") Teacher teacher) {
+    public String addTeacher(@ModelAttribute("newTeacher") Teacher modelTeacher) {
         Set<Role> rolesSet = new HashSet<>();
         rolesSet.add(roleService.getRole("TEACHER"));
-        teacher.setRoles(rolesSet);
-        teacher.setPassword(passwordEncoder.encode(teacher.getPassword()));
-        teacherService.save(teacher);
+        Teacher result = new Teacher(modelTeacher.getEmail(),
+                passwordEncoder.encode(modelTeacher.getPassword()), rolesSet);
+        result.setName(modelTeacher.getName());
+        teacherService.save(result);
         return "redirect:/admin/users-manage/teachers";
     }
 }

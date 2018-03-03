@@ -1,9 +1,12 @@
 package io.nikiforov.edu.entity;
 
+import org.hibernate.annotations.Proxy;
+
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@Proxy(lazy = false)
 //@PrimaryKeyJoinColumn(name="id")
 public class Teacher extends User{
     private String name;
@@ -14,6 +17,11 @@ public class Teacher extends User{
     public Teacher() {
     }
 
+    public Teacher(String name, String surname, String degree) {
+        this.name = name;
+        this.surname = surname;
+        this.degree = degree;
+    }
 
     public Teacher(String email, String password, boolean enabled,
                    boolean accountNonExpired, boolean credentialsNonExpired,
@@ -48,5 +56,14 @@ public class Teacher extends User{
 
     public void setDegree(String degree) {
         this.degree = degree;
+    }
+
+    @Override
+    public String toString() {
+        return "Teacher{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", degree='" + degree + '\'' +
+                '}';
     }
 }

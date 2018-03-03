@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class UserController {
+public class StudentController {
 
     @GetMapping("/admin")
     @ResponseBody
@@ -14,10 +14,10 @@ public class UserController {
         return "Secured page";
     }
 
-    @PreAuthorize("hasAnyRole('USER')")
+    @PreAuthorize("hasAnyRole('STUDENT')")
     @ResponseBody
-    @GetMapping("/pageForUsers")
+    @GetMapping("/pageForStudents")
     public String securedTestPage(){
-        return "Only User can see this";
+        return "Only Student can see this";
     }
 }

@@ -4,19 +4,24 @@
     <h3>Manage Users</h3>
     <hr>
     <h4>Add new user</h4>
-    <sf:form method="post" action="/admin/add-user" modelAttribute="newUser">
-        <input type="hidden" name="id" value="${newUser.id}">
+    <sf:form method="post" action="/admin/add-student" modelAttribute="newStudent">
         <div class="form-group row">
             <label class="col-form-label col-md-3">Email</label>
             <div class="col-md-5">
-                <sf:input type="text" class="form-control" path="email" value="${newUser.email}"/>
+                <sf:input type="text" class="form-control" path="email" value="${newStudent.email}"/>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-form-label col-md-3">Password</label>
             <div class="col-md-5">
                 <sf:input type="text" class="form-control" path="password"
-                          value="${newUser.password}"/>
+                          value="${newStudent.password}"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label col-md-3">Name</label>
+            <div class="col-md-5">
+                <sf:input type="text" class="form-control" path="name" value="${newStudent.name}"/>
             </div>
         </div>
         <div class="form-group row">

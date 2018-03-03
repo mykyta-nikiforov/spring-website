@@ -20,6 +20,13 @@
             </div>
         </div>
         <div class="form-group row">
+            <label class="col-form-label col-md-3">Name</label>
+            <div class="col-md-5">
+                <sf:input type="text" class="form-control" path="name"
+                          value="${newTeacher.name}"/>
+            </div>
+        </div>
+        <div class="form-group row">
             <input type="submit" class="btn btn-dark" value="Add"/>
         </div>
     </sf:form>
@@ -36,6 +43,7 @@
                 <th>Id</th>
                 <th>Name</th>
                 <th>Lastname</th>
+                <th>Email</th>
             </tr>
             </thead>
             <tbody>
@@ -44,6 +52,7 @@
                     <td>${teacher.id}</td>
                     <td>${teacher.name}</td>
                     <td>${teacher.surname}</td>
+                    <td>${teacher.email}</td>
                 </tr>
             </c:forEach>
             </tbody>
