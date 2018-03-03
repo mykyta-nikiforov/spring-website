@@ -42,10 +42,10 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="user" items="${users}">
+            <c:forEach var="student" items="${student}">
                 <tr>
-                    <td>${user.email}</td>
-                    <td>${user.password}</td>
+                    <td>${student.email}</td>
+                    <td>${student.password}</td>
                 </tr>
             </c:forEach>
             </tbody>

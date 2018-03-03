@@ -54,7 +54,7 @@ public class AdminController {
                 passwordEncoder.encode(modelStudent.getPassword()), roleSet);
         result.setName(modelStudent.getName());
 
-        studentService.save(modelStudent);
+        studentService.save(result);
         return "redirect:/admin/users-manage";
     }
 

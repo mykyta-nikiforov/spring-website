@@ -11,13 +11,26 @@ public class Student extends User{
 
     private String name;
     private String surname;
-    private String group;
+    private String studentGroup;
 
     public Student() {
     }
 
+    public Student(String name, String surname, String group) {
+        this.name = name;
+        this.surname = surname;
+        this.studentGroup = group;
+    }
+
     public Student(String username, String password, Set<Role> roles) {
         super(username, password, roles);
+    }
+
+    public Student(String email, String password, boolean enabled,
+                   boolean accountNonExpired, boolean credentialsNonExpired,
+                   boolean accountNonLocked, Set<Role> roles) {
+        super(email, password, enabled, accountNonExpired, credentialsNonExpired,
+                accountNonLocked, roles);
     }
 
     public String getName() {
@@ -37,10 +50,10 @@ public class Student extends User{
     }
 
     public String getGroup() {
-        return group;
+        return studentGroup;
     }
 
     public void setGroup(String group) {
-        this.group = group;
+        this.studentGroup = group;
     }
 }
