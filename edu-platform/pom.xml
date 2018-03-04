@@ -40,6 +40,13 @@
 		<artifactId>spring-boot-starter-actuator</artifactId>
 	</dependency>
 
+      <!-- For Spring Security taglibs-->
+      <dependency>
+          <groupId>org.springframework.security</groupId>
+          <artifactId>spring-security-taglibs</artifactId>
+      </dependency>
+
+
       <!-- Tomcat Embed -->
       <dependency>
           <groupId>org.springframework.boot</groupId>

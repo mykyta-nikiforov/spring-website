@@ -20,18 +20,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserServiceImpl userDetailsService;
 
+    @Autowired
+    AuthenticationSuccessHandlerImpl successHandler;
+
     @Override
     public void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeRequests()
-                    .antMatchers("/admin/**")
-                    .hasRole("ADMIN")
+                    .antMatchers("/admin/**").hasRole("ADMIN")
+                    .antMatchers("/static/**").permitAll()
+                    .anyRequest().authenticated()
                     .and()
                 .formLogin()
-//                    .loginPage("/login")
+                    .loginPage("/login")
+                    .defaultSuccessUrl("/")
+                    .failureUrl("/")
+                    .usernameParameter("email")
+                    .passwordParameter("password")
                     .permitAll()
+                    .successHandler(successHandler)
                     .and()
-                .logout().and()
+                .logout().permitAll().and()
 //                .exceptionHandling()
 //                    .accessDeniedPage("/403")
 //                    .and()

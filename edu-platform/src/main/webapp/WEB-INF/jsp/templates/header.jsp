@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
     <meta charset="utf-8">
@@ -20,14 +21,21 @@
             <li class="nav-item">
                 <a class="nav-link text-light" href="/all-courses">All courses</a>
             </li>
+            <sec:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_TEACHER')">
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="/courses-manage">Manage</a>
+                </li>
+            </sec:authorize>
+            <sec:authorize  access="hasRole('ROLE_ADMIN')">
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="/admin">Admin</a>
+                </li>
+            </sec:authorize>
             <li class="nav-item">
-                <a class="nav-link text-light" href="/courses-manage">Manage</a>
+                <a class="nav-link text-light" href="/user-page">Profile</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-light" href="#">Schedule</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-light" href="#">Schedule</a>
+                <a class="nav-link text-light" href="/logout">Log out</a>
             </li>
         </ul>
         <form class="form-inline">

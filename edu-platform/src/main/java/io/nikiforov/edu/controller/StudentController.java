@@ -8,12 +8,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class StudentController {
 
-    @GetMapping("/admin")
-    @ResponseBody
-    public String securedPage(){
-        return "Secured page";
-    }
-
     @PreAuthorize("hasAnyRole('STUDENT')")
     @ResponseBody
     @GetMapping("/pageForStudents")

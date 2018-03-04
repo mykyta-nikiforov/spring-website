@@ -23,10 +23,7 @@
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.8.0" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.8.10" />
           <element id="library" level="project" name="Maven: org.springframework:spring-web:4.3.14.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-beans:4.3.14.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-context:4.3.14.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.3.14.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-expression:4.3.14.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-data-jpa:1.5.10.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-aop:1.5.10.RELEASE" />
           <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.8.13" />
@@ -53,10 +50,17 @@
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-security:1.5.10.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:4.3.14.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-config:4.2.4.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:4.2.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-web:4.2.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-actuator:1.5.10.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-actuator:1.5.10.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-taglibs:4.2.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-acl:4.2.4.RELEASE" />
+          <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:4.2.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-beans:4.3.14.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-context:4.3.14.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-core:4.3.14.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-expression:4.3.14.RELEASE" />
           <element id="library" level="project" name="Maven: org.apache.tomcat.embed:tomcat-embed-core:8.5.27" />
           <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-annotations-api:8.5.27" />
           <element id="library" level="project" name="Maven: org.apache.tomcat.embed:tomcat-embed-el:8.5.27" />
@@ -64,7 +68,6 @@
           <element id="library" level="project" name="Maven: org.apache.tomcat.embed:tomcat-embed-jasper:8.5.27" />
           <element id="library" level="project" name="Maven: org.eclipse.jdt:ecj:3.12.3" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:6.0.6" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-core:4.3.14.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-devtools:1.5.10.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot:1.5.10.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-autoconfigure:1.5.10.RELEASE" />

@@ -39,11 +39,21 @@ public class AdminController {
     @Autowired
     PasswordEncoder passwordEncoder;
 
+    @GetMapping("/admin")
+    public String adminPage(){
+        return "adminPage";
+    }
+
     @GetMapping("/admin/users-manage")
-    public String manageUsersPage(Model model){
+    public String usersManage() {
+        return "usersManage";
+    }
+
+    @GetMapping("/admin/users-manage/students")
+    public String studentManage(Model model){
         model.addAttribute("student", studentService.findAll());
         model.addAttribute("newStudent", new Student());
-        return "usersManage";
+        return "usersManageStudents";
     }
 
     @PostMapping("/admin/add-student")
