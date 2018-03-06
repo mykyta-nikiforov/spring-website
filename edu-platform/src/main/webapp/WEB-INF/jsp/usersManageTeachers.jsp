@@ -1,4 +1,4 @@
-<%@include file="templates/header.jsp"%>
+<%@include file="templates/header.jsp" %>
 
 
 <div class="container ">
@@ -27,6 +27,25 @@
             </div>
         </div>
         <div class="form-group row">
+            <label class="col-form-label col-md-3">Surname</label>
+            <div class="col-md-5">
+                <sf:input type="text" class="form-control" path="surname"
+                          value="${newTeacher.surname}"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label col-md-3">Degree</label>
+            <sf:select path="degree">
+                <sf:option value="">Select the degree</sf:option>
+                <%--<sf:options itemLabel="name" items="${}"></sf:options>--%>
+                <c:forEach var="degree" items="${degrees}">
+                    <sf:option value="${degree.id}">
+                        <c:out value="${degree.name}"></c:out>
+                    </sf:option>
+                </c:forEach>
+            </sf:select>
+        </div>
+        <div class="form-group row">
             <input type="submit" class="btn btn-dark" value="Add"/>
         </div>
     </sf:form>
@@ -42,8 +61,9 @@
             <tr>
                 <th>Id</th>
                 <th>Name</th>
-                <th>Lastname</th>
+                <th>Surname</th>
                 <th>Email</th>
+                <th>Degree</th>
             </tr>
             </thead>
             <tbody>
@@ -53,6 +73,7 @@
                     <td>${teacher.name}</td>
                     <td>${teacher.surname}</td>
                     <td>${teacher.email}</td>
+                    <td>${teacher.degree.name}</td>
                 </tr>
             </c:forEach>
             </tbody>
@@ -61,4 +82,4 @@
 </div>
 
 
-<%@include file="templates/footer.jsp"%>
+<%@include file="templates/footer.jsp" %>

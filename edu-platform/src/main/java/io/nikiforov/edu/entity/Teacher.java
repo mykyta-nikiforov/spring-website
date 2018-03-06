@@ -12,12 +12,16 @@ public class Teacher extends User{
     private String name;
     private String surname;
     // e.g. "Professor", "PhD", "Docent"
-    private String degree;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "degree_id")
+    private Degree degree;
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "curator")
+    private Group curatedGroup;
 
     public Teacher() {
     }
 
-    public Teacher(String name, String surname, String degree) {
+    public Teacher(String name, String surname, Degree degree) {
         this.name = name;
         this.surname = surname;
         this.degree = degree;
@@ -50,11 +54,11 @@ public class Teacher extends User{
         this.surname = surname;
     }
 
-    public String getDegree() {
+    public Degree getDegree() {
         return degree;
     }
 
-    public void setDegree(String degree) {
+    public void setDegree(Degree degree) {
         this.degree = degree;
     }
 

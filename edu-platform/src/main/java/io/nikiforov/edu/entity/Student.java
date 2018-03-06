@@ -2,7 +2,10 @@ package io.nikiforov.edu.entity;
 
 import org.hibernate.annotations.Proxy;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.util.Set;
 
 @Entity
@@ -11,15 +14,17 @@ public class Student extends User{
 
     private String name;
     private String surname;
-    private String studentGroup;
+    @ManyToOne
+    @JoinColumn(name = "group_id")
+    private Group group;
 
     public Student() {
     }
 
-    public Student(String name, String surname, String group) {
+    public Student(String name, String surname, Group group) {
         this.name = name;
         this.surname = surname;
-        this.studentGroup = group;
+        this.group = group;
     }
 
     public Student(String username, String password, Set<Role> roles) {
@@ -49,11 +54,11 @@ public class Student extends User{
         this.surname = surname;
     }
 
-    public String getGroup() {
-        return studentGroup;
+    public Group getGroup() {
+        return group;
     }
 
-    public void setGroup(String group) {
-        this.studentGroup = group;
+    public void setGroup(Group group) {
+        this.group = group;
     }
 }

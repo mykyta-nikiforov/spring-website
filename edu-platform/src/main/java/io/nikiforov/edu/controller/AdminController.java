@@ -1,13 +1,7 @@
 package io.nikiforov.edu.controller;
 
-import io.nikiforov.edu.entity.Role;
-import io.nikiforov.edu.entity.Student;
-import io.nikiforov.edu.entity.Teacher;
-import io.nikiforov.edu.entity.User;
-import io.nikiforov.edu.service.RoleService;
-import io.nikiforov.edu.service.StudentService;
-import io.nikiforov.edu.service.TeacherService;
-import io.nikiforov.edu.service.UserService;
+import io.nikiforov.edu.entity.*;
+import io.nikiforov.edu.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -39,8 +33,14 @@ public class AdminController {
     @Autowired
     PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private GroupService groupService;
+
+    @Autowired
+    private DegreeService degreeService;
+
     @GetMapping("/admin")
-    public String adminPage(){
+    public String adminPage() {
         return "adminPage";
     }
 
@@ -50,20 +50,19 @@ public class AdminController {
     }
 
     @GetMapping("/admin/users-manage/students")
-    public String studentManage(Model model){
+    public String studentManage(Model model) {
         model.addAttribute("student", studentService.findAll());
         model.addAttribute("newStudent", new Student());
         return "usersManageStudents";
     }
 
     @PostMapping("/admin/add-student")
-    public String addUser(@ModelAttribute("newStudent") Student modelStudent){
+    public String addUser(@ModelAttribute("newStudent") Student modelStudent) {
         Set<Role> roleSet = new HashSet<>();
         roleSet.add(roleService.getRole("STUDENT"));
         Student result = new Student(modelStudent.getEmail(),
                 passwordEncoder.encode(modelStudent.getPassword()), roleSet);
         result.setName(modelStudent.getName());
-
         studentService.save(result);
         return "redirect:/admin/users-manage";
     }
@@ -71,6 +70,8 @@ public class AdminController {
     @GetMapping("/admin/users-manage/teachers")
     public String teachersManagePage(Model model) {
         model.addAttribute("newTeacher", new Teacher());
+        model.addAttribute("degrees", degreeService.findAll());
+        System.out.println(teacherService.findAll());
         model.addAttribute("teachers", teacherService.findAll());
 //        model.
         return "usersManageTeachers";
@@ -83,7 +84,24 @@ public class AdminController {
         Teacher result = new Teacher(modelTeacher.getEmail(),
                 passwordEncoder.encode(modelTeacher.getPassword()), rolesSet);
         result.setName(modelTeacher.getName());
+        result.setDegree(modelTeacher.getDegree());
+        result.setSurname(modelTeacher.getSurname());
         teacherService.save(result);
         return "redirect:/admin/users-manage/teachers";
+    }
+
+    @GetMapping("/admin/group-manage")
+    public String groupsManagePage(Model model) {
+        model.addAttribute("newGroup", new Group());
+        model.addAttribute("groups", groupService.findAll());
+        model.addAttribute("teachers", teacherService.findAll());
+        return "groupsManage";
+    }
+
+    @PostMapping("/admin/add-group")
+    public String addGroup(@ModelAttribute("newGroup") Group modelGroup) {
+        System.out.println(modelGroup);
+        groupService.save(modelGroup);
+        return "redirect:/admin/group-manage";
     }
 }

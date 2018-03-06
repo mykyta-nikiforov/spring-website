@@ -18,6 +18,6 @@ public class TeacherController {
     public String teacherPage(@AuthenticationPrincipal UserDetails userDetails) {
         System.out.println(userDetails.getClass());
         Teacher teacher = (Teacher) userDetails;
-        return "Only Teacher can see this" + teacher.getName();
+        return "Only Teacher can see this asdasd" + teacher.getName();
     }
 }
