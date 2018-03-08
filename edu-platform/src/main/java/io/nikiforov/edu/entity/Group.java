@@ -1,5 +1,7 @@
 package io.nikiforov.edu.entity;
 
+import io.nikiforov.edu.model.GroupInfo;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Set;
@@ -9,11 +11,12 @@ import java.util.Set;
 public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public int id;
+    private int id;
     private String number;
     private int yearOfStudy;
     @NotNull
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne
+    @JoinColumn(name = "curator_id", unique = true)
     private Teacher curator;
     @OneToMany(mappedBy = "group")
     private Set<Student> students;
@@ -27,6 +30,21 @@ public class Group {
         this.yearOfStudy = yearOfStudy;
         this.curator = curator;
         this.students = students;
+    }
+
+    public Group(GroupInfo groupInfo) {
+        this.number = groupInfo.getNumber();
+        this.yearOfStudy = 1;
+        this.curator = groupInfo.getCurator();
+
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNumber() {

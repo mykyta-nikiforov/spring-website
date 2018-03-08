@@ -14,6 +14,7 @@ public class Student extends User{
 
     private String name;
     private String surname;
+    private String patronymic;
     @ManyToOne
     @JoinColumn(name = "group_id")
     private Group group;
@@ -21,9 +22,19 @@ public class Student extends User{
     public Student() {
     }
 
-    public Student(String name, String surname, Group group) {
+    public Student(Student modelStudent) {
+        super(modelStudent.getEmail(), modelStudent.getPassword(),
+                modelStudent.getRoles());
+        this.name = modelStudent.name;
+        this.surname = modelStudent.surname;
+        this.patronymic = modelStudent.patronymic;
+        this.group = modelStudent.group;
+    }
+
+    public Student(String name, String surname, String patronymic, Group group) {
         this.name = name;
         this.surname = surname;
+        this.patronymic = patronymic;
         this.group = group;
     }
 
@@ -54,11 +65,29 @@ public class Student extends User{
         this.surname = surname;
     }
 
+    public String getPatronymic() {
+        return patronymic;
+    }
+
+    public void setPatronymic(String patronymic) {
+        this.patronymic = patronymic;
+    }
+
     public Group getGroup() {
         return group;
     }
 
     public void setGroup(Group group) {
         this.group = group;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", patronymic='" + patronymic + '\'' +
+                ", group=" + group +
+                '}';
     }
 }

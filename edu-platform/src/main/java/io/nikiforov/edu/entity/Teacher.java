@@ -15,7 +15,7 @@ public class Teacher extends User{
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "degree_id")
     private Degree degree;
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "curator")
+    @OneToOne(mappedBy = "curator", fetch = FetchType.LAZY)
     private Group curatedGroup;
 
     public Teacher() {
@@ -60,6 +60,14 @@ public class Teacher extends User{
 
     public void setDegree(Degree degree) {
         this.degree = degree;
+    }
+
+    public Group getCuratedGroup() {
+        return curatedGroup;
+    }
+
+    public void setCuratedGroup(Group curatedGroup) {
+        this.curatedGroup = curatedGroup;
     }
 
     @Override

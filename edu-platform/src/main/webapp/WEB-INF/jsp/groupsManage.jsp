@@ -4,7 +4,7 @@
     <h3>Manage Groups</h3>
     <hr>
     <h4>Add new group</h4>
-    <sf:form method="post" action="/admin/add-group" modelAttribute="newGroup">
+    <sf:form method="post" action="/admin/groups-manage/add-group" modelAttribute="newGroup">
         <div class="form-group row">
             <label class="col-form-label col-md-3">Number</label>
             <div class="col-md-5">
@@ -14,12 +14,7 @@
         </div>
         <div class="form-group row">
             <label class="col-form-label col-md-3">Curator</label>
-            <%--<div class="col-md-5">--%>
-                <%--<sf:input type="text" class="form-control" path="curator"--%>
-                          <%--value="${newGroup.curator}"/>--%>
-            <%--</div>--%>
             <sf:select path="curator">
-                <%--<sf:options itemLabel="name surname" items="${teachers}"></sf:options>--%>
                 <option value="">Select the curator</option>
                 <c:forEach var="teacher" items="${teachers}">
                     <sf:option value="${teacher.id}">

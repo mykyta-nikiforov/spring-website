@@ -1,9 +1,9 @@
 <%@include file="templates/header.jsp"%>
 
 <div class="container ">
-    <h3>Manage Users</h3>
+    <h3>Manage Students</h3>
     <hr>
-    <h4>Add new user</h4>
+    <h4>Add new student</h4>
     <sf:form method="post" action="/admin/add-student" modelAttribute="newStudent">
         <div class="form-group row">
             <label class="col-form-label col-md-3">Email</label>
@@ -25,27 +25,52 @@
             </div>
         </div>
         <div class="form-group row">
+            <label class="col-form-label col-md-3">Surname</label>
+            <div class="col-md-5">
+                <sf:input type="text" class="form-control" path="surname" value="${newStudent.surname}"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label col-md-3">Patronymic</label>
+            <div class="col-md-5">
+                <sf:input type="text" class="form-control" path="patronymic" value="${newStudent.patronymic}"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label col-md-3">Group</label>
+            <sf:select path="group">
+                <option value="">Select the Group</option>
+                <c:forEach var="group" items="${groups}">
+                    <sf:option value="${group.id}">
+                        <c:out value="${group.number}"></c:out>
+                    </sf:option>
+                </c:forEach>
+            </sf:select>
+        </div>
+        <div class="form-group row">
             <input type="submit" class="btn btn-dark" value="Add"/>
         </div>
     </sf:form>
 </div>
 
 <div class="container text-center">
-    <h3>Users</h3>
+    <h3>Students</h3>
     <hr>
     <div class="table-responsive">
         <table class="table table-bordered table-striped text-left">
             <thead>
             <tr>
                 <th>Email</th>
-                <th>Password</th>
+                <th>Name</th>
+                <th>Group</th>
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="student" items="${student}">
+            <c:forEach var="student" items="${students}">
                 <tr>
                     <td>${student.email}</td>
-                    <td>${student.password}</td>
+                    <td>${student.surname} ${student.name} ${student.patronymic}</td>
+                    <td>${student.group.number}</td>
                 </tr>
             </c:forEach>
             </tbody>

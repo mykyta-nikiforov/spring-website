@@ -1,4 +1,4 @@
-package io.nikiforov.edu.controller;
+package io.nikiforov.edu.controller.admin;
 
 import io.nikiforov.edu.entity.*;
 import io.nikiforov.edu.service.*;
@@ -49,24 +49,6 @@ public class AdminController {
         return "usersManage";
     }
 
-    @GetMapping("/admin/users-manage/students")
-    public String studentManage(Model model) {
-        model.addAttribute("student", studentService.findAll());
-        model.addAttribute("newStudent", new Student());
-        return "usersManageStudents";
-    }
-
-    @PostMapping("/admin/add-student")
-    public String addUser(@ModelAttribute("newStudent") Student modelStudent) {
-        Set<Role> roleSet = new HashSet<>();
-        roleSet.add(roleService.getRole("STUDENT"));
-        Student result = new Student(modelStudent.getEmail(),
-                passwordEncoder.encode(modelStudent.getPassword()), roleSet);
-        result.setName(modelStudent.getName());
-        studentService.save(result);
-        return "redirect:/admin/users-manage";
-    }
-
     @GetMapping("/admin/users-manage/teachers")
     public String teachersManagePage(Model model) {
         model.addAttribute("newTeacher", new Teacher());
@@ -88,20 +70,5 @@ public class AdminController {
         result.setSurname(modelTeacher.getSurname());
         teacherService.save(result);
         return "redirect:/admin/users-manage/teachers";
-    }
-
-    @GetMapping("/admin/group-manage")
-    public String groupsManagePage(Model model) {
-        model.addAttribute("newGroup", new Group());
-        model.addAttribute("groups", groupService.findAll());
-        model.addAttribute("teachers", teacherService.findAll());
-        return "groupsManage";
-    }
-
-    @PostMapping("/admin/add-group")
-    public String addGroup(@ModelAttribute("newGroup") Group modelGroup) {
-        System.out.println(modelGroup);
-        groupService.save(modelGroup);
-        return "redirect:/admin/group-manage";
     }
 }

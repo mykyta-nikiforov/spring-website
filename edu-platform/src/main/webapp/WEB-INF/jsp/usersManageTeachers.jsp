@@ -1,5 +1,5 @@
 <%@include file="templates/header.jsp" %>
-
+<%@page pageEncoding="UTF-8" %>
 
 <div class="container ">
     <h3>Manage Teachers</h3>
