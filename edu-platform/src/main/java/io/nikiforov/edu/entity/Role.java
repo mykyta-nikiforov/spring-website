@@ -1,9 +1,7 @@
 package io.nikiforov.edu.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Role {
@@ -11,6 +9,10 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String role;
+
+    @ManyToMany(mappedBy = "roles")
+    private Set<User> users;
+
 
     public Role() {
     }

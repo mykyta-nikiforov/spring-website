@@ -54,9 +54,7 @@ public class AdminController {
     public String teachersManagePage(Model model) {
         model.addAttribute("newTeacher", new TeacherInfo());
         model.addAttribute("degrees", degreeService.findAll());
-        System.out.println(teacherService.findAll());
         model.addAttribute("teachers", teacherService.findAll());
-//        model.
         return "usersManageTeachers";
     }
 

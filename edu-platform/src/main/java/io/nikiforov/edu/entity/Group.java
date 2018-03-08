@@ -12,7 +12,10 @@ public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @NotNull
+    @Column(unique = true)
     private String number;
+    @NotNull
     private int yearOfStudy;
     @NotNull
     @OneToOne

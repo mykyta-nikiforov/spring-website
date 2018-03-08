@@ -57,7 +57,6 @@ public class UserServiceImpl implements UserService, UserDetailsService{
                 case "TEACHER":
                     roles.add(roleRepository.findByRole("TEACHER"));
                     Teacher teacher = teacherRepository.getOne(user.getId());
-                    System.out.println("Founded teacher : " + teacher);
                     return teacher;
                 case "STUDENT":
                     roles.add(roleRepository.findByRole("STUDENT"));

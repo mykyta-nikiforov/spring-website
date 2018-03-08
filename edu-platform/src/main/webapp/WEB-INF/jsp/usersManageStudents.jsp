@@ -1,11 +1,12 @@
 <%@page pageEncoding="UTF-8" %>
 <%@include file="templates/header.jsp"%>
+<link href="/static/css/open-iconic-bootstrap.css" rel="stylesheet">
 
 <div class="container ">
     <h3>Manage Students</h3>
     <hr>
     <h4>Add new student</h4>
-    <sf:form method="post" action="/admin/add-student" modelAttribute="newStudent">
+    <sf:form method="post" action="/admin/users-manage/students/add-student" modelAttribute="newStudent">
         <div class="form-group row">
             <label class="col-form-label col-md-3">Email</label>
             <div class="col-md-5">
@@ -64,6 +65,7 @@
                 <th>Email</th>
                 <th>Name</th>
                 <th>Group</th>
+                <th>Delete</th>
             </tr>
             </thead>
             <tbody>
@@ -72,6 +74,7 @@
                     <td>${student.email}</td>
                     <td>${student.surname} ${student.name} ${student.patronymic}</td>
                     <td>${student.group.number}</td>
+                    <td><a href="/admin/users-manage/students/delete-student?id=${student.id}"><span class="oi oi-trash"></span></a></td>
                 </tr>
             </c:forEach>
             </tbody>

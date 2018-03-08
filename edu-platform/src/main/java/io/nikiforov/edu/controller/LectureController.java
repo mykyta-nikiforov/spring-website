@@ -21,7 +21,6 @@ public class LectureController {
 
     @PostMapping("/add-lecture")
     public String addLecture(@ModelAttribute("newLecture") LectureInfo lectureInfo) {
-        System.out.println(lectureInfo);
         lectureService.saveLectureFromModel(lectureInfo);
         return "redirect:/courses-manage/" + lectureInfo.getCourseId();
     }
@@ -38,7 +37,6 @@ public class LectureController {
     @GetMapping("/edit-lecture/{id}")
     public String editCoursePage(@PathVariable int id, Model model) {
         model.addAttribute("lecture", lectureService.getLecture(id));
-        System.out.println(lectureService.getLecture(id).toString());
         return "lectureEdit";
     }
 

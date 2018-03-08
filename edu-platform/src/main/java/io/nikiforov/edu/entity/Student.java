@@ -1,20 +1,26 @@
 package io.nikiforov.edu.entity;
 
+import io.nikiforov.edu.model.StudentInfo;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Entity
 @Proxy(lazy = false)
 public class Student extends User{
 
+    @NotNull
     private String name;
+    @NotNull
     private String surname;
+    @NotNull
     private String patronymic;
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "group_id")
     private Group group;
@@ -22,24 +28,13 @@ public class Student extends User{
     public Student() {
     }
 
-    public Student(Student modelStudent) {
-        super(modelStudent.getEmail(), modelStudent.getPassword(),
-                modelStudent.getRoles());
-        this.name = modelStudent.name;
-        this.surname = modelStudent.surname;
-        this.patronymic = modelStudent.patronymic;
-        this.group = modelStudent.group;
-    }
-
-    public Student(String name, String surname, String patronymic, Group group) {
-        this.name = name;
-        this.surname = surname;
-        this.patronymic = patronymic;
-        this.group = group;
-    }
-
-    public Student(String username, String password, Set<Role> roles) {
-        super(username, password, roles);
+    public Student(StudentInfo studentInfo) {
+        this.email = studentInfo.getEmail();
+        this.password = studentInfo.getPassword();
+        this.name = studentInfo.getName();
+        this.surname = studentInfo.getSurname();
+        this.patronymic = studentInfo.getPatronymic();
+        this.group = studentInfo.getGroup();
     }
 
     public Student(String email, String password, boolean enabled,

@@ -30,7 +30,6 @@ public class GroupManageController {
 
     @PostMapping("/admin/groups-manage/add-group")
     public String addGroup(@ModelAttribute("newGroup") GroupInfo modelGroup) {
-        System.out.println(modelGroup);
         groupService.save(new Group(modelGroup));
         return "redirect:/admin/groups-manage";
     }

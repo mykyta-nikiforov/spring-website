@@ -1,19 +1,15 @@
 package io.nikiforov.edu.entity;
 
-import org.hibernate.annotations.Proxy;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-//@DiscriminatorColumn(name = "userType")
 public class User implements UserDetails{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,9 +17,13 @@ public class User implements UserDetails{
     @Column(unique = true)
     protected String email;
     protected String password;
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.DETACH,
+            CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST })
+    @JoinTable(name = "user_role",
+            joinColumns = @JoinColumn(name = "user_id",
+                    referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id",
+                    referencedColumnName = "id"))
     protected Set<Role> roles;
 
     private boolean accountNonExpired;
@@ -32,6 +32,10 @@ public class User implements UserDetails{
     private boolean enabled;
 
     public User() {
+        this.enabled = true;
+        this.accountNonExpired = true;
+        this.credentialsNonExpired = true;
+        this.accountNonLocked = true;
     }
 
     public User(String email, String password,
@@ -117,7 +121,6 @@ public class User implements UserDetails{
                 .stream()
                 .map(role -> new SimpleGrantedAuthority("ROLE_" + role.getRole()))
                 .collect(Collectors.toList());
-        System.out.println("Return authorities\n" + result);
         return result;
     }
 
