@@ -29,7 +29,7 @@
             </sec:authorize>
             <sec:authorize  access="hasRole('ROLE_ADMIN')">
                 <li class="nav-item">
-                    <a class="nav-link text-light" href="/admin">Адмін</a>
+                    <a class="nav-link text-light" href="/admin">Admin</a>
                 </li>
             </sec:authorize>
             <li class="nav-item">

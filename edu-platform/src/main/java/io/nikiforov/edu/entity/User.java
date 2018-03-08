@@ -18,12 +18,13 @@ public class User implements UserDetails{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String email;
-    private String password;
+    @Column(unique = true)
+    protected String email;
+    protected String password;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles;
+    protected Set<Role> roles;
 
     private boolean accountNonExpired;
     private boolean accountNonLocked;

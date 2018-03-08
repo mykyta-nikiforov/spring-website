@@ -1,17 +1,23 @@
 package io.nikiforov.edu.entity;
 
+import io.nikiforov.edu.model.TeacherInfo;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Entity
 @Proxy(lazy = false)
-//@PrimaryKeyJoinColumn(name="id")
 public class Teacher extends User{
+    @NotNull
     private String name;
+    @NotNull
     private String surname;
+    @NotNull
+    private String patronymic;
     // e.g. "Professor", "PhD", "Docent"
+    @NotNull
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "degree_id")
     private Degree degree;
@@ -21,9 +27,19 @@ public class Teacher extends User{
     public Teacher() {
     }
 
-    public Teacher(String name, String surname, Degree degree) {
+    public Teacher(TeacherInfo teacherInfo) {
+        this.email = teacherInfo.getEmail();
+        this.password = teacherInfo.getPassword();
+        this.name = teacherInfo.getName();
+        this.surname = teacherInfo.getSurname();
+        this.patronymic = teacherInfo.getPatronymic();
+        this.degree = teacherInfo.getDegree();
+    }
+
+    public Teacher(String name, String surname, String patronymic, Degree degree) {
         this.name = name;
         this.surname = surname;
+        this.patronymic = patronymic;
         this.degree = degree;
     }
 
@@ -52,6 +68,14 @@ public class Teacher extends User{
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    public String getPatronymic() {
+        return patronymic;
+    }
+
+    public void setPatronymic(String patronymic) {
+        this.patronymic = patronymic;
     }
 
     public Degree getDegree() {

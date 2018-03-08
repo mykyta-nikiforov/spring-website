@@ -1,6 +1,7 @@
 package io.nikiforov.edu.controller.admin;
 
 import io.nikiforov.edu.entity.*;
+import io.nikiforov.edu.model.TeacherInfo;
 import io.nikiforov.edu.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -51,7 +52,7 @@ public class AdminController {
 
     @GetMapping("/admin/users-manage/teachers")
     public String teachersManagePage(Model model) {
-        model.addAttribute("newTeacher", new Teacher());
+        model.addAttribute("newTeacher", new TeacherInfo());
         model.addAttribute("degrees", degreeService.findAll());
         System.out.println(teacherService.findAll());
         model.addAttribute("teachers", teacherService.findAll());
@@ -60,14 +61,15 @@ public class AdminController {
     }
 
     @PostMapping("/admin/add-teacher")
-    public String addTeacher(@ModelAttribute("newTeacher") Teacher modelTeacher) {
+    public String addTeacher(@ModelAttribute("newTeacher") TeacherInfo teacherInfo) {
+        // Create Teacher from TeacherInfo
+        Teacher result = new Teacher(teacherInfo);
+        // Create roleSet and set it
         Set<Role> rolesSet = new HashSet<>();
         rolesSet.add(roleService.getRole("TEACHER"));
-        Teacher result = new Teacher(modelTeacher.getEmail(),
-                passwordEncoder.encode(modelTeacher.getPassword()), rolesSet);
-        result.setName(modelTeacher.getName());
-        result.setDegree(modelTeacher.getDegree());
-        result.setSurname(modelTeacher.getSurname());
+        result.setRoles(rolesSet);
+        // Encode password
+        result.setPassword(passwordEncoder.encode(result.getPassword()));
         teacherService.save(result);
         return "redirect:/admin/users-manage/teachers";
     }

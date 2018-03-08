@@ -19,6 +19,13 @@
             </div>
         </div>
         <div class="form-group row">
+            <label class="col-form-label col-md-3">Surname</label>
+            <div class="col-md-5">
+                <sf:input type="text" class="form-control" path="surname"
+                          value="${newTeacher.surname}"/>
+            </div>
+        </div>
+        <div class="form-group row">
             <label class="col-form-label col-md-3">Name</label>
             <div class="col-md-5">
                 <sf:input type="text" class="form-control" path="name"
@@ -26,10 +33,10 @@
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-form-label col-md-3">Surname</label>
+            <label class="col-form-label col-md-3">Patronymic</label>
             <div class="col-md-5">
-                <sf:input type="text" class="form-control" path="surname"
-                          value="${newTeacher.surname}"/>
+                <sf:input type="text" class="form-control" path="patronymic"
+                          value="${newTeacher.patronymic}"/>
             </div>
         </div>
         <div class="form-group row">
