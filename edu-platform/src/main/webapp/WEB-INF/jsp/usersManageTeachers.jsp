@@ -1,6 +1,5 @@
-<%@include file="templates/header.jsp" %>
 <%@page pageEncoding="UTF-8" %>
-
+<%@include file="templates/header.jsp" %>
 <div class="container ">
     <h3>Manage Teachers</h3>
     <hr>

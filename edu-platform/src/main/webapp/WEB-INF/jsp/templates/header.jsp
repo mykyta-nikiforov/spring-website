@@ -1,3 +1,4 @@
+<%@page pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
@@ -28,7 +29,7 @@
             </sec:authorize>
             <sec:authorize  access="hasRole('ROLE_ADMIN')">
                 <li class="nav-item">
-                    <a class="nav-link text-light" href="/admin">Admin</a>
+                    <a class="nav-link text-light" href="/admin">Адмін</a>
                 </li>
             </sec:authorize>
             <li class="nav-item">
