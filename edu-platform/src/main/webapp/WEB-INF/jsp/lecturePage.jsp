@@ -4,7 +4,6 @@
 <div class="container">
     <div class="jumbotron">
         <h1 class="display-4">${lecture.name}</h1>
-        <p>${lecture.description}</p>
     </div>
 </div>
 

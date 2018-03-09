@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.WebApplicationInitializer;
 
 @SpringBootApplication
@@ -20,5 +21,4 @@ public class CourseApiApp extends SpringBootServletInitializer
 		SpringApplication.run(CourseApiApp.class, args);
         System.out.println("Hello!");
     }
-
 }

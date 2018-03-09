@@ -46,7 +46,6 @@ public class LectureServiceImpl implements LectureService {
     public void saveLectureFromModel(LectureInfo lectureInfo){
         Lecture lecture = new Lecture();
         lecture.setName(lectureInfo.getName());
-        lecture.setDescription(lectureInfo.getDescription());
         lecture.setCourse(courseService.getCourse(lectureInfo.getCourseId()));
         lectureRepository.save(lecture);
     }

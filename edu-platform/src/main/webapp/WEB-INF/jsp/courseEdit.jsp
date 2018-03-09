@@ -18,7 +18,7 @@
         <div class="form-group row">
             <label class="col-form-label col-md-3">Description</label>
             <div class="col-md-5">
-                <sf:input type="text" class="form-control" path="description"
+                <sf:textarea type="text" class="form-control" rows="5" path="description"
                           value="${course.description}"/>
             </div>
         </div>
@@ -39,7 +39,6 @@
             <tr>
                 <th>Id</th>
                 <th>Name</th>
-                <th>Description</th>
                 <th>Delete</th>
             </tr>
             </thead>
@@ -48,7 +47,6 @@
                 <tr>
                     <td>${lecture.id}</td>
                     <td><a href="/edit-lecture/${lecture.id}">${lecture.name}</a></td>
-                    <td>${lecture.description}</td>
                     <td><a href="/delete-lecture?id=${lecture.id}"><span class="oi oi-trash"></span></a></td>
                 </tr>
             </c:forEach>
@@ -68,13 +66,13 @@
                     <sf:input type="text" class="form-control" path="name" value="${newLecture.name}"/>
                 </div>
             </div>
-            <div class="form-group row">
-                <label class="col-form-label col-md-3">Description</label>
-                <div class="col-md-5">
-                    <sf:input type="text" class="form-control" path="description"
-                              value="${newLecture.description}"/>
-                </div>
-            </div>
+            <%--<div class="form-group row">--%>
+                <%--<label class="col-form-label col-md-3">Description</label>--%>
+                <%--<div class="col-md-5">--%>
+                    <%--<sf:input type="text" class="form-control" path="description"--%>
+                              <%--value="${newLecture.description}"/>--%>
+                <%--</div>--%>
+            <%--</div>--%>
             <div class="form-group row">
                 <input type="submit" class="btn btn-dark" value="Add"/>
             </div>

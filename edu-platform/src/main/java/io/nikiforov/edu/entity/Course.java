@@ -9,6 +9,7 @@ public class Course {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String name;
+	@Column(length = 1000)
 	private String description;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "course")

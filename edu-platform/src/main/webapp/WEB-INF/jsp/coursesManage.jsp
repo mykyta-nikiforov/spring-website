@@ -18,7 +18,7 @@
         <div class="form-group row">
             <label class="col-form-label col-md-3">Description</label>
             <div class="col-md-5">
-                <sf:input type="text" class="form-control" path="description"
+                <sf:textarea type="text" class="form-control" rows="5" path="description"
                        value="${course.description}"/>
             </div>
         </div>
