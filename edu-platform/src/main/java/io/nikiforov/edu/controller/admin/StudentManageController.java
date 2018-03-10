@@ -43,15 +43,7 @@ public class StudentManageController {
 
     @PostMapping("/admin/users-manage/students/add-student")
     public String addUser(@ModelAttribute("newStudent") StudentInfo studentInfo) {
-        // Create Student from StudentInfo
-        Student result = new Student(studentInfo);
-        // Create roleSet and set it
-        Set<Role> roleSet = new HashSet<>();
-        roleSet.add(roleService.getRole("STUDENT"));
-        result.setRoles(roleSet);
-        // Encode password
-        result.setPassword(passwordEncoder.encode(result.getPassword()));
-        studentService.save(result);
+        studentService.save(studentInfo);
         return "redirect:/admin/users-manage/students";
     }
 

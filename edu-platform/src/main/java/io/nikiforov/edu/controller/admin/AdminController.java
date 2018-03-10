@@ -49,26 +49,4 @@ public class AdminController {
     public String usersManage() {
         return "usersManage";
     }
-
-    @GetMapping("/admin/users-manage/teachers")
-    public String teachersManagePage(Model model) {
-        model.addAttribute("newTeacher", new TeacherInfo());
-        model.addAttribute("degrees", degreeService.findAll());
-        model.addAttribute("teachers", teacherService.findAll());
-        return "usersManageTeachers";
-    }
-
-    @PostMapping("/admin/add-teacher")
-    public String addTeacher(@ModelAttribute("newTeacher") TeacherInfo teacherInfo) {
-        // Create Teacher from TeacherInfo
-        Teacher result = new Teacher(teacherInfo);
-        // Create roleSet and set it
-        Set<Role> rolesSet = new HashSet<>();
-        rolesSet.add(roleService.getRole("TEACHER"));
-        result.setRoles(rolesSet);
-        // Encode password
-        result.setPassword(passwordEncoder.encode(result.getPassword()));
-        teacherService.save(result);
-        return "redirect:/admin/users-manage/teachers";
-    }
 }
