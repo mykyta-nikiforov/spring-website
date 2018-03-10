@@ -1,6 +1,5 @@
 package io.nikiforov.edu.controller.admin;
 
-import io.nikiforov.edu.entity.Role;
 import io.nikiforov.edu.entity.Student;
 import io.nikiforov.edu.model.StudentInfo;
 import io.nikiforov.edu.service.GroupService;
@@ -10,13 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.HashSet;
-import java.util.Set;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class StudentManageController {
@@ -51,5 +44,19 @@ public class StudentManageController {
     public String deleteStudent(@RequestParam("id") int id) {
         studentService.delete(id);
         return "redirect:/admin/users-manage/students";
+    }
+
+    @GetMapping("/admin/users-manage/students/{id}")
+    public String studentPage(@PathVariable("id") int id, Model model) {
+        model.addAttribute("student", studentService.getById(id));
+        model.addAttribute("groups", groupService.findAll());
+        System.out.println(groupService.findAll());
+        return "admin/users/studentProfile";
+    }
+
+    @PostMapping("/admin/users-manage/students/update")
+    public String updateStudent(@ModelAttribute("student") Student student) {
+        studentService.save(student);
+        return "redirect:/admin/users-manage/students/" + student.getId();
     }
 }

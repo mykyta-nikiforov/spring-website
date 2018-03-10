@@ -6,8 +6,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
-import org.springframework.context.annotation.ImportResource;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.WebApplicationInitializer;
 
 @SpringBootApplication
@@ -22,10 +20,5 @@ public class CourseApiApp extends SpringBootServletInitializer
 	public static void main(String[] args) {
 		SpringApplication.run(CourseApiApp.class, args);
         System.out.println("Hello!");
-        logger.debug("Debugging log");
-        logger.info("Info log");
-        logger.warn("Warning!");
-        logger.error("Error log");
-        logger.fatal("Fatall error");
     }
 }

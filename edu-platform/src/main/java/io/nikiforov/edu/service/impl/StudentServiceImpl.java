@@ -36,6 +36,11 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    public Student getById(int id) {
+        return studentRepository.findOne(id);
+    }
+
+    @Override
     public List<Student> getByGroupId(int id) {
         return studentRepository.findByGroupId(id);
     }
