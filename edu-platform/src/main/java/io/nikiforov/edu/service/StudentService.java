@@ -8,6 +8,8 @@ import java.util.List;
 public interface StudentService {
     List<Student> findAll();
 
+    List<Student> getByGroupId(int id);
+
     void save(Student student);
 
     void save(StudentInfo studentInfo);

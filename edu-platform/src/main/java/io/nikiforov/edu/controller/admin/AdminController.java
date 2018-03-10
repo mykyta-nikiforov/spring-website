@@ -42,11 +42,11 @@ public class AdminController {
 
     @GetMapping("/admin")
     public String adminPage() {
-        return "adminPage";
+        return "admin/adminPage";
     }
 
     @GetMapping("/admin/users-manage")
     public String usersManage() {
-        return "usersManage";
+        return "admin/users/usersManage";
     }
 }

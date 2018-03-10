@@ -36,7 +36,7 @@ public class TeacherManageController {
         model.addAttribute("newTeacher", new TeacherInfo());
         model.addAttribute("degrees", degreeService.findAll());
         model.addAttribute("teachers", teacherService.findAll());
-        return "usersManageTeachers";
+        return "admin/users/usersManageTeachers";
     }
 
     @PostMapping("/admin/add-teacher")

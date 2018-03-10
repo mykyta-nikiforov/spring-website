@@ -1,11 +1,12 @@
 <%@page pageEncoding="UTF-8" %>
-<%@include file="templates/header.jsp"%>
+<%@include file="../../templates/header.jsp"%>
 
 <div class="container">
     <h3>Manage Groups</h3>
     <hr>
     <h4>Add new group</h4>
     <sf:form method="post" action="/admin/groups-manage/add-group" modelAttribute="newGroup">
+        <input type="hidden" name="yearOfStudy" value="1">
         <div class="form-group row">
             <label class="col-form-label col-md-3">Number</label>
             <div class="col-md-5">
@@ -44,7 +45,11 @@
             <tbody>
             <c:forEach var="group" items="${groups}">
                 <tr>
-                    <td>${group.number}</td>
+                    <td>
+                        <a href="/admin/groups-manage/group-${group.id}">
+                            ${group.number}
+                        </a>
+                    </td>
                     <td>${group.curator.name} ${group.curator.surname}</td>
                 </tr>
             </c:forEach>
@@ -53,4 +58,4 @@
     </div>
 </div>
 
-<%@include file="templates/footer.jsp"%>
+<%@include file="../../templates/footer.jsp"%>

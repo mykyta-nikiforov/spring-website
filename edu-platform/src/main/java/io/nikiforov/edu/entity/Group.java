@@ -37,7 +37,7 @@ public class Group {
 
     public Group(GroupInfo groupInfo) {
         this.number = groupInfo.getNumber();
-        this.yearOfStudy = 1;
+        this.yearOfStudy = groupInfo.getYearOfStudy();
         this.curator = groupInfo.getCurator();
 
     }
@@ -85,7 +85,8 @@ public class Group {
     @Override
     public String toString() {
         return "Group{" +
-                "number='" + number + '\'' +
+                "id=" + id +
+                ", number='" + number + '\'' +
                 ", yearOfStudy=" + yearOfStudy +
                 ", curator=" + curator +
                 ", students=" + students +

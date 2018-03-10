@@ -38,7 +38,7 @@ public class StudentManageController {
         model.addAttribute("students", studentService.findAll());
         model.addAttribute("groups", groupService.findAll());
         model.addAttribute("newStudent", new Student());
-        return "usersManageStudents";
+        return "admin/users/usersManageStudents";
     }
 
     @PostMapping("/admin/users-manage/students/add-student")

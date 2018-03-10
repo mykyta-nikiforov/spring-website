@@ -1,5 +1,5 @@
 <%@page pageEncoding="UTF-8" %>
-<%@include file="templates/header.jsp" %>
+<%@include file="../../templates/header.jsp" %>
 <div class="container ">
     <h3>Manage Teachers</h3>
     <hr>
@@ -88,4 +88,4 @@
 </div>
 
 
-<%@include file="templates/footer.jsp" %>
+<%@include file="../../templates/footer.jsp" %>
