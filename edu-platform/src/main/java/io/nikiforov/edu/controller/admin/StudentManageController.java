@@ -51,11 +51,21 @@ public class StudentManageController {
         model.addAttribute("student", studentService.getById(id));
         model.addAttribute("groups", groupService.findAll());
         System.out.println(groupService.findAll());
+
         return "admin/users/studentProfile";
     }
 
     @PostMapping("/admin/users-manage/students/update")
     public String updateStudent(@ModelAttribute("student") Student student) {
+        studentService.save(student);
+        return "redirect:/admin/users-manage/students/" + student.getId();
+    }
+
+    @PostMapping("/admin/users-manage/students/update-password")
+    public String updateStudentPassword(@ModelAttribute("student") Student student) {
+        String password = student.getPassword();
+        student = studentService.getById(student.getId());
+        student.setPassword(passwordEncoder.encode(password));
         studentService.save(student);
         return "redirect:/admin/users-manage/students/" + student.getId();
     }

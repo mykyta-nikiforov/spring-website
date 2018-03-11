@@ -89,7 +89,6 @@ public class Group {
                 ", number='" + number + '\'' +
                 ", yearOfStudy=" + yearOfStudy +
                 ", curator=" + curator +
-                ", students=" + students +
                 '}';
     }
 }

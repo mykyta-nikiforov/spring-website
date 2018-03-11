@@ -14,10 +14,9 @@
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-form-label col-md-3">Password</label>
+            <label class="col-form-label col-md-3">Surname</label>
             <div class="col-md-5">
-                <sf:input type="text" class="form-control" path="password"
-                          value="${student.password}"/>
+                <sf:input type="text" class="form-control" path="surname" value="${student.surname}"/>
             </div>
         </div>
         <div class="form-group row">
@@ -27,30 +26,44 @@
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-form-label col-md-3">Surname</label>
-            <div class="col-md-5">
-                <sf:input type="text" class="form-control" path="surname" value="${student.surname}"/>
-            </div>
-        </div>
-        <div class="form-group row">
             <label class="col-form-label col-md-3">Patronymic</label>
             <div class="col-md-5">
                 <sf:input type="text" class="form-control" path="patronymic" value="${student.patronymic}"/>
             </div>
         </div>
-        <%--<div class="form-group row">--%>
-            <%--<label class="col-form-label col-md-3">Group</label>--%>
-            <%--<sf:select path="group">--%>
-                <%--<option value="${student.group.id}">${student.group.number}</option>--%>
-                <%--<c:forEach var="group" items="${groups}">--%>
-                    <%--<sf:option value="${group.id}">--%>
-                        <%--<c:out value="${group.number}"></c:out>--%>
-                    <%--</sf:option>--%>
-                <%--</c:forEach>--%>
-            <%--</sf:select>--%>
-        <%--</div>--%>
         <div class="form-group row">
-            <input type="submit" class="btn btn-dark" value="Add"/>
+            <label class="col-form-label col-md-3">Group</label>
+            <sf:select path="group">
+                <option value="${student.group.id}">${student.group.number}</option>
+                <c:forEach var="group" items="${groups}">
+                    <%--Check in order to get rid of double showing the current group of student--%>
+                    <c:if test="${student.group.id != group.id}">
+                        <sf:option value="${group.id}">
+                            <c:out value="${group.number}"></c:out>
+                        </sf:option>
+                    </c:if>
+                </c:forEach>
+            </sf:select>
+        </div>
+        <div class="form-group row">
+            <input type="submit" class="btn btn-dark" value="Update"/>
+        </div>
+    </sf:form>
+</div>
+
+<div class="container">
+    <h3>Set new password:</h3>
+    <sf:form method="post" action="/admin/users-manage/students/update-password" modelAttribute="student">
+        <input type="hidden" name="id" value="${student.id}"/>
+        <div class="form-group row">
+            <label class="col-form-label col-md-3">Password</label>
+            <div class="col-md-5">
+                <sf:input type="password" class="form-control" path="password"
+                          value="${student.password}"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <input type="submit" class="btn btn-dark" value="Update password"/>
         </div>
     </sf:form>
 </div>
