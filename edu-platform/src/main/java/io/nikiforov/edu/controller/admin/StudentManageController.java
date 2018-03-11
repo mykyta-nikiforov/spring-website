@@ -57,6 +57,8 @@ public class StudentManageController {
 
     @PostMapping("/admin/users-manage/students/update")
     public String updateStudent(@ModelAttribute("student") Student student) {
+        // Set password from DB, because the parameter is absent on JSP
+        student.setPassword(studentService.getById(student.getId()).getPassword());
         studentService.save(student);
         return "redirect:/admin/users-manage/students/" + student.getId();
     }

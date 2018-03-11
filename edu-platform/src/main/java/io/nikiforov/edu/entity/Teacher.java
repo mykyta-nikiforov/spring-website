@@ -54,6 +54,13 @@ public class Teacher extends User{
         super(username, password, roles);
     }
 
+    // When delete curator, set curator_id in Group to null
+    @PreRemove
+    public void preRemove() {
+        if(curatedGroup!=null)
+            curatedGroup.setCurator(null);
+    }
+
     public String getName() {
         return name;
     }

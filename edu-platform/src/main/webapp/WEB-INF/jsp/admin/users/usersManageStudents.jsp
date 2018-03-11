@@ -72,7 +72,7 @@
             <c:forEach var="student" items="${students}">
                 <tr>
                     <td>${student.email}</td>
-                    <td>${student.surname} ${student.name} ${student.patronymic}</td>
+                    <td><a href="/admin/users-manage/students/${student.id}">${student.surname} ${student.name} ${student.patronymic}</a></td>
                     <td>${student.group.number}</td>
                     <td><a href="/admin/users-manage/students/delete-student?id=${student.id}"><span class="oi oi-trash"></span></a></td>
                 </tr>

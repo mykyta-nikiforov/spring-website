@@ -1,5 +1,7 @@
 <%@page pageEncoding="UTF-8" %>
 <%@include file="../../templates/header.jsp" %>
+<link href="/static/css/open-iconic-bootstrap.css" rel="stylesheet">
+
 <div class="container ">
     <h3>Manage Teachers</h3>
     <hr>
@@ -65,21 +67,21 @@
         <table class="table table-bordered table-striped text-left">
             <thead>
             <tr>
-                <th>Id</th>
                 <th>Name</th>
-                <th>Surname</th>
                 <th>Email</th>
                 <th>Degree</th>
+                <th>Delete</th>
+
             </tr>
             </thead>
             <tbody>
             <c:forEach var="teacher" items="${teachers}">
                 <tr>
-                    <td>${teacher.id}</td>
-                    <td>${teacher.name}</td>
-                    <td>${teacher.surname}</td>
+                    <td><a href="/admin/users-manage/teachers/${teacher.id}">${teacher.surname} ${teacher.name} ${teacher.patronymic}</a></td>
                     <td>${teacher.email}</td>
                     <td>${teacher.degree.name}</td>
+                    <td><a href="/admin/users-manage/teachers/delete-teacher?id=${teacher.id}"><span class="oi oi-trash"></span></a></td>
+
                 </tr>
             </c:forEach>
             </tbody>

@@ -32,6 +32,11 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
+    public Teacher getById(int id) {
+        return teacherRepository.getOne(id);
+    }
+
+    @Override
     public void save(Teacher teacher) {
         teacherRepository.save(teacher);
     }
@@ -48,5 +53,10 @@ public class TeacherServiceImpl implements TeacherService {
         result.setPassword(passwordEncoder.encode(result.getPassword()));
         // Save the teacher
         save(result);
+    }
+
+    @Override
+    public void delete(int id) {
+        teacherRepository.delete(id);
     }
 }

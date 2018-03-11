@@ -17,7 +17,6 @@ public class Group {
     private String number;
     @NotNull
     private int yearOfStudy;
-    @NotNull
     @OneToOne
     @JoinColumn(name = "curator_id", unique = true)
     private Teacher curator;
