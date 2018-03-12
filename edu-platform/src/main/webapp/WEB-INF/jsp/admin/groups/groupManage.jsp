@@ -1,5 +1,5 @@
 <%@page pageEncoding="UTF-8" %>
-<%@include file="../../templates/header.jsp"%>
+<%@include file="../../templates/header.jsp" %>
 <link href="/static/css/open-iconic-bootstrap.css" rel="stylesheet">
 
 <div class="container">
@@ -17,11 +17,14 @@
         <div class="form-group row">
             <label class="col-form-label col-md-3">Curator</label>
             <sf:select path="curator">
-                <option value="${group.curator.id}">${group.curator.name}</option>
+                <option value="${group.curator.id}">${group.curator.surname} ${group.curator.name} ${group.curator.patronymic}</option>
                 <c:forEach var="teacher" items="${teachers}">
-                    <sf:option value="${teacher.id}">
-                        <c:out value="${teacher.name} ${teacher.surname}"></c:out>
-                    </sf:option>
+                    <%--Check in order to get rid of double showing the current curator of group--%>
+                    <c:if test="${group.curator.id != teacher.id}">
+                        <sf:option value="${teacher.id}">
+                            <c:out value="${teacher.surname} ${teacher.name} ${teacher.patronymic}"></c:out>
+                        </sf:option>
+                    </c:if>
                 </c:forEach>
             </sf:select>
         </div>
@@ -29,6 +32,7 @@
             <input type="submit" class="btn btn-dark" value="Update"/>
         </div>
     </sf:form>
+    <a href="/admin/groups-manage/delete-group?id=${group.id}" class="btn btn-danger">Delete group</a>
 </div>
 
 <div class="container text-center">
@@ -47,8 +51,11 @@
             <c:forEach var="student" items="${students}">
                 <tr>
                     <td>${student.email}</td>
-                    <td><a href="/admin/users-manage/students/${student.id}">${student.surname} ${student.name} ${student.patronymic}</a></td>
-                    <td><a href="/admin/users-manage/students/delete-student?id=${student.id}"><span class="oi oi-trash"></span></a></td>
+                    <td>
+                        <a href="/admin/users-manage/students/${student.id}">${student.surname} ${student.name} ${student.patronymic}</a>
+                    </td>
+                    <td><a href="/admin/users-manage/students/delete-student?id=${student.id}"><span
+                            class="oi oi-trash"></span></a></td>
                 </tr>
             </c:forEach>
             </tbody>
@@ -56,4 +63,5 @@
     </div>
 </div>
 
-<%@include file="../../templates/footer.jsp"%>
+
+<%@include file="../../templates/footer.jsp" %>

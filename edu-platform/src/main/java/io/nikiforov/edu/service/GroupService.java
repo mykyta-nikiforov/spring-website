@@ -15,4 +15,6 @@ public interface GroupService {
     void save(GroupInfo groupInfo);
 
     void update(Group group);
+
+    void delete(int id);
 }

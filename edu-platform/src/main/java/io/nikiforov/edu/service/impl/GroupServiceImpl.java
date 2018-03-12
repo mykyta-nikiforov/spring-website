@@ -1,6 +1,7 @@
 package io.nikiforov.edu.service.impl;
 
 import io.nikiforov.edu.dao.GroupRepository;
+import io.nikiforov.edu.dao.TeacherRepository;
 import io.nikiforov.edu.entity.Group;
 import io.nikiforov.edu.model.GroupInfo;
 import io.nikiforov.edu.service.GroupService;
@@ -14,6 +15,9 @@ public class GroupServiceImpl implements GroupService{
 
     @Autowired
     private GroupRepository groupRepository;
+
+    @Autowired
+    private TeacherRepository teacherRepository;
 
     @Override
     public List<Group> findAll() {
@@ -39,7 +43,20 @@ public class GroupServiceImpl implements GroupService{
 
     @Override
     public void update(Group group) {
-        System.out.println("From GroupService: " + group.toString());
+        Group previousGroupOfTeacher = teacherRepository
+                .findOne(group.getCurator().getId())
+                .getCuratedGroup();
+        if (previousGroupOfTeacher != null) {
+            previousGroupOfTeacher.toString();
+            previousGroupOfTeacher.setCurator(null);
+            groupRepository.save(previousGroupOfTeacher);
+        }
+
         groupRepository.save(group);
+    }
+
+    @Override
+    public void delete(int id) {
+        groupRepository.delete(id);
     }
 }

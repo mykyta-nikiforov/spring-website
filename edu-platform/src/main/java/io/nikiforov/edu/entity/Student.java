@@ -20,7 +20,6 @@ public class Student extends User{
     private String surname;
     @NotNull
     private String patronymic;
-    @NotNull
     @ManyToOne
     @JoinColumn(name = "group_id")
     private Group group;

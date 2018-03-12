@@ -1,5 +1,7 @@
 <%@page pageEncoding="UTF-8" %>
 <%@include file="../../templates/header.jsp"%>
+<link href="/static/css/open-iconic-bootstrap.css" rel="stylesheet">
+
 
 <div class="container">
     <h3>Manage Groups</h3>
@@ -40,6 +42,7 @@
             <tr>
                 <th>Number</th>
                 <th>Curator</th>
+                <th>Delete</th>
             </tr>
             </thead>
             <tbody>
@@ -50,7 +53,8 @@
                             ${group.number}
                         </a>
                     </td>
-                    <td>${group.curator.name} ${group.curator.surname}</td>
+                    <td><a href="/admin/users-manage/teachers/${group.curator.id}">${group.curator.surname} ${group.curator.name} ${group.curator.patronymic}</a></td>
+                    <td><a href="/admin/groups-manage/delete-group?id=${group.id}"><span class="oi oi-trash"></span></a></td>
                 </tr>
             </c:forEach>
             </tbody>

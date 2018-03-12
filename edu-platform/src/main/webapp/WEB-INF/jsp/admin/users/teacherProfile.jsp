@@ -66,6 +66,8 @@
             <input type="submit" class="btn btn-dark" value="Update password"/>
         </div>
     </sf:form>
+
+    <a href="/admin/users-manage/teachers/delete-teacher?id=${teacher.id}" class="btn btn-danger">Delete teacher</a>
 </div>
 
 <%@include file="../../templates/footer.jsp"%>

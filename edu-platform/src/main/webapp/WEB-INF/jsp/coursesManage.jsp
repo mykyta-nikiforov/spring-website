@@ -1,5 +1,4 @@
 <%@page pageEncoding="UTF-8" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@include file="templates/header.jsp"%>
 <link href="/static/css/open-iconic-bootstrap.css" rel="stylesheet">
 

@@ -8,10 +8,7 @@ import io.nikiforov.edu.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class GroupManageController {
@@ -49,8 +46,13 @@ public class GroupManageController {
 
     @PostMapping("/admin/groups-manage/update")
     public String updateGroup(@ModelAttribute("group") Group group) {
-        System.out.println("From GroupController: " + group.toString());
         groupService.update(group);
         return "redirect:/admin/groups-manage/group-" + group.getId();
+    }
+
+    @GetMapping("/admin/groups-manage/delete-group")
+    public String deleteGroup(@RequestParam("id") int id) {
+        groupService.delete(id);
+        return "redirect:/admin/groups-manage";
     }
 }

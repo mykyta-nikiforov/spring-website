@@ -41,6 +41,14 @@ public class Group {
 
     }
 
+    // When delete Group, set null for group field of every student
+    @PreRemove
+    public void preRemove() {
+        for (Student student : students) {
+            student.setGroup(null);
+        }
+    }
+
     public int getId() {
         return id;
     }
