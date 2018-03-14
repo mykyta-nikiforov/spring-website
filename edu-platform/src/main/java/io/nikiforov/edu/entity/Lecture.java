@@ -10,10 +10,10 @@ public class Lecture {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String name;
-	
-	@ManyToOne
-    @JoinColumn(name="course_id")
-	private Course course;
+
+    @ManyToOne
+    @JoinColumn(name = "course_id")
+    private Course course;
 
 	public Lecture() {
 	}
