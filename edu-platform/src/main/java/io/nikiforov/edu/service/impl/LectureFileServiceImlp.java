@@ -16,4 +16,11 @@ public class LectureFileServiceImlp implements LectureFileService {
     public void save(LectureFile lectureFile) {
         lectureFileRepository.save(lectureFile);
     }
+
+    @Override
+    public LectureFile getById(int id) {
+        return lectureFileRepository.getOne(id);
+    }
+
+
 }

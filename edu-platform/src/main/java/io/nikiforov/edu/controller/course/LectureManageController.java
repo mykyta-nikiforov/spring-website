@@ -14,6 +14,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Controller
@@ -42,7 +45,7 @@ public class LectureManageController {
     }
 
     @PostMapping("/update-lecture")
-    public String updateLecture(@ModelAttribute("lecture") Lecture lecture){
+    public String updateLecture(@ModelAttribute("lecture") Lecture lecture) {
         /* Lecture from model doesn't have course. Firstly, we find course,
          * set it to lecture, and only then update the lecture. */
         Course course = courseService.getCourseByLectureId(lecture.getId());
@@ -74,4 +77,23 @@ public class LectureManageController {
         lectureFileService.save(lectureFile);
         return "redirect:/edit-lecture/" + id;
     }
+
+    @GetMapping("/displayLecture")
+    public void showImage(@RequestParam("id") int lectureId, HttpServletResponse response)
+            throws IOException {
+        LectureFile lectureFile = lectureFileService.getById(lectureId);
+        byte[] lectureFileData = lectureFile.getData();
+        response.setContentType("application/pdf");
+        response.getOutputStream().write(lectureFileData);
+        response.setContentLength(lectureFileData.length);
+        response.getOutputStream().close();
+    }
+
+//    @GetMapping(value = "/displayLecture", produces="application/pdf")
+//    @ResponseBody
+//    public byte[] showImage(@RequestParam("id") int lectureId)
+//            throws IOException {
+//        LectureFile lectureFile = lectureFileService.getById(lectureId);
+//        return lectureFile.getData();
+//    }
 }

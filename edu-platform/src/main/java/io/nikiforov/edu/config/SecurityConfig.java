@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                     .loginPage("/login")
                     .defaultSuccessUrl("/")
-                    .failureUrl("/")
+//                    .failureUrl("/")
                     .usernameParameter("email")
                     .passwordParameter("password")
                     .permitAll()
@@ -50,7 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-                .withUser("admin").password("admin").roles("ADMIN");
+                .withUser("admin@edu-platform.ua").password("admin@edu-platform.ua").roles("ADMIN");
         auth.userDetailsService(userDetailsService)
                 .passwordEncoder(passwordEncoder());
     }
