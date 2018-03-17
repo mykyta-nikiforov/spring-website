@@ -1,10 +1,12 @@
 package io.nikiforov.edu.model;
 
 import io.nikiforov.edu.entity.Group;
+import io.nikiforov.edu.entity.Specialty;
 import io.nikiforov.edu.entity.Teacher;
 
 public class GroupInfo {
     private String number;
+    private Specialty specialty;
     private int yearOfStudy;
     private Teacher curator;
 
@@ -16,8 +18,9 @@ public class GroupInfo {
         this.curator = curator;
     }
 
-    public GroupInfo(String number, int yearOfStudy, Teacher curator) {
+    public GroupInfo(String number, Specialty specialty, int yearOfStudy, Teacher curator) {
         this.number = number;
+        this.specialty = specialty;
         this.yearOfStudy = yearOfStudy;
         this.curator = curator;
     }
@@ -34,6 +37,14 @@ public class GroupInfo {
 
     public void setNumber(String number) {
         this.number = number;
+    }
+
+    public Specialty getSpecialty() {
+        return specialty;
+    }
+
+    public void setSpecialty(Specialty specialty) {
+        this.specialty = specialty;
     }
 
     public int getYearOfStudy() {

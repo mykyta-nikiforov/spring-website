@@ -29,12 +29,17 @@ INSERT INTO `user` (`email`, `password`, `account_non_expired`, `account_non_loc
 INSERT INTO `teacher` (`id`, `surname`, `name`, `patronymic`, `degree_id`) VALUES ('5', 'Шандра', 'Зеновій', 'Антонович', '1');
 INSERT INTO `user_role` (`user_id`, `role_id`) VALUES ('5', '2');
 
+#--------------Create specialties
+INSERT INTO `specialty` (`name`) VALUES ('Управління інформаційною безпекою');
+INSERT INTO `specialty` (`name`) VALUES ('Захист інформації');
+INSERT INTO `specialty` (`name`) VALUES ('Кібербезпека');
+
 #------------- Create groups
-INSERT INTO `groupp` (`number`, `year_of_study`, `curator_id`) VALUES ('УІ-41', '4', '5');
-INSERT INTO `groupp` (`number`, `year_of_study`, `curator_id`) VALUES ('КБ-11', '1', '3');
-INSERT INTO `groupp` (`number`, `year_of_study`, `curator_id`) VALUES ('ЗІ-42', '4', '2');
-INSERT INTO `groupp` (`number`, `year_of_study`, `curator_id`) VALUES ('ЗІ-31', '3', '4');
-INSERT INTO `groupp` (`number`, `year_of_study`, `curator_id`) VALUES ('КБУІ-21', '2', '1');
+INSERT INTO `groupp` (`number`, `year_of_study`, `curator_id`, `specialty_id`) VALUES ('УІ-41', '4', '5', '1');
+INSERT INTO `groupp` (`number`, `year_of_study`, `curator_id`, `specialty_id`) VALUES ('КБ-11', '1', '3', '3');
+INSERT INTO `groupp` (`number`, `year_of_study`, `curator_id`, `specialty_id`) VALUES ('ЗІ-42', '4', '2', '2');
+INSERT INTO `groupp` (`number`, `year_of_study`, `curator_id`, `specialty_id`) VALUES ('ЗІ-31', '3', '4', '2');
+INSERT INTO `groupp` (`number`, `year_of_study`, `curator_id`, `specialty_id`) VALUES ('КБ-21', '2', '1', '3');
 
 #------------- Create students
 INSERT INTO `user` (`email`, `password`, `account_non_expired`, `account_non_locked`, `credentials_non_expired`, `enabled`) VALUES ('nikiforovpizza@gmail.com', '$2a$10$47C9wWuj4WRM2ZBWo1PwceK4n8FdUSMHjiS/qfA./MXgotNy5aw/q', b'1', b'1', b'1', b'1');

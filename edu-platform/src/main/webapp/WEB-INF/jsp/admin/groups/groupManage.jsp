@@ -15,6 +15,10 @@
             </div>
         </div>
         <div class="form-group row">
+            <label class="col-form-label col-md-3">Specialty</label>
+            <div class="col-md-5">${group.specialty.name}</div>
+        </div>
+        <div class="form-group row">
             <label class="col-form-label col-md-3">Curator</label>
             <sf:select path="curator">
                 <option value="${group.curator.id}">${group.curator.surname} ${group.curator.name} ${group.curator.patronymic}</option>

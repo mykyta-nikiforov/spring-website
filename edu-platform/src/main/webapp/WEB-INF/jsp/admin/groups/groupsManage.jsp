@@ -17,6 +17,17 @@
             </div>
         </div>
         <div class="form-group row">
+            <label class="col-form-label col-md-3">Specialty</label>
+            <sf:select path="specialty">
+                <option value="">Select the specialty</option>
+                <c:forEach var="specialty" items="${specialties}">
+                    <sf:option value="${specialty.id}">
+                        <c:out value="${specialty.name}"></c:out>
+                    </sf:option>
+                </c:forEach>
+            </sf:select>
+        </div>
+        <div class="form-group row">
             <label class="col-form-label col-md-3">Curator</label>
             <sf:select path="curator">
                 <option value="">Select the curator</option>

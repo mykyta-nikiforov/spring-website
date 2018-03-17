@@ -3,6 +3,7 @@ package io.nikiforov.edu.controller.admin;
 import io.nikiforov.edu.entity.Group;
 import io.nikiforov.edu.model.GroupInfo;
 import io.nikiforov.edu.service.GroupService;
+import io.nikiforov.edu.service.SpecialtyService;
 import io.nikiforov.edu.service.StudentService;
 import io.nikiforov.edu.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +23,15 @@ public class GroupManageController {
     @Autowired
     StudentService studentService;
 
+    @Autowired
+    SpecialtyService specialtyService;
+
     @GetMapping("/admin/groups-manage")
     public String groupsManagePage(Model model) {
         model.addAttribute("newGroup", new GroupInfo());
         model.addAttribute("groups", groupService.findAll());
         model.addAttribute("teachers", teacherService.findAll());
+        model.addAttribute("specialties", specialtyService.findAll());
         return "admin/groups/groupsManage";
     }
 

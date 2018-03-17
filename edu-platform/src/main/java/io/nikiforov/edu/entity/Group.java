@@ -15,6 +15,9 @@ public class Group {
     @NotNull
     @Column(unique = true)
     private String number;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "specialty_id")
+    private Specialty specialty;
     @NotNull
     private int yearOfStudy;
     @OneToOne
@@ -36,12 +39,13 @@ public class Group {
 
     public Group(GroupInfo groupInfo) {
         this.number = groupInfo.getNumber();
+        this.specialty = groupInfo.getSpecialty();
         this.yearOfStudy = groupInfo.getYearOfStudy();
         this.curator = groupInfo.getCurator();
 
     }
 
-    // When delete Group, set null for group field of every student
+    // When delete Group, set null for "group" field of every student
     @PreRemove
     public void preRemove() {
         for (Student student : students) {
@@ -63,6 +67,14 @@ public class Group {
 
     public void setNumber(String number) {
         this.number = number;
+    }
+
+    public Specialty getSpecialty() {
+        return specialty;
+    }
+
+    public void setSpecialty(Specialty specialty) {
+        this.specialty = specialty;
     }
 
     public int getYearOfStudy() {
@@ -94,6 +106,7 @@ public class Group {
         return "Group{" +
                 "id=" + id +
                 ", number='" + number + '\'' +
+                ", specialty='" + specialty +'\'' +
                 ", yearOfStudy=" + yearOfStudy +
                 ", curator=" + curator +
                 '}';
