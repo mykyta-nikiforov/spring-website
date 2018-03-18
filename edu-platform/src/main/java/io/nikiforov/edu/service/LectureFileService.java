@@ -10,7 +10,7 @@ import java.util.List;
 public interface LectureFileService {
     List<LectureFile> findAllByLectureId(int id);
 
-    LectureFile getById(int id);
+    LectureFile findById(int id);
 
     void save(LectureFile lectureFile);
 

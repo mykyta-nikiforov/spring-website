@@ -1,5 +1,5 @@
 <%@page pageEncoding="UTF-8" %>
-<%@include file="templates/header.jsp"%>
+<%@include file="../templates/header.jsp"%>
 
     <br>
     <div class="container">
@@ -35,4 +35,4 @@
     </div>
 
 
-<%@include file="templates/footer.jsp"%>
+<%@include file="../templates/footer.jsp"%>

@@ -33,7 +33,7 @@ public class LectureFileServiceImlp implements LectureFileService {
     }
 
     @Override
-    public LectureFile getById(int id) {
+    public LectureFile findById(int id) {
         return lectureFileRepository.getOne(id);
     }
 

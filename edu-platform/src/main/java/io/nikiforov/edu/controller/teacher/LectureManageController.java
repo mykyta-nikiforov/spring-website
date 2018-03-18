@@ -1,4 +1,4 @@
-package io.nikiforov.edu.controller.course;
+package io.nikiforov.edu.controller.teacher;
 
 import io.nikiforov.edu.entity.Course;
 import io.nikiforov.edu.entity.Lecture;
@@ -40,7 +40,7 @@ public class LectureManageController {
         model.addAttribute("lecture", lectureService.getLecture(id));
         model.addAttribute("lectureFileInfo", new LectureFileInfo());
         model.addAttribute("lectureFiles", lectureFileService.findAllByLectureId(id));
-        return "lectureEdit";
+        return "teacher/lectureEdit";
     }
 
     @PostMapping("/update-lecture")
@@ -74,7 +74,7 @@ public class LectureManageController {
     @GetMapping("/displayLecture")
     public void showImage(@RequestParam("id") int lectureId, HttpServletResponse response)
             throws IOException {
-        LectureFile lectureFile = lectureFileService.getById(lectureId);
+        LectureFile lectureFile = lectureFileService.findById(lectureId);
         byte[] lectureFileData = lectureFile.getData();
         response.setContentType(lectureFile.getContentType());
         response.getOutputStream().write(lectureFileData);
@@ -87,13 +87,13 @@ public class LectureManageController {
 //    @ResponseBody
 //    public byte[] showImage(@RequestParam("id") int lectureId)
 //            throws IOException {
-//        LectureFile lectureFile = lectureFileService.getById(lectureId);
+//        LectureFile lectureFile = lectureFileService.findById(lectureId);
 //        return lectureFile.getData();
 //    }
 
     @GetMapping("/deleteLectureFile")
     public String deleteLectureFile(@RequestParam("id") int lectureFileId) {
-        int lectureId = lectureFileService.getById(lectureFileId).getLecture().getId();
+        int lectureId = lectureFileService.findById(lectureFileId).getLecture().getId();
         lectureFileService.delete(lectureFileId);
         return "redirect:/edit-lecture/" + lectureId;
     }

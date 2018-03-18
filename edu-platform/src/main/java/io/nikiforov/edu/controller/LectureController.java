@@ -22,6 +22,6 @@ public class LectureController {
                               @PathVariable("lecture-id") int lectureId,
                               Model model) {
         model.addAttribute("lecture", lectureService.getLecture(lectureId));
-        return "lecturePage";
+        return "student/lecturePage";
     }
 }

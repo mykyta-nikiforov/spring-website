@@ -1,5 +1,5 @@
 <%@page pageEncoding="UTF-8" %>
-<%@include file="templates/header.jsp"%>
+<%@include file="../templates/header.jsp"%>
 
 <div class="container">
     <div class="jumbotron">
@@ -32,4 +32,4 @@
 
 <%--<script src="/static/js/pdfobject.js"></script>--%>
 <%--<script>PDFObject.embed("/displayImage?id=3", "#example1");</script>--%>
-<%@include file="templates/footer.jsp"%>
+<%@include file="../templates/footer.jsp"%>

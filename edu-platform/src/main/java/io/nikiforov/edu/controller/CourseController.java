@@ -4,8 +4,10 @@ import java.util.List;
 
 import io.nikiforov.edu.entity.Course;
 import io.nikiforov.edu.entity.Lecture;
+import io.nikiforov.edu.model.LabWorkInfo;
 import io.nikiforov.edu.model.LectureInfo;
 import io.nikiforov.edu.service.CourseService;
+import io.nikiforov.edu.service.LabWorkService;
 import io.nikiforov.edu.service.LectureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -19,11 +21,15 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class CourseController {
-    
+
     @Autowired
     private CourseService courseService;
+
     @Autowired
     private LectureService lectureService;
+
+    @Autowired
+    private LabWorkService labWorkService;
 
 //    @GetMapping("/courses")
 //    @ResponseBody
@@ -58,14 +64,14 @@ public class CourseController {
     @RequestMapping("/all-courses")
     public String mainPage(HttpServletRequest request) {
         request.setAttribute("courses", courseService.getAllCourses());
-        return "coursesPage";
+        return "student/coursesPage";
     }
 
     @GetMapping("/courses-manage")
     public String coursesManage(Model model){
         model.addAttribute("allcourses", courseService.getAllCourses());
         model.addAttribute("course", new Course());
-        return "coursesManage";
+        return "teacher/coursesManage";
     }
 
     @PostMapping("/add-course")
@@ -84,10 +90,11 @@ public class CourseController {
     public String editCoursePage(@PathVariable int id, Model model){
         model.addAttribute("course", courseService.getCourse(id));
         model.addAttribute("lectures", lectureService.getAllLectures(id));
-        LectureInfo lectureInfo = new LectureInfo();
-        lectureInfo.setCourseId(id);
-        model.addAttribute("newLecture", lectureInfo);
-        return "courseEdit";
+        model.addAttribute("labWorks", labWorkService.findAllByCourseId(id));
+
+        model.addAttribute("newLecture", LectureInfo.newInstanceWithCourseId(id));
+        model.addAttribute("newLabWorkInfo", LabWorkInfo.newInstanceWithCourseId(id));
+        return "teacher/courseEdit";
     }
 
     @PostMapping("/update-course")
@@ -100,6 +107,6 @@ public class CourseController {
     public String coursePage(@PathVariable int id, Model model){
         model.addAttribute("course", courseService.getCourse(id));
         model.addAttribute("lectures", lectureService.getAllLectures(id));
-        return "coursePage";
+        return "student/coursePage";
     }
 }

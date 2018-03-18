@@ -15,6 +15,9 @@ public class Course {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "course")
     private List<Lecture> lectures;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "course")
+    private List<LabWork> labWorks;
+
 //    private Teacher lecturer;
 //	private Teacher labAssistant;
 
@@ -46,6 +49,22 @@ public class Course {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+    public List<Lecture> getLectures() {
+        return lectures;
+    }
+
+    public void setLectures(List<Lecture> lectures) {
+        this.lectures = lectures;
+    }
+
+    public List<LabWork> getLabWorks() {
+        return labWorks;
+    }
+
+    public void setLabWorks(List<LabWork> labWorks) {
+        this.labWorks = labWorks;
+    }
 
     @Override
     public String toString() {
