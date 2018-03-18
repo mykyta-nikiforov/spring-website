@@ -56,7 +56,5 @@
         </table>
     </div>
 </div>
-</div>
-
 
 <%@include file="templates/footer.jsp"%>

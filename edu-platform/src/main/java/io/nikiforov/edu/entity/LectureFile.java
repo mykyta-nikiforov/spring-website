@@ -1,5 +1,6 @@
 package io.nikiforov.edu.entity;
 
+import io.nikiforov.edu.model.LectureFileInfo;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -11,14 +12,20 @@ public class LectureFile {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String fileName;
+    private String description;
     @Lob
     @Column(columnDefinition = "LONGBLOB")
     private byte[] data;
+    private String contentType;
     @ManyToOne
     @JoinColumn(name = "lecture_id")
     private Lecture lecture;
 
     public LectureFile() {
+    }
+
+    public LectureFile(LectureFileInfo lectureFileInfo) {
+        this.description = lectureFileInfo.getDescription();
     }
 
     public int getId() {
@@ -37,12 +44,28 @@ public class LectureFile {
         this.fileName = fileName;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public byte[] getData() {
         return data;
     }
 
     public void setData(byte[] data) {
         this.data = data;
+    }
+
+    public String getContentType() {
+        return contentType;
+    }
+
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
     }
 
     public Lecture getLecture() {
@@ -59,7 +82,8 @@ public class LectureFile {
                 "id=" + id +
                 ", fileName='" + fileName + '\'' +
                 ", data=" + Arrays.toString(data) +
-                ", lectureId=" + lecture.getId() +
+                ", contentType='" + contentType + '\'' +
+                ", lecture=" + lecture +
                 '}';
     }
 }

@@ -14,8 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
@@ -41,6 +39,7 @@ public class LectureManageController {
     public String editCoursePage(@PathVariable int id, Model model) {
         model.addAttribute("lecture", lectureService.getLecture(id));
         model.addAttribute("lectureFileInfo", new LectureFileInfo());
+        model.addAttribute("lectureFiles", lectureFileService.findAllByLectureId(id));
         return "lectureEdit";
     }
 
@@ -68,13 +67,7 @@ public class LectureManageController {
                                             lectureFileInfo) throws IOException {
 
         int id = lectureFileInfo.getLectureId();
-        Lecture lecture = lectureService.getLecture(id);
-        LectureFile lectureFile = new LectureFile();
-        lectureFile.setLecture(lecture);
-        lectureFile.setFileName(lectureFileInfo.getName());
-        lectureFile.setData(file.getBytes());
-        System.out.println(lectureFile);
-        lectureFileService.save(lectureFile);
+        lectureFileService.save(lectureFileInfo, file, id);
         return "redirect:/edit-lecture/" + id;
     }
 
@@ -83,12 +76,13 @@ public class LectureManageController {
             throws IOException {
         LectureFile lectureFile = lectureFileService.getById(lectureId);
         byte[] lectureFileData = lectureFile.getData();
-        response.setContentType("application/pdf");
+        response.setContentType(lectureFile.getContentType());
         response.getOutputStream().write(lectureFileData);
         response.setContentLength(lectureFileData.length);
+//        response.set
         response.getOutputStream().close();
     }
-
+//
 //    @GetMapping(value = "/displayLecture", produces="application/pdf")
 //    @ResponseBody
 //    public byte[] showImage(@RequestParam("id") int lectureId)
@@ -96,4 +90,12 @@ public class LectureManageController {
 //        LectureFile lectureFile = lectureFileService.getById(lectureId);
 //        return lectureFile.getData();
 //    }
+
+    @GetMapping("/deleteLectureFile")
+    public String deleteLectureFile(@RequestParam("id") int lectureFileId) {
+        int lectureId = lectureFileService.getById(lectureFileId).getLecture().getId();
+        lectureFileService.delete(lectureFileId);
+        return "redirect:/edit-lecture/" + lectureId;
+    }
+
 }
