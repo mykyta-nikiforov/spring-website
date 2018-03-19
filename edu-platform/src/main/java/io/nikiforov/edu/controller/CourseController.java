@@ -67,42 +67,6 @@ public class CourseController {
         return "student/coursesPage";
     }
 
-    @GetMapping("/courses-manage")
-    public String coursesManage(Model model){
-        model.addAttribute("allcourses", courseService.getAllCourses());
-        model.addAttribute("course", new Course());
-        return "teacher/coursesManage";
-    }
-
-    @PostMapping("/add-course")
-    public String addNewCourse(@ModelAttribute("course") Course course){
-        courseService.addCourse(course);
-        return "redirect:/courses-manage";
-    }
-
-    @GetMapping("/delete-course")
-    public String deleteCourseById(@RequestParam int id){
-        courseService.deleteCourse(id);
-        return "redirect:/courses-manage";
-    }
-
-    @GetMapping("/courses-manage/{id}")
-    public String editCoursePage(@PathVariable int id, Model model){
-        model.addAttribute("course", courseService.getCourse(id));
-        model.addAttribute("lectures", lectureService.getAllLectures(id));
-        model.addAttribute("labWorks", labWorkService.findAllByCourseId(id));
-
-        model.addAttribute("newLecture", LectureInfo.newInstanceWithCourseId(id));
-        model.addAttribute("newLabWorkInfo", LabWorkInfo.newInstanceWithCourseId(id));
-        return "teacher/courseEdit";
-    }
-
-    @PostMapping("/update-course")
-    public String updateCourse(@ModelAttribute("course") Course course){
-        courseService.updateCourse(course);
-        return "redirect:/courses-manage/" + course.getId();
-    }
-
     @GetMapping("/course-{id}")
     public String coursePage(@PathVariable int id, Model model){
         model.addAttribute("course", courseService.getCourse(id));
