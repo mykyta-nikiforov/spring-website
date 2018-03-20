@@ -44,4 +44,9 @@ public class CourseServiceImpl implements CourseService{
     public Course getCourseByLectureId(int id) {
         return courseRepository.findCourseByLectureId(id);
     }
+
+    @Override
+    public Course getCourseByLabWorkId(int id) {
+        return courseRepository.findCourseByLabWorkId(id);
+    }
 }

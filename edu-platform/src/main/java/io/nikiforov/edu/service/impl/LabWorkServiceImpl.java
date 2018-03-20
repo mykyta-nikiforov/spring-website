@@ -26,7 +26,10 @@ public class LabWorkServiceImpl implements LabWorkService {
 
     @Override
     public LabWork getLabWork(int id) {
-        return labWorkRepository.findOne(id);
+        LabWork one = labWorkRepository.findOne(id);
+//        System.out.println(one);
+        return one;
+//        return labWorkRepository.findOne(id);
     }
 
     @Override

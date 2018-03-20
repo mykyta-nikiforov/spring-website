@@ -73,8 +73,8 @@
             <c:forEach var="labWork" items="${labWorks}">
                 <tr>
                     <td>${labWork.id}</td>
-                    <td><a href="/edit-lecture/${labWork.id}">${labWork.name}</a></td>
-                    <td><a href="/delete-lecture?id=${labWork.id}"><span class="oi oi-trash"></span></a></td>
+                    <td><a href="/edit-labwork/${labWork.id}">${labWork.name}</a></td>
+                    <td><a href="/delete-labwork?id=${labWork.id}"><span class="oi oi-trash"></span></a></td>
                 </tr>
             </c:forEach>
             </tbody>

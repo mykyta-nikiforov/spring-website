@@ -13,4 +13,6 @@ public interface CourseService {
 
     Course getCourseByLectureId(int id);
 
+    Course getCourseByLabWorkId(int id);
+
 }

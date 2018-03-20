@@ -11,4 +11,8 @@ public interface CourseRepository extends CrudRepository<Course, Integer>{
             "l.id = :lecture_id")
 //    @Query("select c from Course c, Lecture l where l.id = :lecture_id")
     Course findCourseByLectureId(@Param("lecture_id") int id);
+
+    @Query("select c from Course c left join c.labWorks l where " +
+            "l.id = :labwork_id")
+    Course findCourseByLabWorkId(@Param("labwork_id") int id);
 }

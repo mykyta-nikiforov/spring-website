@@ -13,7 +13,7 @@ public class LabWork {
     private String name;
     private String description;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "course_id")
     private Course course;
 
@@ -24,8 +24,10 @@ public class LabWork {
     }
 
     public LabWork(LabWorkInfo labWorkInfo) {
+        this.id = labWorkInfo.getId();
         this.name = labWorkInfo.getName();
         this.description = labWorkInfo.getDescription();
+        this.deadLine = labWorkInfo.getDeadLine();
     }
 
     public int getId() {
