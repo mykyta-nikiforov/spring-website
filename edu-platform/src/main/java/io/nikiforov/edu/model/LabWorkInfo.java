@@ -3,6 +3,7 @@ package io.nikiforov.edu.model;
 import io.nikiforov.edu.entity.LabWork;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class LabWorkInfo {
 
@@ -10,7 +11,7 @@ public class LabWorkInfo {
     private String name;
     private String description;
     private int courseId;
-    private LocalDate deadLine;
+    private String deadLine;
 
     public LabWorkInfo() {
     }
@@ -19,7 +20,8 @@ public class LabWorkInfo {
         id = labWork.getId();
         name = labWork.getName();
         description = labWork.getDescription();
-        deadLine = labWork.getDeadLine();
+        System.out.println(labWork);
+        deadLine = labWork.getDeadLine().format(DateTimeFormatter.ofPattern("uuuu-MM-dd"));
         courseId = labWork.getCourse().getId();
     }
 
@@ -61,11 +63,11 @@ public class LabWorkInfo {
         this.courseId = courseId;
     }
 
-    public LocalDate getDeadLine() {
+    public String getDeadLine() {
         return deadLine;
     }
 
-    public void setDeadLine(LocalDate deadLine) {
+    public void setDeadLine(String deadLine) {
         this.deadLine = deadLine;
     }
 

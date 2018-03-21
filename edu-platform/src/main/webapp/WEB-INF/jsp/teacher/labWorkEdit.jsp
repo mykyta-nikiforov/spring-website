@@ -25,6 +25,12 @@
             </div>
         </div>
         <div class="form-group row">
+            <label class="col-form-label col-md-3">Deadline</label>
+            <div class="col-md-5">
+                <sf:input type="date" class="form-control" path="deadLine" value="${labWork.deadLine}"/>
+            </div>
+        </div>
+        <div class="form-group row">
             <input type="submit" class="btn btn-dark" value="Save"/>
         </div>
     </sf:form>

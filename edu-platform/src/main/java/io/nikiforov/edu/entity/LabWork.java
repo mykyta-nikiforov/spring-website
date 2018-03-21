@@ -4,6 +4,7 @@ import io.nikiforov.edu.model.LabWorkInfo;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 public class LabWork {
@@ -27,7 +28,8 @@ public class LabWork {
         this.id = labWorkInfo.getId();
         this.name = labWorkInfo.getName();
         this.description = labWorkInfo.getDescription();
-        this.deadLine = labWorkInfo.getDeadLine();
+        this.deadLine = LocalDate.parse(labWorkInfo.getDeadLine(),
+                DateTimeFormatter.ofPattern("uuuu-MM-dd"));
     }
 
     public int getId() {
