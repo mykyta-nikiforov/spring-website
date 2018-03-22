@@ -2,6 +2,7 @@ package io.nikiforov.edu.service.impl;
 
 import io.nikiforov.edu.dao.CourseRepository;
 import io.nikiforov.edu.entity.Course;
+import io.nikiforov.edu.model.CourseInfo;
 import io.nikiforov.edu.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +31,11 @@ public class CourseServiceImpl implements CourseService{
 
     public void addCourse(Course course) {
         courseRepository.save(course);
+    }
+
+    @Override
+    public Course addCourse(CourseInfo courseInfo) {
+        return courseRepository.save(new Course(courseInfo));
     }
 
     public void updateCourse(Course course) {

@@ -1,5 +1,7 @@
 package io.nikiforov.edu.entity;
 
+import io.nikiforov.edu.model.CourseInfo;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -25,13 +27,17 @@ public class Course {
 	}
 
     public Course(int id, String name, String description) {
-		super();
 		this.id = id;
 		this.name = name;
 		this.description = description;
 	}
-	
-	public int getId() {
+
+    public Course(CourseInfo courseInfo) {
+        name = courseInfo.getName();
+        description = courseInfo.getDescription();
+    }
+
+    public int getId() {
 		return id;
 	}
 	public void setId(int id) {

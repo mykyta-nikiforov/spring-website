@@ -1,6 +1,7 @@
 package io.nikiforov.edu.controller.teacher;
 
 import io.nikiforov.edu.entity.Course;
+import io.nikiforov.edu.model.CourseInfo;
 import io.nikiforov.edu.model.LabWorkInfo;
 import io.nikiforov.edu.model.LectureInfo;
 import io.nikiforov.edu.service.CourseService;
@@ -56,5 +57,14 @@ public class CourseManageController {
     public String updateCourse(@ModelAttribute("course") Course course){
         courseService.updateCourse(course);
         return "redirect:/courses-manage/" + course.getId();
+    }
+
+    @ResponseBody
+    @PostMapping("/add-course2")
+    public Course addCourseREST(@RequestBody CourseInfo courseInfo) {
+        System.out.println(courseInfo);
+        Course course = courseService.addCourse(courseInfo);
+        System.out.println(courseInfo);
+        return course;
     }
 }

@@ -6,25 +6,43 @@
     <h3>Manage Courses</h3>
     <hr>
     <h4>Add new course</h4>
-    <sf:form method="post" action="add-course" modelAttribute="course">
-        <input type="hidden" name="id" value="${course.id}">
+    <%--<sf:form method="post" action="add-course" modelAttribute="course">--%>
+        <%--<input type="hidden" name="id" id="course-id" value="${course.id}">--%>
+        <%--<div class="form-group row">--%>
+            <%--<label class="col-form-label col-md-3">Name</label>--%>
+            <%--<div class="col-md-5">--%>
+                <%--<sf:input type="text" class="form-control" id="course-name" path="name" value="${course.name}"/>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+        <%--<div class="form-group row">--%>
+            <%--<label class="col-form-label col-md-3">Description</label>--%>
+            <%--<div class="col-md-5">--%>
+                <%--<sf:textarea type="text" class="form-control" id="course-desc" rows="5" path="description"--%>
+                       <%--value="${course.description}"/>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+        <%--<div class="form-group row">--%>
+            <%--<input type="submit" class="btn btn-dark" id="add-course-button" value="Add"/>--%>
+        <%--</div>--%>
+    <%--</sf:form>--%>
+    <form method="post">
+        <input type="hidden" name="id" id="course-id">
         <div class="form-group row">
             <label class="col-form-label col-md-3">Name</label>
             <div class="col-md-5">
-                <sf:input type="text" class="form-control" path="name" value="${course.name}"/>
+                <input type="text" class="form-control" id="course-name"/>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-form-label col-md-3">Description</label>
             <div class="col-md-5">
-                <sf:textarea type="text" class="form-control" rows="5" path="description"
-                       value="${course.description}"/>
+                <textarea type="text" class="form-control" id="course-desc" rows="5"></textarea>
             </div>
         </div>
         <div class="form-group row">
-            <input type="submit" class="btn btn-dark" value="Add"/>
+            <input type="button" class="btn btn-dark" id="add-course-button" value="Add"/>
         </div>
-    </sf:form>
+    </form>
 </div>
 
 <hr>
@@ -34,7 +52,7 @@
     <hr>
 
     <div class="table-responsive">
-        <table class="table table-bordered table-striped text-left">
+        <table class="table table-bordered table-striped text-left" id="courses-table">
             <thead>
             <tr>
                 <th>Id</th>
@@ -57,4 +75,5 @@
     </div>
 </div>
 
+<script src="/static/js/teacher/coursesManage.js">
 <%@include file="../templates/footer.jsp"%>

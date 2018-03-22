@@ -12,6 +12,7 @@
     <meta http-equiv="Expires" content="Sat, 01 Dec 2001 00:00:00 GMT">
 
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
 <body>
