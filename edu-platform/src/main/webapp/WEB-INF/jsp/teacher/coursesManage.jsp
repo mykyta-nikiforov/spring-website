@@ -1,6 +1,7 @@
 <%@page pageEncoding="UTF-8" %>
 <%@include file="../templates/header.jsp"%>
 <link href="/static/css/open-iconic-bootstrap.css" rel="stylesheet">
+<link href="/static/css/bootstrap.min.css" rel="stylesheet">
 
 <div class="container ">
     <h3>Manage Courses</h3>
@@ -30,7 +31,7 @@
         <div class="form-group row">
             <label class="col-form-label col-md-3">Name</label>
             <div class="col-md-5">
-                <input type="text" class="form-control" id="course-name" required/>
+                <input type="text" class="form-control" id="course-name" required>
             </div>
         </div>
         <div class="form-group row">
@@ -42,6 +43,11 @@
         <div class="form-group row">
             <input type="button" class="btn btn-dark" id="add-course-button" value="Add"/>
         </div>
+        <div id="add-course-input-warning" class="alert alert-warning" role="alert"
+             style="display: none">
+            This is a warning alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+        </div>
+
     </form>
 </div>
 
