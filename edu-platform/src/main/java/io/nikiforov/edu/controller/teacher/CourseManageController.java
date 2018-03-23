@@ -51,9 +51,10 @@ public class CourseManageController {
 
     @ResponseBody
     @RequestMapping(method = RequestMethod.DELETE, value = "/delete-course")
-    public void deleteCourseById(@RequestParam int id){
+    public String deleteCourseById(@RequestParam int id){
         System.out.println(id);
         courseService.deleteCourse(id);
+        return "Hello again!";
     }
 
     @GetMapping("/courses-manage/{id}")

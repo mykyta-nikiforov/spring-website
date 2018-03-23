@@ -25,18 +25,18 @@
             <%--<input type="submit" class="btn btn-dark" id="add-course-button" value="Add"/>--%>
         <%--</div>--%>
     <%--</sf:form>--%>
-    <form method="post">
+    <form method="post" id="new-course-form">
         <input type="hidden" name="id" id="course-id">
         <div class="form-group row">
             <label class="col-form-label col-md-3">Name</label>
             <div class="col-md-5">
-                <input type="text" class="form-control" id="course-name"/>
+                <input type="text" class="form-control" id="course-name" required/>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-form-label col-md-3">Description</label>
             <div class="col-md-5">
-                <textarea type="text" class="form-control" id="course-desc" rows="5"></textarea>
+                <textarea type="text" class="form-control" id="course-desc" rows="5" required></textarea>
             </div>
         </div>
         <div class="form-group row">
@@ -67,7 +67,7 @@
                     <td>${course.id}</td>
                     <td><a href="/courses-manage/${course.id}">${course.name}</a></td>
                     <td>${course.description}</td>
-                    <td><a href="#" course-id='${course.id}' class="remove-button"><span><i class="oi oi-trash"></i></span></a></td>
+                    <td><button course-id='${course.id}' class="remove-button"><span><i class="oi oi-trash"></i></span></button></td>
                 </tr>
             </c:forEach>
             </tbody>
