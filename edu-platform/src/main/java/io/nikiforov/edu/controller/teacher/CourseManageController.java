@@ -30,16 +30,30 @@ public class CourseManageController {
         return "teacher/coursesManage";
     }
 
+//    @PostMapping("/add-course")
+//    public String addNewCourse(@ModelAttribute("course") Course course){
+//        courseService.addCourse(course);
+//        return "redirect:/courses-manage";
+//    }
+
+    @ResponseBody
     @PostMapping("/add-course")
-    public String addNewCourse(@ModelAttribute("course") Course course){
-        courseService.addCourse(course);
-        return "redirect:/courses-manage";
+    public Course addCourseREST(@RequestBody CourseInfo courseInfo) {
+        Course course = courseService.addCourse(courseInfo);
+        return course;
     }
 
-    @GetMapping("/delete-course")
-    public String deleteCourseById(@RequestParam int id){
+//    @GetMapping("/delete-course")
+//    public String deleteCourseById(@RequestParam int id){
+//        courseService.deleteCourse(id);
+//        return "redirect:/courses-manage";
+//    }
+
+    @ResponseBody
+    @RequestMapping(method = RequestMethod.DELETE, value = "/delete-course")
+    public void deleteCourseById(@RequestParam int id){
+        System.out.println(id);
         courseService.deleteCourse(id);
-        return "redirect:/courses-manage";
     }
 
     @GetMapping("/courses-manage/{id}")
@@ -57,14 +71,5 @@ public class CourseManageController {
     public String updateCourse(@ModelAttribute("course") Course course){
         courseService.updateCourse(course);
         return "redirect:/courses-manage/" + course.getId();
-    }
-
-    @ResponseBody
-    @PostMapping("/add-course2")
-    public Course addCourseREST(@RequestBody CourseInfo courseInfo) {
-        System.out.println(courseInfo);
-        Course course = courseService.addCourse(courseInfo);
-        System.out.println(courseInfo);
-        return course;
     }
 }

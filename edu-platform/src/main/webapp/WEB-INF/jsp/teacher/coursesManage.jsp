@@ -63,11 +63,11 @@
             </thead>
             <tbody>
             <c:forEach var="course" items="${allcourses}">
-                <tr>
+                <tr id="course-${course.id}">
                     <td>${course.id}</td>
                     <td><a href="/courses-manage/${course.id}">${course.name}</a></td>
                     <td>${course.description}</td>
-                    <td><a href="/delete-course?id=${course.id}"><span class="oi oi-trash"></span></a></td>
+                    <td><a href="#" course-id='${course.id}' class="remove-button"><span><i class="oi oi-trash"></i></span></a></td>
                 </tr>
             </c:forEach>
             </tbody>
