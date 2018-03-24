@@ -48,7 +48,7 @@
                     <td>${lecture.id}</td>
                     <td><a href="/edit-lecture/${lecture.id}">${lecture.name}</a></td>
                     <%--<td><a href="/delete-lecture?id=${lecture.id}"><span class="oi oi-trash"></span></a></td>--%>
-                    <td><button lecture-id='${lecture.id}' class="remove-button"><span><i class="oi oi-trash"></i></span></button></td>
+                    <td><button lecture-id='${lecture.id}' class="remove-lecture-button btn btn-outline-danger"><span><i class="oi oi-trash"></i></span></button></td>
                 </tr>
             </c:forEach>
             </tbody>
@@ -62,7 +62,7 @@
     <h3>Laboratory works</h3>
     <hr>
     <div class="table-responsive">
-        <table class="table table-bordered table-striped text-left">
+        <table id="labworks-table" class="table table-bordered table-striped text-left">
             <thead>
             <tr>
                 <th>Id</th>
@@ -75,8 +75,7 @@
                 <tr>
                     <td>${labWork.id}</td>
                     <td><a href="/edit-labwork/${labWork.id}">${labWork.name}</a></td>
-                    <%--<td><a href="/delete-labwork?id=${labWork.id}"><span class="oi oi-trash"></span></a></td>--%>
-                    <td><button labWork-id='${labWork.id}' class="remove-button"><span><i class="oi oi-trash"></i></span></button></td>
+                    <td><button labWork-id='${labWork.id}' class="remove-labwork-button btn btn-outline-danger"><span><i class="oi oi-trash"></i></span></button></td>
 
                 </tr>
             </c:forEach>
@@ -115,32 +114,33 @@
 
 <div class="container ">
     <h3>Add new laboratory work:</h3>
-    <sf:form method="post" action="/add-labwork" modelAttribute="newLabWorkInfo">
-        <input type="hidden" name="courseId" path="courseId" value="${newLabWorkInfo.courseId}">
+    <form method="post" id="new-labwork-form" >
         <div class="form-group row">
             <label class="col-form-label col-md-3">Name</label>
             <div class="col-md-5">
-                <sf:input type="text" class="form-control" path="name" value="${newLabWorkInfo.name}"/>
+                <input type="text" id="labwork-name" class="form-control"/>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-form-label col-md-3">Description</label>
             <div class="col-md-5">
-                <sf:input type="text" class="form-control" path="description"
-                value="${newLabWorkInfo.description}"/>
+                <input type="text" id="labwork-desc" class="form-control">
             </div>
         </div>
         <div class="form-group row">
             <label class="col-form-label col-md-3">Deadline</label>
             <div class="col-md-5">
-                <sf:input type="date" class="form-control" path="deadLine"
-                          value="${newLabWorkInfo.deadLine}"/>
+                <input type="date" id="labwork-deadline" class="form-control">
             </div>
         </div>
         <div class="form-group row">
-            <input type="submit" class="btn btn-dark" value="Add"/>
+            <input type="button" id="add-labwork-button" class="btn btn-dark" value="Add"/>
         </div>
-    </sf:form>
+        <div id="add-labwork-input-warning" class="alert alert-warning" role="alert"
+             style="display: none">
+            This is a warning alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+        </div>
+    </form>
 </div>
 
 <script src="/static/js/teacher/courseEdit.js">

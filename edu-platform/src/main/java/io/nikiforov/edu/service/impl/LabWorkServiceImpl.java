@@ -48,9 +48,9 @@ public class LabWorkServiceImpl implements LabWorkService {
     }
 
     @Override
-    public void saveFromModel(LabWorkInfo labWorkInfo) {
+    public LabWork saveFromModel(LabWorkInfo labWorkInfo) {
         LabWork labWork = new LabWork(labWorkInfo);
         labWork.setCourse(courseService.getCourse(labWorkInfo.getCourseId()));
-        labWorkRepository.save(labWork);
+        return labWorkRepository.save(labWork);
     }
 }

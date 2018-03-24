@@ -12,5 +12,5 @@ public interface LabWorkService {
     void addLabWork(LabWork labWork);
     void updateLabWork(LabWork labWork);
     void deleteLabWork(int id);
-    void saveFromModel(LabWorkInfo labWorkInfo);
+    LabWork saveFromModel(LabWorkInfo labWorkInfo);
 }

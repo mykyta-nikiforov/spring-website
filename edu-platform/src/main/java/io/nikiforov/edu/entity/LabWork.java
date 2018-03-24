@@ -1,5 +1,6 @@
 package io.nikiforov.edu.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.nikiforov.edu.model.LabWorkInfo;
 
 import javax.persistence.*;
@@ -16,6 +17,7 @@ public class LabWork {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "course_id")
+    @JsonIgnore
     private Course course;
 
     @Column

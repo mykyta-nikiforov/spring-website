@@ -1,6 +1,7 @@
 package io.nikiforov.edu.controller.teacher;
 
 import io.nikiforov.edu.entity.Course;
+import io.nikiforov.edu.entity.LabWork;
 import io.nikiforov.edu.model.LabWorkInfo;
 import io.nikiforov.edu.service.CourseService;
 import io.nikiforov.edu.service.LabWorkService;
@@ -18,10 +19,10 @@ public class LabWorkManageController {
     @Autowired
     CourseService courseService;
 
+    @ResponseBody
     @PostMapping("/add-labwork")
-    public String addLabWork(@ModelAttribute("newLabWorkInfo") LabWorkInfo labWorkInfo) {
-        labWorkService.saveFromModel(labWorkInfo);
-        return "redirect:/courses-manage/" + labWorkInfo.getCourseId();
+    public LabWork addLabWork(@RequestBody LabWorkInfo labWorkInfo) {
+        return labWorkService.saveFromModel(labWorkInfo);
     }
 
     @GetMapping("/edit-labwork/{id}")
@@ -31,12 +32,13 @@ public class LabWorkManageController {
         return "teacher/labWorkEdit";
     }
 
-    @GetMapping("/delete-labwork")
-    public String deleteLabWork(@RequestParam("id") int id) {
+    @ResponseBody
+    @RequestMapping(value = "/delete-labwork/{id}", method = RequestMethod.DELETE)
+    public String deleteLabWork(@PathVariable("id") int id) {
         Course course = courseService.getCourseByLabWorkId(id);
         labWorkService.deleteLabWork(id);
         System.out.println(course);
-        return "redirect:/courses-manage/" + course.getId();
+        return "deleted";
     }
 
     @PostMapping("update-labwork")
