@@ -2,7 +2,10 @@ package io.nikiforov.edu.entity;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.nikiforov.edu.entity.Course;
+import io.nikiforov.edu.model.LectureInfo;
 
 @Entity
 public class Lecture {
@@ -13,6 +16,7 @@ public class Lecture {
 
     @ManyToOne
     @JoinColumn(name = "course_id")
+    @JsonIgnore
     private Course course;
 
 	public Lecture() {
@@ -24,8 +28,12 @@ public class Lecture {
 		this.name = name;
 		this.course = new Course(courseId, "", "");
 	}
-	
-	public int getId() {
+
+    public Lecture(LectureInfo lectureInfo) {
+        name = lectureInfo.getName();
+    }
+
+    public int getId() {
 		return id;
 	}
 	public void setId(int id) {

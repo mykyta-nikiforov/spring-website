@@ -12,4 +12,6 @@ public interface LectureService {
     void updateLecture(Lecture lecture);
     void deleteLecture(int id);
     void saveLectureFromModel(LectureInfo lectureInfo);
+
+    Lecture addLecture(LectureInfo lectureInfo);
 }

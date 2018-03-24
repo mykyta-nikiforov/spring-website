@@ -7,25 +7,6 @@
     <h3>Manage Courses</h3>
     <hr>
     <h4>Add new course</h4>
-    <%--<sf:form method="post" action="add-course" modelAttribute="course">--%>
-        <%--<input type="hidden" name="id" id="course-id" value="${course.id}">--%>
-        <%--<div class="form-group row">--%>
-            <%--<label class="col-form-label col-md-3">Name</label>--%>
-            <%--<div class="col-md-5">--%>
-                <%--<sf:input type="text" class="form-control" id="course-name" path="name" value="${course.name}"/>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-        <%--<div class="form-group row">--%>
-            <%--<label class="col-form-label col-md-3">Description</label>--%>
-            <%--<div class="col-md-5">--%>
-                <%--<sf:textarea type="text" class="form-control" id="course-desc" rows="5" path="description"--%>
-                       <%--value="${course.description}"/>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-        <%--<div class="form-group row">--%>
-            <%--<input type="submit" class="btn btn-dark" id="add-course-button" value="Add"/>--%>
-        <%--</div>--%>
-    <%--</sf:form>--%>
     <form method="post" id="new-course-form">
         <input type="hidden" name="id" id="course-id">
         <div class="form-group row">
@@ -45,7 +26,7 @@
         </div>
         <div id="add-course-input-warning" class="alert alert-warning" role="alert"
              style="display: none">
-            This is a warning alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+            You should fill in all the inputs.
         </div>
 
     </form>
@@ -73,7 +54,7 @@
                     <td>${course.id}</td>
                     <td><a href="/courses-manage/${course.id}">${course.name}</a></td>
                     <td>${course.description}</td>
-                    <td><button course-id='${course.id}' class="remove-button"><span><i class="oi oi-trash"></i></span></button></td>
+                    <td><button course-id='${course.id}' class="remove-button btn btn-outline-danger"><span><i class="oi oi-trash"></i></span></button></td>
                 </tr>
             </c:forEach>
             </tbody>

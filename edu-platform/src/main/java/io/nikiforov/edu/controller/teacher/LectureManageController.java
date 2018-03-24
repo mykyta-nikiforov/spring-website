@@ -29,11 +29,23 @@ public class LectureManageController {
     @Autowired
     private CourseService courseService;
 
-    @PostMapping("/add-lecture")
-    public String addLecture(@ModelAttribute("newLecture") LectureInfo lectureInfo) {
-        lectureService.saveLectureFromModel(lectureInfo);
-        return "redirect:/courses-manage/" + lectureInfo.getCourseId();
+//    @PostMapping("/add-lecture")
+//    public String addLecture(@ModelAttribute("newLecture") LectureInfo lectureInfo) {
+//        lectureService.saveLectureFromModel(lectureInfo);
+//        return "redirect:/courses-manage/" + lectureInfo.getCourseId();
+//    }
+
+    @ResponseBody
+    @RequestMapping(method = RequestMethod.POST, value = "/add-lecture")
+    public Lecture addLecture(@RequestBody LectureInfo lectureInfo) {
+//        lectureInfo.setCourseId(course_id);
+        System.out.println(lectureInfo);
+
+        Lecture newLecture = lectureService.addLecture(lectureInfo);
+        System.out.println("From Controller: " + newLecture);
+        return newLecture;
     }
+
 
     @GetMapping("/edit-lecture/{id}")
     public String editCoursePage(@PathVariable int id, Model model) {
@@ -53,12 +65,20 @@ public class LectureManageController {
         return "redirect:/courses-manage/" + course.getId();
     }
 
-    @GetMapping("/delete-lecture")
-    public String deleteLecture(@RequestParam("id") int id) {
+//    @GetMapping("/delete-lecture")
+//    public String deleteLecture(@RequestParam("id") int id) {
+//        // Get course of this lecture
+//        Course course = courseService.getCourseByLectureId(id);
+//        lectureService.deleteLecture(id);
+//        return "redirect:/courses-manage/" + course.getId();
+//    }
+
+    @ResponseBody
+    @RequestMapping(method = RequestMethod.DELETE, value = "/delete-lecture/{id}")
+    public String deleteLecture(@PathVariable("id") int id) {
         // Get course of this lecture
-        Course course = courseService.getCourseByLectureId(id);
         lectureService.deleteLecture(id);
-        return "redirect:/courses-manage/" + course.getId();
+        return "deleted";
     }
 
     @PostMapping("/uploadLectureFile")

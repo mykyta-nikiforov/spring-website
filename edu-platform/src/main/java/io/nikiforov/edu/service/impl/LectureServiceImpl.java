@@ -50,4 +50,17 @@ public class LectureServiceImpl implements LectureService {
         lectureRepository.save(lecture);
     }
 
+    @Override
+    public Lecture addLecture(LectureInfo lectureInfo) {
+        System.out.println("Hello from service addLecture()\n" + lectureInfo);
+        Lecture result = new Lecture(lectureInfo);
+        result.setCourse(courseService.getCourse(lectureInfo.getCourseId()));
+        System.out.println("result after setting the Course: " + result);
+
+        Lecture save = lectureRepository.save(result);
+        System.out.println("result after the saving: " + save);
+
+        return save;
+    }
+
 }

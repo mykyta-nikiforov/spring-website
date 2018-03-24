@@ -20,7 +20,7 @@ $(document).ready(function() {
                         '                    <td>' + course.id + '</td>\n' +
                         '                    <td><a href="/courses-manage/' + course.id + '">' + course.name + '</a></td>\n' +
                         '                    <td>' + course.description + '</td>\n' +
-                        '                    <td><button course-id=\'' + course.id + '\' class="remove-button"><span><i class="oi oi-trash"></i></span></button></td>\n' +
+                        '                    <td><button course-id=\'' + course.id + '\' class="remove-button btn btn-outline-danger"><span><i class="oi oi-trash"></i></span></button></td>\n' +
                         '                </tr>');
 
                     var newElement = $('[course-id=\'' + course.id + '\']');
@@ -49,7 +49,7 @@ $(document).ready(function() {
 function makeRemoveButton(id, element) {
     console.log("from function makeRemoveButton(), " + id + ", " + element)
     $.ajax({
-        url: 'delete-course?id=' + id,
+        url: '/delete-course?id=' + id,
         type: 'DELETE',
         datatype: 'text',
         success: function () {
