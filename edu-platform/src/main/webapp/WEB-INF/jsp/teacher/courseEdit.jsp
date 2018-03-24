@@ -1,3 +1,4 @@
+<%@ taglib prefix="input" uri="http://www.springframework.org/tags/form" %>
 <%@page pageEncoding="UTF-8" %>
 <%@include file="../templates/header.jsp"%>
 <link href="/static/css/open-iconic-bootstrap.css" rel="stylesheet">
@@ -7,25 +8,32 @@
 <div class="container ">
     <h3>Edit course</h3>
 
-    <sf:form method="post" action="/update-course" modelAttribute="course">
-        <input type="hidden" name="id" value="${course.id}">
+    <form method="post" id="edit-course-form">
         <div class="form-group row">
             <label class="col-form-label col-md-3">Name</label>
             <div class="col-md-5">
-                <sf:input type="text" class="form-control" path="name" value="${course.name}"/>
+                <input type="text" id="edit-course-name" class="form-control" value="${course.name}"/>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-form-label col-md-3">Description</label>
             <div class="col-md-5">
-                <sf:textarea type="text" class="form-control" rows="5" path="description"
-                          value="${course.description}"/>
+                <textarea type="text" id="edit-course-desc" class="form-control"
+                          rows="5">${course.description}</textarea>
             </div>
         </div>
         <div class="form-group row">
-            <input type="submit" class="btn btn-dark" value="Save"/>
+            <input type="button" id="edit-course-button" class="btn btn-dark" value="Save"/>
         </div>
-    </sf:form>
+        <div id="edit-course-input-warning" class="alert alert-warning" role="alert"
+             style="visibility: hidden; opacity: 0.0">
+            Cannot be empty!
+        </div>
+        <div id="edit-course-input-updated" class="alert alert-success" role="alert"
+             style="visibility: hidden; opacity: 1.0">
+            Successfully updated.
+        </div>
+    </form>
 </div>
 
 <hr>
@@ -46,7 +54,7 @@
             <c:forEach var="lecture" items="${lectures}">
                 <tr>
                     <td>${lecture.id}</td>
-                    <td><a href="/edit-lecture/${lecture.id}">${lecture.name}</a></td>
+                    <td><a href="/courses-manage/${lecture.course.id}/edit-lecture/${lecture.id}">${lecture.name}</a></td>
                     <%--<td><a href="/delete-lecture?id=${lecture.id}"><span class="oi oi-trash"></span></a></td>--%>
                     <td><button lecture-id='${lecture.id}' class="remove-lecture-button btn btn-outline-danger"><span><i class="oi oi-trash"></i></span></button></td>
                 </tr>
@@ -92,7 +100,7 @@
             <div class="form-group row">
                 <label class="col-form-label col-md-3">Name</label>
                 <div class="col-md-5">
-                    <input type="text" id="lecture-name" class="form-control"/>
+                    <input type="text" id="add-lecture-name" class="form-control"/>
                 </div>
             </div>
             <%--<div class="form-group row">--%>
@@ -118,19 +126,19 @@
         <div class="form-group row">
             <label class="col-form-label col-md-3">Name</label>
             <div class="col-md-5">
-                <input type="text" id="labwork-name" class="form-control"/>
+                <input type="text" id="add-labwork-name" class="form-control"/>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-form-label col-md-3">Description</label>
             <div class="col-md-5">
-                <input type="text" id="labwork-desc" class="form-control">
+                <input type="text" id="add-labwork-desc" class="form-control">
             </div>
         </div>
         <div class="form-group row">
             <label class="col-form-label col-md-3">Deadline</label>
             <div class="col-md-5">
-                <input type="date" id="labwork-deadline" class="form-control">
+                <input type="date" id="add-labwork-deadline" class="form-control">
             </div>
         </div>
         <div class="form-group row">

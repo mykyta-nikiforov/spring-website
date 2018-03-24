@@ -1,21 +1,25 @@
 package io.nikiforov.edu.model;
 
 public class LectureInfo {
+    private int id;
     private String name;
     private int courseId;
 
     public LectureInfo() {
     }
 
-    public LectureInfo(String name, int courseId) {
+    public LectureInfo(int id, String name, int courseId) {
+        this.id = id;
         this.name = name;
         this.courseId = courseId;
     }
 
-    public static LectureInfo newInstanceWithCourseId(int id) {
-        LectureInfo lectureInfo = new LectureInfo();
-        lectureInfo.setCourseId(id);
-        return lectureInfo;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -37,7 +41,8 @@ public class LectureInfo {
     @Override
     public String toString() {
         return "LectureInfo{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", courseId=" + courseId +
                 '}';
     }

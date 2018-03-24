@@ -35,8 +35,16 @@ public class LectureServiceImpl implements LectureService {
         lectureRepository.save(lecture);
     }
 
-    public void updateLecture(Lecture lecture) {
-        lectureRepository.save(lecture);
+    public Lecture updateLecture(Lecture lecture) {
+        return lectureRepository.save(lecture);
+    }
+
+    @Override
+    public Lecture updateLecture(LectureInfo lectureInfo) {
+        Lecture result = getLecture(lectureInfo.getId()); // Get Lecture by id from "lectureInfo"
+        result.setName(lectureInfo.getName()); // Set name from "lectureInfo"'s field
+        result = updateLecture(result); // Update
+        return result;
     }
 
     public void deleteLecture(int id) {

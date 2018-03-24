@@ -9,8 +9,12 @@ public interface LectureService {
     List<Lecture> getAllLectures(int id);
     Lecture getLecture(int id);
     void addLecture(Lecture lecture);
-    void updateLecture(Lecture lecture);
+    Lecture updateLecture(Lecture lecture);
+
+    Lecture updateLecture(LectureInfo lectureInfo);
+
     void deleteLecture(int id);
+
     void saveLectureFromModel(LectureInfo lectureInfo);
 
     Lecture addLecture(LectureInfo lectureInfo);

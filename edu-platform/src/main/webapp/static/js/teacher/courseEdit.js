@@ -1,6 +1,48 @@
+// Get courseId from url path
+var url = window.location.href;
+var result = url.match(/courses-manage\/\d+/);
+var courseId = parseInt(result[0].match(/\d+/));
+
+// $('#edit-course-desc').val("hello");
+// console.log($('#edit-course-desc').val());
+
+
 $(document).ready(function() {
+    // Events of the button to update the course
+    $('#edit-course-button').click(function() {
+        if($('#edit-course-name').val() == '' || $('#edit-course-desc').val == ''){
+            $('#edit-course-input-warning').css("visibility", "visible")
+                .animate({opacity: 1.0}, 500);
+            // alert("Input values!")
+        } else {
+            $('#edit-course-input-warning').css("visibility", "hidden");
+            $.ajax({
+                url: '/update-course',
+                type: 'PUT',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    id: courseId,
+                    name: $('#edit-course-name').val(),
+                    description: $('#edit-course-desc').val()
+                }),
+                success: function (course) {
+                    console.log(course.name);
+                    console.log(course.description);
+                    $('#edit-course-name').val(course.name);
+                    $('#edit-course-desc').val(course.description);
+                    $('#edit-course-input-updated').css({visibility: "visible",
+                        opacity: 1.0}).animate({opacity: 0.0}, 3000);
+                },
+                error: function () {
+                    alert("badfrom `edit-course-button`.click");
+                }
+            });
+        }
+    });
+
+    // Events of the button to add new lecture
     $('#add-lecture-button').click(function() {
-        if($('#lecture-name').val() == ''){
+        if($('#add-lecture-name').val() == ''){
             $('#add-lecture-input-warning').css("display", "inline");
             // alert("Input values!")
         } else {
@@ -10,13 +52,14 @@ $(document).ready(function() {
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify({
-                    name: $('#lecture-name').val(),
+                    name: $('#add-lecture-name').val(),
                     courseId: courseId
                 }),
                 success: function (lecture) {
                     $('#lectures-table').find('tbody').append('<tr>\n' +
                         '                    <td>' + lecture.id + '</td>\n' +
-                        '                    <td><a href="/edit-lecture/' + lecture.id + '">' + lecture.name + '</a></td>\n' +
+                        '                    <td><a href="/courses-manage/' + courseId +
+                        '/edit-lecture/' + lecture.id + '">' + lecture.name + '</a></td>\n' +
                         '                    <td><button lecture-id=\'' + lecture.id + '\' class="remove-lecture-button btn btn-outline-danger"><span><i class="oi oi-trash"></i></span></button></td>\n' +
                         '                </tr>');
 
@@ -34,9 +77,10 @@ $(document).ready(function() {
         }
     });
 
+    // Events of the button to add new labwork
     $('#add-labwork-button').click(function() {
-        if($('#labwork-name').val() == '' || $('#labwork-desc').val() == ''
-            || $('#labwork-deadline').val() == ''){
+        if($('#add-labwork-name').val() == '' || $('#add-labwork-desc').val() == ''
+            || $('#add-labwork-deadline').val() == ''){
             $('#add-labwork-input-warning').css("display", "inline");
             // alert("Input values!")
         } else {
@@ -46,9 +90,9 @@ $(document).ready(function() {
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify({
-                    name: $('#labwork-name').val(),
-                    description: $('#labwork-desc').val(),
-                    deadLine: $('#labwork-deadline').val(),
+                    name: $('#add-labwork-name').val(),
+                    description: $('#add-labwork-desc').val(),
+                    deadLine: $('#add-labwork-deadline').val(),
                     courseId: courseId
                 }),
                 success: function (labwork) {
@@ -73,6 +117,7 @@ $(document).ready(function() {
     });
 
 
+    // Events remove-lecture buttons
     $('.remove-lecture-button').click(function () {
         var button = $(this);
         var id = $(this).attr("lecture-id");
@@ -81,6 +126,7 @@ $(document).ready(function() {
         makeRemoveLectureButton(id, button);
     });
 
+    // Events remove-labwork buttons
     $('.remove-labwork-button').click(function () {
         var button = $(this);
         var id = $(this).attr("labwork-id");
@@ -89,6 +135,7 @@ $(document).ready(function() {
         makeRemoveLabworkButton(id, button);
     });
 });
+
 
 function makeRemoveLectureButton(id, element) {
     $.ajax({
@@ -120,8 +167,3 @@ function makeRemoveLabworkButton(id, element) {
     });
 
 }
-
-// Get courseId from url path
-var url = window.location.href;
-var result = url.match(/courses-manage\/\d+/);
-var courseId = parseInt(result[0].match(/\d+/));

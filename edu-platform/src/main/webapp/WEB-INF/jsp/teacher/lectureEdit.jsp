@@ -7,25 +7,25 @@
 <div class="container ">
     <h3>Edit lecture</h3>
 
-    <sf:form method="post" action="/update-lecture" modelAttribute="lecture">
-        <input type="hidden" name="id" value="${lecture.id}">
+    <form method="put" id="update-lecture-form">
         <div class="form-group row">
             <label class="col-form-label col-md-3">Name</label>
             <div class="col-md-5">
-                <sf:input type="text" class="form-control" path="name" value="${lecture.name}"/>
+                <input type="text" id="update-lecture-name" class="form-control" value="${lecture.name}"/>
             </div>
         </div>
-        <%--<div class="form-group row">--%>
-            <%--<label class="col-form-label col-md-3">Description</label>--%>
-            <%--<div class="col-md-5">--%>
-                <%--<sf:input type="text" class="form-control" path="description"--%>
-                          <%--value="${lecture.description}"/>--%>
-            <%--</div>--%>
-        <%--</div>--%>
         <div class="form-group row">
-            <input type="submit" class="btn btn-dark" value="Save"/>
+            <input type="button" id="update-lecture-button" class="btn btn-dark" value="Save"/>
         </div>
-    </sf:form>
+        <div id="update-lecture-input-warning" class="alert alert-warning" role="alert"
+             style="visibility: hidden; opacity: 0.0">
+            Cannot be empty!
+        </div>
+        <div id="update-lecture-input-updated" class="alert alert-success" role="alert"
+             style="visibility: hidden; opacity: 1.0">
+            Successfully updated.
+        </div>
+    </form>
 
     <h3>Download files</h3>
     <sf:form action="/uploadLectureFile" method="POST" enctype="multipart/form-data"
@@ -71,5 +71,7 @@
     </div>
 
 </div>
+
+<script src="../../../static/js/teacher/lectureEdit.js"></script>
 
 <%@include file="../templates/footer.jsp"%>

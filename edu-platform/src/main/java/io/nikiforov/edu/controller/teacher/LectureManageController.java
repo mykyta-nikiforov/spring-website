@@ -47,22 +47,19 @@ public class LectureManageController {
     }
 
 
-    @GetMapping("/edit-lecture/{id}")
-    public String editCoursePage(@PathVariable int id, Model model) {
+    @GetMapping("/courses-manage/{courseId}/edit-lecture/{id}")
+    public String editCoursePage(@PathVariable("courseId") int courseId,
+                                 @PathVariable("id") int id, Model model) {
         model.addAttribute("lecture", lectureService.getLecture(id));
         model.addAttribute("lectureFileInfo", new LectureFileInfo());
         model.addAttribute("lectureFiles", lectureFileService.findAllByLectureId(id));
         return "teacher/lectureEdit";
     }
 
-    @PostMapping("/update-lecture")
-    public String updateLecture(@ModelAttribute("lecture") Lecture lecture) {
-        /* Lecture from model doesn't have course. Firstly, we find course,
-         * set it to lecture, and only then update the lecture. */
-        Course course = courseService.getCourseByLectureId(lecture.getId());
-        lecture.setCourse(course);
-        lectureService.updateLecture(lecture);
-        return "redirect:/courses-manage/" + course.getId();
+    @ResponseBody
+    @RequestMapping(value = "/update-lecture", method = RequestMethod.PUT)
+    public Lecture updateLecture(@RequestBody LectureInfo lectureInfo) {
+        return lectureService.updateLecture(lectureInfo);
     }
 
 //    @GetMapping("/delete-lecture")
@@ -88,7 +85,7 @@ public class LectureManageController {
 
         int id = lectureFileInfo.getLectureId();
         lectureFileService.save(lectureFileInfo, file, id);
-        return "redirect:/edit-lecture/" + id;
+        return "redirect:/courses-manage/{TODO}/edit-lecture/" + id;
     }
 
     @GetMapping("/displayLecture")
@@ -115,7 +112,7 @@ public class LectureManageController {
     public String deleteLectureFile(@RequestParam("id") int lectureFileId) {
         int lectureId = lectureFileService.findById(lectureFileId).getLecture().getId();
         lectureFileService.delete(lectureFileId);
-        return "redirect:/edit-lecture/" + lectureId;
+        return "redirect:/courses-manage/TODO/edit-lecture/" + lectureId;
     }
 
 }

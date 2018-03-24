@@ -30,24 +30,12 @@ public class CourseManageController {
         return "teacher/coursesManage";
     }
 
-//    @PostMapping("/add-course")
-//    public String addNewCourse(@ModelAttribute("course") Course course){
-//        courseService.addCourse(course);
-//        return "redirect:/courses-manage";
-//    }
-
     @ResponseBody
     @PostMapping("/add-course")
     public Course addCourseREST(@RequestBody CourseInfo courseInfo) {
         Course course = courseService.addCourse(courseInfo);
         return course;
     }
-
-//    @GetMapping("/delete-course")
-//    public String deleteCourseById(@RequestParam int id){
-//        courseService.deleteCourse(id);
-//        return "redirect:/courses-manage";
-//    }
 
     @ResponseBody
     @RequestMapping(method = RequestMethod.DELETE, value = "/delete-course")
@@ -62,15 +50,12 @@ public class CourseManageController {
         model.addAttribute("course", courseService.getCourse(id));
         model.addAttribute("lectures", lectureService.getAllLectures(id));
         model.addAttribute("labWorks", labWorkService.findAllByCourseId(id));
-
-        model.addAttribute("newLecture", LectureInfo.newInstanceWithCourseId(id));
-        model.addAttribute("newLabWorkInfo", LabWorkInfo.newInstanceWithCourseId(id));
         return "teacher/courseEdit";
     }
 
-    @PostMapping("/update-course")
-    public String updateCourse(@ModelAttribute("course") Course course){
-        courseService.updateCourse(course);
-        return "redirect:/courses-manage/" + course.getId();
+    @ResponseBody
+    @RequestMapping(value = "/update-course", method = RequestMethod.PUT)
+    public Course updateCourse(@RequestBody CourseInfo courseInfo){
+        return courseService.updateCourse(courseInfo);
     }
 }
