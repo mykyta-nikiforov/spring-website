@@ -43,10 +43,10 @@ $(document).ready(function() {
     // Events of the button to add new lecture
     $('#add-lecture-button').click(function() {
         if($('#add-lecture-name').val() == ''){
-            $('#add-lecture-input-warning').css("display", "inline");
+            $('#add-lecture-input-warning').css("visibility", "visible");
             // alert("Input values!")
         } else {
-            $('#add-lecture-input-warning').css("display", "none");
+            $('#add-lecture-input-warning').css("visibility", "hidden");
             $.ajax({
                 url: '/add-lecture',
                 type: 'POST',

@@ -9,6 +9,7 @@ import io.nikiforov.edu.service.CourseService;
 import io.nikiforov.edu.service.LectureFileService;
 import io.nikiforov.edu.service.LectureService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -78,14 +79,25 @@ public class LectureManageController {
         return "deleted";
     }
 
-    @PostMapping("/uploadLectureFile")
-    public String uploadLectureFile(@RequestParam("file") MultipartFile file,
-                                    @ModelAttribute("lectureFileInfo") LectureFileInfo
-                                            lectureFileInfo) throws IOException {
+//    @PostMapping("/uploadLectureFile")
+//    public String uploadLectureFile(@RequestParam("file") MultipartFile file,
+//                                    @ModelAttribute("lectureFileInfo") LectureFileInfo
+//                                            lectureFileInfo) throws IOException {
+//
+//        int id = lectureFileInfo.getLectureId();
+//        lectureFileService.save(lectureFileInfo, file, id);
+//        return "redirect:/courses-manage/{TODO}/edit-lecture/" + id;
+//    }
 
-        int id = lectureFileInfo.getLectureId();
-        lectureFileService.save(lectureFileInfo, file, id);
-        return "redirect:/courses-manage/{TODO}/edit-lecture/" + id;
+    @ResponseBody
+    @RequestMapping(value = "/add-lecture-file", method = RequestMethod.POST,
+                    consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public LectureFile uploadLectureFile(@RequestPart("lectureFileInfo")
+                                                                   LectureFileInfo lectureFileInfo,
+                                                       @RequestPart("file") MultipartFile file)
+                                                       throws IOException {
+        System.out.println("Hi from controller");
+        return lectureFileService.save(lectureFileInfo, file);
     }
 
     @GetMapping("/displayLecture")

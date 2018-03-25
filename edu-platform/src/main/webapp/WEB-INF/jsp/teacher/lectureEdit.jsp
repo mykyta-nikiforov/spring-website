@@ -28,25 +28,30 @@
     </form>
 
     <h3>Download files</h3>
-    <sf:form action="/uploadLectureFile" method="POST" enctype="multipart/form-data"
-             modelAttribute="lectureFileInfo">
+    <form method="POST" id="add-file-form" enctype="multipart/form-data">
 
         <div class="form-group row">
             <label class="col-form-label col-md-3">Description</label>
             <div class="col-md-5">
-                <sf:textarea type="text" class="form-control" rows="4" path="description"/>
+                <textarea type="text" id="add-file-desc" class="form-control" rows="4"></textarea>
             </div>
         </div>
 
-
-        <sf:input type="hidden" path="lectureId" name="id" value="${lecture.id}" />
-        <input type="file" name="file"/>
-        <input type="submit" value="Upload"/>
-    </sf:form>
+        <input type="file" id="add-file-file"/>
+        <input type="button" id="add-file-button" class="btn btn-dark" value="Upload"/>
+        <div id="add-file-input-warning" class="alert alert-warning" role="alert"
+             style="visibility: hidden; opacity: 1.0">
+            Cannot be empty!
+        </div>
+        <div id="add-file-input-updated" class="alert alert-success" role="alert"
+             style="visibility: hidden; opacity: 1.0">
+            Successfully updated.
+        </div>
+    </form>
 
     <h3>All files</h3>
     <div class="table-responsive">
-        <table class="table table-bordered table-striped text-left">
+        <table id="files-table" class="table table-bordered table-striped text-left">
             <thead>
             <tr>
                 <th>Id</th>
@@ -63,7 +68,7 @@
                     <td><a href="/displayLecture?id=${lectureFile.id}" target="_blank">${lectureFile.fileName}</a></td>
                     <td>${lectureFile.description}</td>
                     <td>${lectureFile.contentType}</td>
-                    <td><a href="/deleteLectureFile?id=${lectureFile.id}"><span class="oi oi-trash"></span></a></td>
+                    <td><button lecture-file-id='${lectureFile.id}' class="remove-lecture-file-button btn btn-outline-danger"><span><i class="oi oi-trash"></i></span></button></td>
                 </tr>
             </c:forEach>
             </tbody>

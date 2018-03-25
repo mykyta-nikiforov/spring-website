@@ -7,6 +7,11 @@ public class LectureFileInfo {
     public LectureFileInfo() {
     }
 
+    public LectureFileInfo(int lectureId, String description) {
+        this.lectureId = lectureId;
+        this.description = description;
+    }
+
     public int getLectureId() {
         return lectureId;
     }

@@ -6,7 +6,7 @@ var courseId = parseInt(url.match(/courses-manage\/\d+/)[0].match(/\d+/));
 var lectureId = parseInt(url.match(/edit-lecture\/\d+/)[0].match(/\d+/));
 
 $(document).ready(function () {
-    // Events of the button to update the course
+    // Events of the button to update the lecture
     $('#update-lecture-button').click(function () {
         if ($('#update-lecture-name').val() == '') {
             $('#update-lecture-input-warning').css("visibility", "visible")
@@ -36,5 +36,51 @@ $(document).ready(function () {
                 }
             });
         }
-    })
+    });
+
+    // Events of the button to add new lecture file
+    $('#add-file-button').click(function() {
+        if($('#add-file-desc').val() == '' || $('#add-file-file')[0].files.length == 0){
+            $('#add-file-input-warning').css("visibility", "visible");
+        } else {
+            $('#add-file-input-warning').css("visibility", "hidden");
+            // Variable to store the file itself and JSON of its fileInfo
+            var formData = new FormData();
+            var lectureFileInfo = {
+                description: $('#add-file-desc').val(),
+                lectureId: lectureId
+            };
+            formData.append("lectureFileInfo", new Blob(
+                [JSON.stringify(lectureFileInfo)],
+                {type: "application/json"}));
+            formData.append("file", $('#add-file-file').prop('files')[0]);
+
+            $.ajax({
+                url: '/add-lecture-file',
+                type: 'POST',
+                contentType: false,
+                processData: false,
+                data: formData,
+                success: function (lectureFile) {
+                    $('#files-table').find('tbody').append('<tr>\n' +
+                        '                    <td>' + lectureFile.id + '</td>\n' +
+                        '                    <td><a href="/displayLecture?id=' + lectureFile.id + '" target="_blank">' + lectureFile.fileName + '</a></td>\n' +
+                        '                    <td>' + lectureFile.description + '</td>\n' +
+                        '                    <td>' + lectureFile.contentType + '</td>\n' +
+                        '                    <td><button lecture-file-id=\'' + lectureFile.id + '\' class="remove-lecture-file-button btn btn-outline-danger"><span><i class="oi oi-trash"></i></span></button></td>\n' +
+                        '                    </tr>');
+
+                    var newElement = $('[lecture-file-id=\'' + lectureFile.id + '\']');
+                    newElement.click(function () {
+                        makeRemoveLectureButton(lecture.id, newElement);
+                    });
+                    $('#add-file-form')[0].reset();
+                    console.log(lectureFile);
+                },
+                error: function () {
+                    alert("bad from `add-lecture-button`.click");
+                }
+            });
+        }
+    });
 });

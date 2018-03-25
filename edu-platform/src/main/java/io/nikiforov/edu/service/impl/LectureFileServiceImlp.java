@@ -38,15 +38,16 @@ public class LectureFileServiceImlp implements LectureFileService {
     }
 
     @Override
-    public void save(LectureFileInfo lectureFileInfo, MultipartFile file, int lectureId) throws IOException {
-        Lecture lecture = lectureService.getLecture(lectureId);
+    public LectureFile save(LectureFileInfo lectureFileInfo, MultipartFile file)
+            throws IOException {
+        System.out.println("Hello from save()");
+        Lecture lecture = lectureService.getLecture(lectureFileInfo.getLectureId());
         LectureFile lectureFile = new LectureFile(lectureFileInfo);
         lectureFile.setLecture(lecture);
         lectureFile.setFileName(file.getOriginalFilename());
         lectureFile.setContentType(file.getContentType());
         lectureFile.setData(file.getBytes());
-        System.out.println(lectureFile);
-        lectureFileRepository.save(lectureFile);
+        return lectureFileRepository.save(lectureFile);
     }
 
     @Override
