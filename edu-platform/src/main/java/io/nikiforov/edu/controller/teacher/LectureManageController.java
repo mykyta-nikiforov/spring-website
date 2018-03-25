@@ -79,16 +79,6 @@ public class LectureManageController {
         return "deleted";
     }
 
-//    @PostMapping("/uploadLectureFile")
-//    public String uploadLectureFile(@RequestParam("file") MultipartFile file,
-//                                    @ModelAttribute("lectureFileInfo") LectureFileInfo
-//                                            lectureFileInfo) throws IOException {
-//
-//        int id = lectureFileInfo.getLectureId();
-//        lectureFileService.save(lectureFileInfo, file, id);
-//        return "redirect:/courses-manage/{TODO}/edit-lecture/" + id;
-//    }
-
     @ResponseBody
     @RequestMapping(value = "/add-lecture-file", method = RequestMethod.POST,
                     consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
@@ -111,20 +101,20 @@ public class LectureManageController {
 //        response.set
         response.getOutputStream().close();
     }
-//
-//    @GetMapping(value = "/displayLecture", produces="application/pdf")
-//    @ResponseBody
-//    public byte[] showImage(@RequestParam("id") int lectureId)
-//            throws IOException {
-//        LectureFile lectureFile = lectureFileService.findById(lectureId);
-//        return lectureFile.getData();
-//    }
 
-    @GetMapping("/deleteLectureFile")
-    public String deleteLectureFile(@RequestParam("id") int lectureFileId) {
-        int lectureId = lectureFileService.findById(lectureFileId).getLecture().getId();
-        lectureFileService.delete(lectureFileId);
-        return "redirect:/courses-manage/TODO/edit-lecture/" + lectureId;
+    @GetMapping(value = "/displayPDF", produces="application/pdf")
+    @ResponseBody
+    public byte[] showImage(@RequestParam("id") int lectureId)
+            throws IOException {
+        LectureFile lectureFile = lectureFileService.findById(lectureId);
+        return lectureFile.getData();
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/delete-lecture-file/{id}", method = RequestMethod.DELETE)
+    public boolean deleteLectureFile(@PathVariable("id") int id) {
+        lectureFileService.delete(id);
+        return true;
     }
 
 }

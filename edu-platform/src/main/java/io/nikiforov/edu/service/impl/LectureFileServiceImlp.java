@@ -51,7 +51,8 @@ public class LectureFileServiceImlp implements LectureFileService {
     }
 
     @Override
-    public void delete(int id) {
+    public boolean delete(int id) {
         lectureFileRepository.delete(id);
+        return true;
     }
 }

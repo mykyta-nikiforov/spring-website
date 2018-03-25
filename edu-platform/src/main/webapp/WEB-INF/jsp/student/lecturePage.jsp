@@ -12,7 +12,10 @@
     <embed src="" type="application/pdf" width="900px" height="500px"></embed>
 </div>
 <%--</object>--%>
-<p>CONTENT</p>
+<div class="container">
+    <embed id="pdf-container" width="900px" height="500px" name="plugin" src="" type="application/pdf">
+</div>
+
 
 <%--<object data="/displayLecture?id=3" type="application/pdf" width="750px" height="750px">--%>
     <%--<embed src="/displayLecture?id=3" type="application/pdf">--%>
@@ -32,4 +35,7 @@
 
 <%--<script src="/static/js/pdfobject.js"></script>--%>
 <%--<script>PDFObject.embed("/displayImage?id=3", "#example1");</script>--%>
+
+<script src="../../../static/js/pdfobject.js"></script>
+<script src="../../../static/js/student/lecturePage.js"></script>
 <%@include file="../templates/footer.jsp"%>

@@ -5,7 +5,39 @@ var courseId = parseInt(url.match(/courses-manage\/\d+/)[0].match(/\d+/));
 // Get lectureId from url path
 var lectureId = parseInt(url.match(/edit-lecture\/\d+/)[0].match(/\d+/));
 
+
+
+
+
 $(document).ready(function () {
+
+    var req = new XMLHttpRequest();
+
+    req.onreadystatechange = function () {
+        if(this.readyState == 4 && this.status == 200){
+            var blob = req.response;
+            console.log(blob.size);
+            var link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            console.log(link.href);
+            $('#pdf-container').attr('src', link.href);
+
+            // var myPDF = new PDFObject({
+            //     url: link.href
+            // }).embed('pdf-container');
+            // $('#img-block').attr('src', link.href);
+            // console.log($('#pdf-container-obj').attr('data'));
+        }
+    };
+
+    req.open("GET", "/displayPDF?id=18", true);
+    req.responseType = "blob";
+    req.send();
+
+
+
+
+
     // Events of the button to update the lecture
     $('#update-lecture-button').click(function () {
         if ($('#update-lecture-name').val() == '') {
@@ -72,7 +104,7 @@ $(document).ready(function () {
 
                     var newElement = $('[lecture-file-id=\'' + lectureFile.id + '\']');
                     newElement.click(function () {
-                        makeRemoveLectureButton(lecture.id, newElement);
+                        makeRemoveLectureFileButton(lectureFile.id, newElement);
                     });
                     $('#add-file-form')[0].reset();
                     console.log(lectureFile);
@@ -83,4 +115,23 @@ $(document).ready(function () {
             });
         }
     });
+
+    $('.remove-lecture-file-button').click(function() {
+        var button = $(this);
+        var id = $(this).attr('lecture-file-id');
+        makeRemoveLectureFileButton(id, button);
+    })
 });
+
+function makeRemoveLectureFileButton(id, element) {
+    $.ajax({
+        url: '/delete-lecture-file/' + id,
+        type: 'DELETE',
+        success: function () {
+            element.parentsUntil('tbody').remove();
+        },
+        error: function () {
+            alert("bad from makeRemoveLectureFileButton()");
+        }
+    });
+}

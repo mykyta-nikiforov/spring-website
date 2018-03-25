@@ -77,6 +77,7 @@
 
 </div>
 
+
 <script src="../../../static/js/teacher/lectureEdit.js"></script>
 
 <%@include file="../templates/footer.jsp"%>
