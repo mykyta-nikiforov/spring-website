@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface LectureFileRepository extends JpaRepository<LectureFile, Integer> {
     List<LectureFile> findAllByLectureId(int id);
+
+    List<LectureFile> findAllByLectureIdAndContentType(int lectureId, String contentType);
 }

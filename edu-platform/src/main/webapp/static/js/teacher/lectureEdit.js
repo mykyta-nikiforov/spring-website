@@ -5,38 +5,7 @@ var courseId = parseInt(url.match(/courses-manage\/\d+/)[0].match(/\d+/));
 // Get lectureId from url path
 var lectureId = parseInt(url.match(/edit-lecture\/\d+/)[0].match(/\d+/));
 
-
-
-
-
 $(document).ready(function () {
-
-    var req = new XMLHttpRequest();
-
-    req.onreadystatechange = function () {
-        if(this.readyState == 4 && this.status == 200){
-            var blob = req.response;
-            console.log(blob.size);
-            var link = document.createElement('a');
-            link.href = window.URL.createObjectURL(blob);
-            console.log(link.href);
-            $('#pdf-container').attr('src', link.href);
-
-            // var myPDF = new PDFObject({
-            //     url: link.href
-            // }).embed('pdf-container');
-            // $('#img-block').attr('src', link.href);
-            // console.log($('#pdf-container-obj').attr('data'));
-        }
-    };
-
-    req.open("GET", "/displayPDF?id=18", true);
-    req.responseType = "blob";
-    req.send();
-
-
-
-
 
     // Events of the button to update the lecture
     $('#update-lecture-button').click(function () {
@@ -111,6 +80,38 @@ $(document).ready(function () {
                 },
                 error: function () {
                     alert("bad from `add-lecture-button`.click");
+                }
+            });
+        }
+    });
+
+    $('#add-pdf-button').click(function () {
+        if ($('#select-pdf-file').val() == '') {
+            // $('#update-lecture-input-warning').css("visibility", "visible")
+            //     .animate({opacity: 1.0}, 500);
+            alert("Input values!")
+        } else {
+            // $('#update-lecture-input-warning').css("visibility", "hidden");
+            $.ajax({
+                url: '/add-lecture-pdf',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    lectureFileId: $('#select-pdf-file').val(),
+                    lectureId: lectureId,
+                }),
+                success: function (pdfFile) {
+                    console.log(pdfFile);
+                    // $('#update-lecture-name').val(lecture.name);
+                    //
+                    // $('#update-lecture-input-updated').css({
+                    //     visibility: "visible",
+                    //     opacity: 1.0
+                    // }).animate({opacity: 0.0}, 3000);
+                    alert("success!");
+                },
+                error: function () {
+                    alert("bad from `add-pdf-button`.click");
                 }
             });
         }

@@ -1,12 +1,17 @@
 package io.nikiforov.edu.controller.teacher;
 
+import io.nikiforov.edu.dao.LectureFileRepository;
+import io.nikiforov.edu.dao.LecturePDFFileRepository;
 import io.nikiforov.edu.entity.Course;
 import io.nikiforov.edu.entity.Lecture;
 import io.nikiforov.edu.entity.LectureFile;
+import io.nikiforov.edu.entity.LecturePDFFile;
 import io.nikiforov.edu.model.LectureFileInfo;
 import io.nikiforov.edu.model.LectureInfo;
+import io.nikiforov.edu.model.LecturePDFFileInfo;
 import io.nikiforov.edu.service.CourseService;
 import io.nikiforov.edu.service.LectureFileService;
+import io.nikiforov.edu.service.LecturePDFFileService;
 import io.nikiforov.edu.service.LectureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -30,30 +35,27 @@ public class LectureManageController {
     @Autowired
     private CourseService courseService;
 
-//    @PostMapping("/add-lecture")
-//    public String addLecture(@ModelAttribute("newLecture") LectureInfo lectureInfo) {
-//        lectureService.saveLectureFromModel(lectureInfo);
-//        return "redirect:/courses-manage/" + lectureInfo.getCourseId();
-//    }
+    @Autowired
+    private LectureFileRepository lectureFileRepository;
+
+    @Autowired
+    private LecturePDFFileService lecturePDFFileService;
 
     @ResponseBody
     @RequestMapping(method = RequestMethod.POST, value = "/add-lecture")
     public Lecture addLecture(@RequestBody LectureInfo lectureInfo) {
-//        lectureInfo.setCourseId(course_id);
-        System.out.println(lectureInfo);
-
-        Lecture newLecture = lectureService.addLecture(lectureInfo);
-        System.out.println("From Controller: " + newLecture);
-        return newLecture;
+        return lectureService.addLecture(lectureInfo);
     }
 
-
+    // TODO check of courseId and id
     @GetMapping("/courses-manage/{courseId}/edit-lecture/{id}")
     public String editCoursePage(@PathVariable("courseId") int courseId,
                                  @PathVariable("id") int id, Model model) {
         model.addAttribute("lecture", lectureService.getLecture(id));
         model.addAttribute("lectureFileInfo", new LectureFileInfo());
         model.addAttribute("lectureFiles", lectureFileService.findAllByLectureId(id));
+        model.addAttribute("pdfFiles",
+                lectureFileRepository.findAllByLectureIdAndContentType(id, "application/pdf"));
         return "teacher/lectureEdit";
     }
 
@@ -62,14 +64,6 @@ public class LectureManageController {
     public Lecture updateLecture(@RequestBody LectureInfo lectureInfo) {
         return lectureService.updateLecture(lectureInfo);
     }
-
-//    @GetMapping("/delete-lecture")
-//    public String deleteLecture(@RequestParam("id") int id) {
-//        // Get course of this lecture
-//        Course course = courseService.getCourseByLectureId(id);
-//        lectureService.deleteLecture(id);
-//        return "redirect:/courses-manage/" + course.getId();
-//    }
 
     @ResponseBody
     @RequestMapping(method = RequestMethod.DELETE, value = "/delete-lecture/{id}")
@@ -86,7 +80,6 @@ public class LectureManageController {
                                                                    LectureFileInfo lectureFileInfo,
                                                        @RequestPart("file") MultipartFile file)
                                                        throws IOException {
-        System.out.println("Hi from controller");
         return lectureFileService.save(lectureFileInfo, file);
     }
 
@@ -98,7 +91,6 @@ public class LectureManageController {
         response.setContentType(lectureFile.getContentType());
         response.getOutputStream().write(lectureFileData);
         response.setContentLength(lectureFileData.length);
-//        response.set
         response.getOutputStream().close();
     }
 
@@ -115,6 +107,13 @@ public class LectureManageController {
     public boolean deleteLectureFile(@PathVariable("id") int id) {
         lectureFileService.delete(id);
         return true;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/add-lecture-pdf", method = RequestMethod.POST)
+    public LecturePDFFile addLecturePDF(@RequestBody LecturePDFFileInfo lecturePDFFileInfo) {
+        System.out.println("Hello from addLecturePDF()");
+        return lecturePDFFileService.save(lecturePDFFileInfo);
     }
 
 }

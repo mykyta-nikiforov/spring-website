@@ -6,6 +6,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.nikiforov.edu.entity.Course;
 import io.nikiforov.edu.model.LectureInfo;
+import javassist.expr.Cast;
+
+import java.util.List;
 
 @Entity
 public class Lecture {
@@ -16,8 +19,16 @@ public class Lecture {
 
     @ManyToOne
     @JoinColumn(name = "course_id")
-    @JsonIgnore
     private Course course;
+
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "lecture")
+    private List<LectureFile> lectureFiles;
+
+    @JsonIgnore
+    @OneToOne(cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    LecturePDFFile lecturePDFFile;
 
 	public Lecture() {
 	}
@@ -54,12 +65,29 @@ public class Lecture {
 		this.course = course;
 	}
 
+    public List<LectureFile> getLectureFiles() {
+        return lectureFiles;
+    }
+
+    public void setLectureFiles(List<LectureFile> lectureFiles) {
+        this.lectureFiles = lectureFiles;
+    }
+
+    public LecturePDFFile getLecturePDFFile() {
+        return lecturePDFFile;
+    }
+
+    public void setLecturePDFFile(LecturePDFFile lecturePDFFile) {
+        this.lecturePDFFile = lecturePDFFile;
+    }
+
     @Override
     public String toString() {
         return "Lecture{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", course=" + course +
+                ", lecturePDFFile=" + lecturePDFFile +
                 '}';
     }
 }

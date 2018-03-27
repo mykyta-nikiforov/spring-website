@@ -1,5 +1,6 @@
 package io.nikiforov.edu.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.nikiforov.edu.model.CourseInfo;
 
@@ -15,9 +16,11 @@ public class Course {
 	@Column(length = 1000)
 	private String description;
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "course")
     private List<Lecture> lectures;
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "course")
     private List<LabWork> labWorks;
 

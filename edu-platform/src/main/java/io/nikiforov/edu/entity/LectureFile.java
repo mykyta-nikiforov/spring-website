@@ -1,5 +1,6 @@
 package io.nikiforov.edu.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.nikiforov.edu.model.LectureFileInfo;
 import org.hibernate.annotations.Type;
 
@@ -13,10 +14,12 @@ public class LectureFile {
     private int id;
     private String fileName;
     private String description;
+
     @Lob
     @Column(columnDefinition = "LONGBLOB")
     private byte[] data;
     private String contentType;
+
     @ManyToOne
     @JoinColumn(name = "lecture_id")
     private Lecture lecture;
@@ -81,7 +84,7 @@ public class LectureFile {
         return "LectureFile{" +
                 "id=" + id +
                 ", fileName='" + fileName + '\'' +
-                ", data=" + Arrays.toString(data) +
+//                ", data=" + Arrays.toString(data) +
                 ", contentType='" + contentType + '\'' +
                 ", lecture=" + lecture +
                 '}';
