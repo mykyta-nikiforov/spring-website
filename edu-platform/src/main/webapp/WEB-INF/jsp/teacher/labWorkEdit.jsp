@@ -7,33 +7,32 @@
 <div class="container ">
     <h3>Edit laboratory work:</h3>
 
-    <sf:form method="post" action="/update-labwork" modelAttribute="labWork">
-        <input type="hidden" name="id" value="${labWork.id}">
-        <input type="hidden" name="courseId" value="${labWork.courseId}">
-
+    <form method="put" id="update-labwork-form">
         <div class="form-group row">
             <label class="col-form-label col-md-3">Name</label>
             <div class="col-md-5">
-                <sf:input type="text" class="form-control" path="name" value="${labWork.name}"/>
+                <input type="text" id="update-labwork-name" class="form-control"
+                       value="${labWork.name}"/>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-form-label col-md-3">Description</label>
             <div class="col-md-5">
-                <sf:input type="text" class="form-control" path="description"
-                value="${labWork.description}"/>
+                <input type="text" id="update-labwork-desc" class="form-control"
+                       value="${labWork.description}"/>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-form-label col-md-3">Deadline</label>
             <div class="col-md-5">
-                <sf:input type="date" class="form-control" path="deadLine" value="${labWork.deadLine}"/>
+                <input type="date" id="update-labwork-deadline" class="form-control"
+                       value="${labWork.deadLine}"/>
             </div>
         </div>
         <div class="form-group row">
-            <input type="submit" class="btn btn-dark" value="Save"/>
+            <input type="button" id="update-labwork-button" class="btn btn-dark" value="Save"/>
         </div>
-    </sf:form>
+    </form>
 
     <%--<h3>Download files</h3>--%>
     <%--<sf:form action="/uploadLectureFile" method="POST" enctype="multipart/form-data"--%>
