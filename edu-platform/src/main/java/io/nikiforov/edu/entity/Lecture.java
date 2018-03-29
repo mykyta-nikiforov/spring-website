@@ -25,11 +25,6 @@ public class Lecture {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "lecture")
     private List<LectureFile> lectureFiles;
 
-    @JsonIgnore
-    @OneToOne(cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn
-    LecturePDFFile lecturePDFFile;
-
 	public Lecture() {
 	}
 	
@@ -73,21 +68,12 @@ public class Lecture {
         this.lectureFiles = lectureFiles;
     }
 
-    public LecturePDFFile getLecturePDFFile() {
-        return lecturePDFFile;
-    }
-
-    public void setLecturePDFFile(LecturePDFFile lecturePDFFile) {
-        this.lecturePDFFile = lecturePDFFile;
-    }
-
     @Override
     public String toString() {
         return "Lecture{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", course=" + course +
-                ", lecturePDFFile=" + lecturePDFFile +
                 '}';
     }
 }

@@ -1,6 +1,8 @@
 package io.nikiforov.edu.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -8,15 +10,14 @@ import javax.persistence.*;
 public class LecturePDFFile {
 
     @Id
-    @Column(name = "id")
     private int id;
 
     @MapsId
-    @OneToOne
-    @JoinColumn(name = "id")
+    @OneToOne(fetch = FetchType.LAZY)
     private Lecture lecture;
 
     @OneToOne
+//    @OnDelete(action = OnDeleteAction.CASCADE)
     private LectureFile lectureFile;
 
     public LecturePDFFile() {
@@ -56,8 +57,8 @@ public class LecturePDFFile {
     public String toString() {
         return "LecturePDFFile{" +
                 "id=" + id +
-                ", lecture=" + lecture +
-                ", lectureFile=" + lectureFile +
+//                ", lectureId=" + lecture.getId() +
+                ", lectureFileId=" + lectureFile.getId() +
                 '}';
     }
 }

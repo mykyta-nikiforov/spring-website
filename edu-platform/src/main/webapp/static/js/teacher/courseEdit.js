@@ -98,7 +98,7 @@ $(document).ready(function() {
                 success: function (labwork) {
                     $('#labworks-table').find('tbody').append('<tr>\n' +
                         '                    <td>' + labwork.id + '</td>\n' +
-                        '                    <td><a href="/edit-labwork/' + labwork.id + '">' + labwork.name + '</a></td>\n' +
+                        '                    <td><a href="/courses-manage/' + courseId + '/edit-labwork/' + labwork.id + '">' + labwork.name + '</a></td>\n' +
                         '                    <td><button labwork-id=\'' + labwork.id + '\' class="remove-labwork-button btn btn-outline-danger"><span><i class="oi oi-trash"></i></span></button></td>\n' +
                         '                </tr>');
 

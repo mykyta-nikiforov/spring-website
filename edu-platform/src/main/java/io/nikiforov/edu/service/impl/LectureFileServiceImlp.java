@@ -3,8 +3,10 @@ package io.nikiforov.edu.service.impl;
 import io.nikiforov.edu.dao.LectureFileRepository;
 import io.nikiforov.edu.entity.Lecture;
 import io.nikiforov.edu.entity.LectureFile;
+import io.nikiforov.edu.entity.LecturePDFFile;
 import io.nikiforov.edu.model.LectureFileInfo;
 import io.nikiforov.edu.service.LectureFileService;
+import io.nikiforov.edu.service.LecturePDFFileService;
 import io.nikiforov.edu.service.LectureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +23,9 @@ public class LectureFileServiceImlp implements LectureFileService {
 
     @Autowired
     LectureService lectureService;
+
+    @Autowired
+    LecturePDFFileService lecturePDFFileService;
 
     @Override
     public void save(LectureFile lectureFile) {
@@ -51,8 +56,13 @@ public class LectureFileServiceImlp implements LectureFileService {
     }
 
     @Override
-    public boolean delete(int id) {
+    public void delete(int id) {
+        // Check if this file is set as LecturePDFFile. If yes, delete PDFFile
+        // to remove foreign key
+        LecturePDFFile pdfFile = lecturePDFFileService.findByLectureFileId(id);
+        if (pdfFile != null) {
+            lecturePDFFileService.delete(pdfFile.getId());
+        }
         lectureFileRepository.delete(id);
-        return true;
     }
 }

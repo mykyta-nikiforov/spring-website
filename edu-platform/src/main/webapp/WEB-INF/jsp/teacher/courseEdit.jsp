@@ -82,7 +82,7 @@
             <c:forEach var="labWork" items="${labWorks}">
                 <tr>
                     <td>${labWork.id}</td>
-                    <td><a href="/edit-labwork/${labWork.id}">${labWork.name}</a></td>
+                    <td><a href="/courses-manage/${labWork.course.id}/edit-labwork/${labWork.id}">${labWork.name}</a></td>
                     <td><button labWork-id='${labWork.id}' class="remove-labwork-button btn btn-outline-danger"><span><i class="oi oi-trash"></i></span></button></td>
 
                 </tr>

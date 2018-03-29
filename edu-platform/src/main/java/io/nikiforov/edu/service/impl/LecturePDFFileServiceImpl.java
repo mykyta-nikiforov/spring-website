@@ -25,7 +25,6 @@ public class LecturePDFFileServiceImpl implements LecturePDFFileService {
 
     @Override
     public LecturePDFFile save(LecturePDFFileInfo lecturePDFFileInfo) {
-        System.out.println("Hello from LecturePDF service");
         int lectureId = lecturePDFFileInfo.getLectureId();
         LecturePDFFile result;
         if(findOne(lectureId) != null){
@@ -35,20 +34,25 @@ public class LecturePDFFileServiceImpl implements LecturePDFFileService {
             Lecture lecture = lectureService.getLecture(lectureId);
             result.setLecture(lecture);
         }
-
-        System.out.println("1");
-
         result.setLectureFile(lectureFileService.findById(lecturePDFFileInfo.getLectureFileId()));
-
-        System.out.println("2");
         result = lecturePDFFileRepository.save(result); // To get back saved LecturePDFFile with "id"
-
-        System.out.println("3");
         return result;
     }
 
     @Override
     public LecturePDFFile findOne(int id) {
         return lecturePDFFileRepository.findOne(id);
+    }
+
+    public LecturePDFFile findByLectureFileId(int id) {
+        return lecturePDFFileRepository.findByLectureFileId(id);
+    }
+
+    @Override
+    public void delete(int id) {
+//        LecturePDFFile pdfFile = lecturePDFFileRepository.findOne(id);
+//        pdfFile.setLectureFile(null);
+//        lecturePDFFileRepository.save(pdfFile);
+        lecturePDFFileRepository.delete(id);
     }
 }

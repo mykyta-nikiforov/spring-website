@@ -10,8 +10,8 @@ public class LabWorkInfo {
     private int id;
     private String name;
     private String description;
-    private int courseId;
     private String deadLine;
+    private int courseId;
 
     public LabWorkInfo() {
     }

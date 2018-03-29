@@ -32,7 +32,7 @@
         <div class="form-group row">
             <label class="col-form-label col-md-3">File</label>
             <select id="select-pdf-file">
-                <option value="${lecture.lecturePDFFile.id}">${lecture.lecturePDFFile.lectureFile.fileName}</option>
+                <%--<option value="${lecture.lecturePDFFile.id}">${lecture.lecturePDFFile.lectureFile.fileName}</option>--%>
                 <c:forEach var="pdfFile" items="${pdfFiles}">
                     <%--Check in order to get rid of double showing the current curator of group--%>
                     <%--<c:if test="${group.curator.id != teacher.id}">--%>

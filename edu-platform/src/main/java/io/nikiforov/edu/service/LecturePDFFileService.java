@@ -7,4 +7,8 @@ public interface LecturePDFFileService {
     LecturePDFFile save(LecturePDFFileInfo lecturePDFFileInfo);
 
     LecturePDFFile findOne(int id);
+
+    LecturePDFFile findByLectureFileId(int id);
+
+    void delete(int id);
 }

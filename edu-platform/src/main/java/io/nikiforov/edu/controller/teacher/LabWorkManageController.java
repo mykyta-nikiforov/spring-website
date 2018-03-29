@@ -25,7 +25,8 @@ public class LabWorkManageController {
         return labWorkService.saveFromModel(labWorkInfo);
     }
 
-    @GetMapping("/edit-labwork/{id}")
+    // TODO check of courseId and id
+    @GetMapping("/courses-manage/{courseId}/edit-labwork/{id}")
     public String editLabWork(@PathVariable("id") int id, Model model) {
         model.addAttribute("labWork",
                 new LabWorkInfo(labWorkService.getLabWork(id)));
@@ -41,9 +42,9 @@ public class LabWorkManageController {
         return "deleted";
     }
 
-    @PostMapping("update-labwork")
-    public String updateLabWork(@ModelAttribute("labWork") LabWorkInfo labWorkInfo) {
-        labWorkService.saveFromModel(labWorkInfo);
-        return "redirect:/edit-labwork/" + labWorkInfo.getId();
+    @ResponseBody
+    @RequestMapping(value = "/update-labwork", method = RequestMethod.PUT)
+    public LabWork updateLabWork(@RequestBody LabWorkInfo labWorkInfo) {
+        return labWorkService.saveFromModel(labWorkInfo);
     }
 }

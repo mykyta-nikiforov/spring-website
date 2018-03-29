@@ -32,6 +32,14 @@
         <div class="form-group row">
             <input type="button" id="update-labwork-button" class="btn btn-dark" value="Save"/>
         </div>
+        <div id="update-labwork-input-warning" class="alert alert-warning" role="alert"
+             style="visibility: hidden; opacity: 0.0">
+            Cannot be empty!
+        </div>
+        <div id="update-labwork-input-updated" class="alert alert-success" role="alert"
+             style="visibility: hidden; opacity: 1.0">
+            Successfully updated.
+        </div>
     </form>
 
     <%--<h3>Download files</h3>--%>
@@ -78,5 +86,7 @@
     <%--</div>--%>
 
 </div>
+
+<script src="../../../static/js/teacher/labWorkEdit.js"></script>
 
 <%@include file="../templates/footer.jsp"%>

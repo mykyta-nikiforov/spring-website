@@ -16,5 +16,5 @@ public interface LectureFileService {
 
     LectureFile save(LectureFileInfo lectureFileInfo, MultipartFile file) throws IOException;
 
-    boolean delete(int id);
+    void delete(int id);
 }

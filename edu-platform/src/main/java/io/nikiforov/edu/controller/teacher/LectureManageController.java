@@ -75,11 +75,11 @@ public class LectureManageController {
 
     @ResponseBody
     @RequestMapping(value = "/add-lecture-file", method = RequestMethod.POST,
-                    consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+            consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public LectureFile uploadLectureFile(@RequestPart("lectureFileInfo")
-                                                                   LectureFileInfo lectureFileInfo,
-                                                       @RequestPart("file") MultipartFile file)
-                                                       throws IOException {
+                                                 LectureFileInfo lectureFileInfo,
+                                         @RequestPart("file") MultipartFile file)
+            throws IOException {
         return lectureFileService.save(lectureFileInfo, file);
     }
 
@@ -94,7 +94,7 @@ public class LectureManageController {
         response.getOutputStream().close();
     }
 
-    @GetMapping(value = "/displayPDF", produces="application/pdf")
+    @GetMapping(value = "/displayPDF", produces = "application/pdf")
     @ResponseBody
     public byte[] showImage(@RequestParam("id") int lectureId)
             throws IOException {
@@ -105,7 +105,9 @@ public class LectureManageController {
     @ResponseBody
     @RequestMapping(value = "/delete-lecture-file/{id}", method = RequestMethod.DELETE)
     public boolean deleteLectureFile(@PathVariable("id") int id) {
+        System.out.println("Hello from controller");
         lectureFileService.delete(id);
+        System.out.println("Bye from controller!");
         return true;
     }
 
@@ -116,4 +118,10 @@ public class LectureManageController {
         return lecturePDFFileService.save(lecturePDFFileInfo);
     }
 
+    @ResponseBody
+    @GetMapping("/blablalink/{id}")
+    public String blabla(@PathVariable("id") int id) {
+        lecturePDFFileService.delete(id);
+        return "52";
+    }
 }

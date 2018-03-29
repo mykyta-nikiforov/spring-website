@@ -15,9 +15,8 @@ public class LabWork {
     private String name;
     private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "course_id")
-    @JsonIgnore
     private Course course;
 
     @Column
