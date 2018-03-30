@@ -51,7 +51,6 @@ public class StudentManageController {
         model.addAttribute("student", studentService.getById(id));
         model.addAttribute("groups", groupService.findAll());
         System.out.println(groupService.findAll());
-
         return "admin/users/studentProfile";
     }
 

@@ -1,8 +1,6 @@
 package io.nikiforov.edu.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.nikiforov.edu.model.LabWorkInfo;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

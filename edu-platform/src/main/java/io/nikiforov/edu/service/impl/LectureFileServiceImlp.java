@@ -1,17 +1,12 @@
 package io.nikiforov.edu.service.impl;
 
 import io.nikiforov.edu.dao.LectureFileRepository;
-import io.nikiforov.edu.entity.Lecture;
-import io.nikiforov.edu.entity.LectureFile;
-import io.nikiforov.edu.entity.LecturePDFFile;
+import io.nikiforov.edu.entity.*;
 import io.nikiforov.edu.model.LectureFileInfo;
-import io.nikiforov.edu.service.LectureFileService;
-import io.nikiforov.edu.service.LecturePDFFileService;
-import io.nikiforov.edu.service.LectureService;
+import io.nikiforov.edu.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.IOException;
 import java.util.List;
 
@@ -45,7 +40,6 @@ public class LectureFileServiceImlp implements LectureFileService {
     @Override
     public LectureFile save(LectureFileInfo lectureFileInfo, MultipartFile file)
             throws IOException {
-        System.out.println("Hello from save()");
         Lecture lecture = lectureService.getLecture(lectureFileInfo.getLectureId());
         LectureFile lectureFile = new LectureFile(lectureFileInfo);
         lectureFile.setLecture(lecture);

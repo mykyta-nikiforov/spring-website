@@ -38,7 +38,6 @@ public class LabWorkManageController {
     public String deleteLabWork(@PathVariable("id") int id) {
         Course course = courseService.getCourseByLabWorkId(id);
         labWorkService.deleteLabWork(id);
-        System.out.println(course);
         return "deleted";
     }
 

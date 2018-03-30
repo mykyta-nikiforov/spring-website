@@ -2,7 +2,6 @@ package io.nikiforov.edu.service;
 
 import io.nikiforov.edu.entity.Student;
 import io.nikiforov.edu.model.StudentInfo;
-
 import java.util.List;
 
 public interface StudentService {

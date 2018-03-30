@@ -14,9 +14,11 @@ public class User implements UserDetails{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
     @Column(unique = true)
     protected String email;
     protected String password;
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.DETACH,
             CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST })
     @JoinTable(name = "user_role",

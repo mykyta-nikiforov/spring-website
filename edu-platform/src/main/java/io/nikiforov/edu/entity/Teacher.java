@@ -2,7 +2,6 @@ package io.nikiforov.edu.entity;
 
 import io.nikiforov.edu.model.TeacherInfo;
 import org.hibernate.annotations.Proxy;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Set;
@@ -12,15 +11,19 @@ import java.util.Set;
 public class Teacher extends User{
     @NotNull
     private String name;
+
     @NotNull
     private String surname;
+
     @NotNull
     private String patronymic;
+
     // e.g. "Professor", "PhD", "Docent"
     @NotNull
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "degree_id")
     private Degree degree;
+
     @OneToOne(mappedBy = "curator", fetch = FetchType.LAZY)
     private Group curatedGroup;
 

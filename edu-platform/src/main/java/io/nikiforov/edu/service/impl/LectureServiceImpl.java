@@ -3,8 +3,7 @@ package io.nikiforov.edu.service.impl;
 import io.nikiforov.edu.dao.LectureRepository;
 import io.nikiforov.edu.entity.Lecture;
 import io.nikiforov.edu.model.LectureInfo;
-import io.nikiforov.edu.service.CourseService;
-import io.nikiforov.edu.service.LectureService;
+import io.nikiforov.edu.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
@@ -17,6 +16,7 @@ public class LectureServiceImpl implements LectureService {
 
     @Autowired
     private LectureRepository lectureRepository;
+
     @Autowired
     private CourseService courseService;
 

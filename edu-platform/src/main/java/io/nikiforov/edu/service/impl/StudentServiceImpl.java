@@ -1,19 +1,13 @@
 package io.nikiforov.edu.service.impl;
 
-import io.nikiforov.edu.dao.StudentRepository;
-import io.nikiforov.edu.dao.UserRepository;
-import io.nikiforov.edu.entity.Role;
-import io.nikiforov.edu.entity.Student;
+import io.nikiforov.edu.dao.*;
+import io.nikiforov.edu.entity.*;
 import io.nikiforov.edu.model.StudentInfo;
-import io.nikiforov.edu.service.RoleService;
-import io.nikiforov.edu.service.StudentService;
+import io.nikiforov.edu.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class StudentServiceImpl implements StudentService {
@@ -52,16 +46,12 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public void save(StudentInfo studentInfo) {
-        // Create Student from StudentInfo
-        Student result = new Student(studentInfo);
-        // Create roleSet and set it
-        Set<Role> roleSet = new HashSet<>();
+        Student result = new Student(studentInfo); // Create Student from StudentInfo
+        Set<Role> roleSet = new HashSet<>(); // Create roleSet and set it
         roleSet.add(roleService.getRole("STUDENT"));
         result.setRoles(roleSet);
-        // Encode password
-        result.setPassword(passwordEncoder.encode(result.getPassword()));
-        // Save the student
-        save(result);
+        result.setPassword(passwordEncoder.encode(result.getPassword())); // Encode password
+        save(result); // Save the student
     }
 
     @Override

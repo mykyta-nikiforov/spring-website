@@ -2,24 +2,22 @@ package io.nikiforov.edu.entity;
 
 import io.nikiforov.edu.model.StudentInfo;
 import org.hibernate.annotations.Proxy;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Entity
 @Proxy(lazy = false)
 public class Student extends User{
-
     @NotNull
     private String name;
+
     @NotNull
     private String surname;
+
     @NotNull
     private String patronymic;
+
     @ManyToOne
     @JoinColumn(name = "group_id")
     private Group group;

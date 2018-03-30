@@ -3,11 +3,9 @@ package io.nikiforov.edu.service.impl;
 import io.nikiforov.edu.dao.LabWorkRepository;
 import io.nikiforov.edu.entity.LabWork;
 import io.nikiforov.edu.model.LabWorkInfo;
-import io.nikiforov.edu.service.CourseService;
-import io.nikiforov.edu.service.LabWorkService;
+import io.nikiforov.edu.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -26,10 +24,7 @@ public class LabWorkServiceImpl implements LabWorkService {
 
     @Override
     public LabWork getLabWork(int id) {
-        LabWork one = labWorkRepository.findOne(id);
-//        System.out.println(one);
-        return one;
-//        return labWorkRepository.findOne(id);
+        return labWorkRepository.findOne(id);
     }
 
     @Override

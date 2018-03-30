@@ -1,13 +1,11 @@
 package io.nikiforov.edu.service.impl;
 
-import io.nikiforov.edu.dao.GroupRepository;
-import io.nikiforov.edu.dao.TeacherRepository;
+import io.nikiforov.edu.dao.*;
 import io.nikiforov.edu.entity.Group;
 import io.nikiforov.edu.model.GroupInfo;
 import io.nikiforov.edu.service.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -47,11 +45,9 @@ public class GroupServiceImpl implements GroupService{
                 .findOne(group.getCurator().getId())
                 .getCuratedGroup();
         if (previousGroupOfTeacher != null) {
-            previousGroupOfTeacher.toString();
             previousGroupOfTeacher.setCurator(null);
             groupRepository.save(previousGroupOfTeacher);
         }
-
         groupRepository.save(group);
     }
 

@@ -33,14 +33,12 @@ public class CourseManageController {
     @ResponseBody
     @PostMapping("/add-course")
     public Course addCourseREST(@RequestBody CourseInfo courseInfo) {
-        Course course = courseService.addCourse(courseInfo);
-        return course;
+        return courseService.addCourse(courseInfo);
     }
 
     @ResponseBody
     @RequestMapping(method = RequestMethod.DELETE, value = "/delete-course")
     public String deleteCourseById(@RequestParam int id){
-        System.out.println(id);
         courseService.deleteCourse(id);
         return "Hello again!";
     }

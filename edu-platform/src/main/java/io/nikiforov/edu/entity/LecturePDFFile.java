@@ -1,9 +1,5 @@
 package io.nikiforov.edu.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
 import javax.persistence.*;
 
 @Entity
@@ -17,7 +13,6 @@ public class LecturePDFFile {
     private Lecture lecture;
 
     @OneToOne
-//    @OnDelete(action = OnDeleteAction.CASCADE)
     private LectureFile lectureFile;
 
     public LecturePDFFile() {
@@ -57,7 +52,6 @@ public class LecturePDFFile {
     public String toString() {
         return "LecturePDFFile{" +
                 "id=" + id +
-//                ", lectureId=" + lecture.getId() +
                 ", lectureFileId=" + lectureFile.getId() +
                 '}';
     }

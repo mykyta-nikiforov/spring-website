@@ -1,12 +1,9 @@
 package io.nikiforov.edu.service.impl;
 
 import io.nikiforov.edu.dao.LecturePDFFileRepository;
-import io.nikiforov.edu.entity.Lecture;
-import io.nikiforov.edu.entity.LecturePDFFile;
+import io.nikiforov.edu.entity.*;
 import io.nikiforov.edu.model.LecturePDFFileInfo;
-import io.nikiforov.edu.service.LectureFileService;
-import io.nikiforov.edu.service.LecturePDFFileService;
-import io.nikiforov.edu.service.LectureService;
+import io.nikiforov.edu.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +18,6 @@ public class LecturePDFFileServiceImpl implements LecturePDFFileService {
 
     @Autowired
     LectureService lectureService;
-
 
     @Override
     public LecturePDFFile save(LecturePDFFileInfo lecturePDFFileInfo) {
@@ -50,9 +46,6 @@ public class LecturePDFFileServiceImpl implements LecturePDFFileService {
 
     @Override
     public void delete(int id) {
-//        LecturePDFFile pdfFile = lecturePDFFileRepository.findOne(id);
-//        pdfFile.setLectureFile(null);
-//        lecturePDFFileRepository.save(pdfFile);
         lecturePDFFileRepository.delete(id);
     }
 }

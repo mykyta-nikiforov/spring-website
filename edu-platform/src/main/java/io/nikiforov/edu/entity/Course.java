@@ -1,9 +1,7 @@
 package io.nikiforov.edu.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.nikiforov.edu.model.CourseInfo;
-
 import javax.persistence.*;
 import java.util.List;
 

@@ -1,18 +1,13 @@
 package io.nikiforov.edu.service.impl;
 
 import io.nikiforov.edu.dao.TeacherRepository;
-import io.nikiforov.edu.entity.Role;
-import io.nikiforov.edu.entity.Teacher;
+import io.nikiforov.edu.entity.*;
 import io.nikiforov.edu.model.TeacherInfo;
-import io.nikiforov.edu.service.RoleService;
-import io.nikiforov.edu.service.TeacherService;
+import io.nikiforov.edu.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class TeacherServiceImpl implements TeacherService {
@@ -43,16 +38,12 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public void save(TeacherInfo teacherInfo) {
-        // Create Teacher from TeacherInfo
-        Teacher result = new Teacher(teacherInfo);
-        // Create roleSet and set it
-        Set<Role> rolesSet = new HashSet<>();
+        Teacher result = new Teacher(teacherInfo); // Create Teacher from TeacherInfo
+        Set<Role> rolesSet = new HashSet<>(); // Create roleSet and set it
         rolesSet.add(roleService.getRole("TEACHER"));
         result.setRoles(rolesSet);
-        // Encode password
-        result.setPassword(passwordEncoder.encode(result.getPassword()));
-        // Save the teacher
-        save(result);
+        result.setPassword(passwordEncoder.encode(result.getPassword())); // Encode password
+        save(result); // Save the teacher
     }
 
     @Override

@@ -1,8 +1,6 @@
 package io.nikiforov.edu.model;
 
-import io.nikiforov.edu.entity.Group;
-import io.nikiforov.edu.entity.Specialty;
-import io.nikiforov.edu.entity.Teacher;
+import io.nikiforov.edu.entity.*;
 
 public class GroupInfo {
     private String number;

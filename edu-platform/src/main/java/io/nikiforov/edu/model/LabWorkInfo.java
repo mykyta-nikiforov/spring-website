@@ -1,12 +1,9 @@
 package io.nikiforov.edu.model;
 
 import io.nikiforov.edu.entity.LabWork;
-
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class LabWorkInfo {
-
     private int id;
     private String name;
     private String description;

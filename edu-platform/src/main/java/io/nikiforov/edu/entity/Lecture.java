@@ -1,13 +1,8 @@
 package io.nikiforov.edu.entity;
 
 import javax.persistence.*;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import io.nikiforov.edu.entity.Course;
 import io.nikiforov.edu.model.LectureInfo;
-import javassist.expr.Cast;
-
 import java.util.List;
 
 @Entity

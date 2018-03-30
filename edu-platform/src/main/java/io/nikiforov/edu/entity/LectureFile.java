@@ -1,11 +1,7 @@
 package io.nikiforov.edu.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.nikiforov.edu.model.LectureFileInfo;
-import org.hibernate.annotations.Type;
-
 import javax.persistence.*;
-import java.util.Arrays;
 
 @Entity
 public class LectureFile {
@@ -84,7 +80,6 @@ public class LectureFile {
         return "LectureFile{" +
                 "id=" + id +
                 ", fileName='" + fileName + '\'' +
-//                ", data=" + Arrays.toString(data) +
                 ", contentType='" + contentType + '\'' +
                 ", lecture=" + lecture +
                 '}';

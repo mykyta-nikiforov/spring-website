@@ -1,21 +1,13 @@
 package io.nikiforov.edu.service.impl;
 
-import io.nikiforov.edu.dao.RoleRepository;
-import io.nikiforov.edu.dao.StudentRepository;
-import io.nikiforov.edu.dao.TeacherRepository;
-import io.nikiforov.edu.dao.UserRepository;
-import io.nikiforov.edu.entity.Role;
-import io.nikiforov.edu.entity.Student;
-import io.nikiforov.edu.entity.Teacher;
-import io.nikiforov.edu.entity.User;
+import io.nikiforov.edu.dao.*;
+import io.nikiforov.edu.entity.*;
 import io.nikiforov.edu.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
 import java.util.*;
 
 @Service

@@ -1,14 +1,10 @@
 package io.nikiforov.edu.controller;
 
-import io.nikiforov.edu.entity.Lecture;
-import io.nikiforov.edu.model.LectureInfo;
-import io.nikiforov.edu.service.CourseService;
 import io.nikiforov.edu.service.LectureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import io.nikiforov.edu.entity.Course;
 
 @Controller
 public class LectureController {

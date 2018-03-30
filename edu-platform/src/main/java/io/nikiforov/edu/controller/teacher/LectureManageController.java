@@ -1,25 +1,15 @@
 package io.nikiforov.edu.controller.teacher;
 
 import io.nikiforov.edu.dao.LectureFileRepository;
-import io.nikiforov.edu.dao.LecturePDFFileRepository;
-import io.nikiforov.edu.entity.Course;
-import io.nikiforov.edu.entity.Lecture;
-import io.nikiforov.edu.entity.LectureFile;
-import io.nikiforov.edu.entity.LecturePDFFile;
-import io.nikiforov.edu.model.LectureFileInfo;
-import io.nikiforov.edu.model.LectureInfo;
-import io.nikiforov.edu.model.LecturePDFFileInfo;
-import io.nikiforov.edu.service.CourseService;
-import io.nikiforov.edu.service.LectureFileService;
-import io.nikiforov.edu.service.LecturePDFFileService;
-import io.nikiforov.edu.service.LectureService;
+import io.nikiforov.edu.entity.*;
+import io.nikiforov.edu.model.*;
+import io.nikiforov.edu.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
@@ -66,7 +56,7 @@ public class LectureManageController {
     }
 
     @ResponseBody
-    @RequestMapping(method = RequestMethod.DELETE, value = "/delete-lecture/{id}")
+    @RequestMapping(value = "/delete-lecture/{id}", method = RequestMethod.DELETE)
     public String deleteLecture(@PathVariable("id") int id) {
         // Get course of this lecture
         lectureService.deleteLecture(id);
@@ -105,23 +95,13 @@ public class LectureManageController {
     @ResponseBody
     @RequestMapping(value = "/delete-lecture-file/{id}", method = RequestMethod.DELETE)
     public boolean deleteLectureFile(@PathVariable("id") int id) {
-        System.out.println("Hello from controller");
         lectureFileService.delete(id);
-        System.out.println("Bye from controller!");
         return true;
     }
 
     @ResponseBody
     @RequestMapping(value = "/add-lecture-pdf", method = RequestMethod.POST)
     public LecturePDFFile addLecturePDF(@RequestBody LecturePDFFileInfo lecturePDFFileInfo) {
-        System.out.println("Hello from addLecturePDF()");
         return lecturePDFFileService.save(lecturePDFFileInfo);
-    }
-
-    @ResponseBody
-    @GetMapping("/blablalink/{id}")
-    public String blabla(@PathVariable("id") int id) {
-        lecturePDFFileService.delete(id);
-        return "52";
     }
 }

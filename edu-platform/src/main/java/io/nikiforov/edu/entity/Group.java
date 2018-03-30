@@ -1,7 +1,6 @@
 package io.nikiforov.edu.entity;
 
 import io.nikiforov.edu.model.GroupInfo;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Set;
@@ -12,17 +11,22 @@ public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
     @NotNull
     @Column(unique = true)
     private String number;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "specialty_id")
     private Specialty specialty;
+
     @NotNull
     private int yearOfStudy;
+
     @OneToOne
     @JoinColumn(name = "curator_id", unique = true)
     private Teacher curator;
+
     @OneToMany(mappedBy = "group")
     private Set<Student> students;
 
