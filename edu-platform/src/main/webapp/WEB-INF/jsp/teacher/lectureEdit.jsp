@@ -32,14 +32,21 @@
         <div class="form-group row">
             <label class="col-form-label col-md-3">File</label>
             <select id="select-pdf-file">
-                <%--<option value="${lecture.lecturePDFFile.id}">${lecture.lecturePDFFile.lectureFile.fileName}</option>--%>
+                <c:choose>
+                    <c:when test="${empty lecturePdfFile}">
+                        <option value="">Choose the file</option>
+                    </c:when>
+                    <c:otherwise>
+                        <option value="${lecturePdfFile.lectureFile.id}">${lecturePdfFile.lectureFile.fileName}</option>
+                    </c:otherwise>
+                </c:choose>
                 <c:forEach var="pdfFile" items="${pdfFiles}">
-                    <%--Check in order to get rid of double showing the current curator of group--%>
-                    <%--<c:if test="${group.curator.id != teacher.id}">--%>
+                    <%--Check in order to get rid of double showing the current PDF file--%>
+                    <c:if test="${pdfFile.id != lecturePdfFile.lectureFile.id}">
                         <option value="${pdfFile.id}">
-                            <c:out value="${pdfFile.fileName}"></c:out>
+                                ${pdfFile.fileName}
                         </option>
-                    <%--</c:if>--%>
+                    </c:if>
                 </c:forEach>
             </select>
         </div>

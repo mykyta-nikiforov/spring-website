@@ -76,7 +76,7 @@ $(document).ready(function () {
                         makeRemoveLectureFileButton(lectureFile.id, newElement);
                     });
                     $('#add-file-form')[0].reset();
-                    console.log(lectureFile);
+                    $('#select-pdf-file').append('<option value="' + lectureFile.id + '">' + lectureFile.fileName + '</option>');
                 },
                 error: function () {
                     alert("bad from `add-lecture-button`.click");
@@ -85,6 +85,7 @@ $(document).ready(function () {
         }
     });
 
+    // Events of the button to select LecturePDFFile
     $('#add-pdf-button').click(function () {
         if ($('#select-pdf-file').val() == '') {
             // $('#update-lecture-input-warning').css("visibility", "visible")
@@ -130,6 +131,7 @@ function makeRemoveLectureFileButton(id, element) {
         type: 'DELETE',
         success: function () {
             element.parentsUntil('tbody').remove();
+            $('#select-pdf-file').find('[value="' + id + '"]').remove();
         },
         error: function () {
             alert("bad from makeRemoveLectureFileButton()");

@@ -46,6 +46,7 @@ public class LectureManageController {
         model.addAttribute("lectureFiles", lectureFileService.findAllByLectureId(id));
         model.addAttribute("pdfFiles",
                 lectureFileRepository.findAllByLectureIdAndContentType(id, "application/pdf"));
+        model.addAttribute("lecturePdfFile", lecturePDFFileService.findOne(id));
         return "teacher/lectureEdit";
     }
 
