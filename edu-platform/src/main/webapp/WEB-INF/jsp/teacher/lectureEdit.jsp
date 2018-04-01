@@ -1,7 +1,7 @@
 <%@page pageEncoding="UTF-8" %>
 <%@include file="../templates/header.jsp"%>
 <link href="/static/css/open-iconic-bootstrap.css" rel="stylesheet">
-
+<link href="/static/css/style.css" rel="stylesheet">
 
 <br>
 <div class="container ">
@@ -15,15 +15,17 @@
             </div>
         </div>
         <div class="form-group row">
-            <input type="button" id="update-lecture-button" class="btn btn-dark" value="Save"/>
-        </div>
-        <div id="update-lecture-input-warning" class="alert alert-warning" role="alert"
-             style="visibility: hidden; opacity: 0.0">
-            Cannot be empty!
-        </div>
-        <div id="update-lecture-input-updated" class="alert alert-success" role="alert"
-             style="visibility: hidden; opacity: 1.0">
-            Successfully updated.
+            <div class="col-md-3">
+                <input type="button" id="update-lecture-button" class="btn btn-dark" value="Save"/>
+            </div>
+            <div id="update-lecture-input-warning" class="alert alert-warning col-md-4" role="alert"
+                 style="display: none">
+                Cannot be empty!
+            </div>
+            <div id="update-lecture-input-updated" class="alert alert-success col-md-4" role="alert"
+                 style="display: none">
+                Successfully updated.
+            </div>
         </div>
     </form>
 
@@ -50,7 +52,9 @@
                 </c:forEach>
             </select>
         </div>
-        <input type="button" id="add-pdf-button" class="btn btn-dark" value="Select"/>
+        <a tabindex="0" id="add-pdf-button" class="btn btn-dark" data-toggle="popover"
+           data-trigger="focus" data-placement="right" title="Dismissible popover"
+           data-content="Choose a file">Select</a>
     </form>
 
     <h3>Download files</h3>
@@ -64,7 +68,9 @@
         </div>
 
         <input type="file" id="add-file-file"/>
-        <input type="button" id="add-file-button" class="btn btn-dark" value="Upload"/>
+        <a tabindex="0" id="add-file-button" class="btn btn-dark" data-toggle="popover"
+           data-trigger="focus" data-placement="right" title="Error"
+           data-content="Fill in all the fields.">Upload</a>
         <div id="add-file-input-warning" class="alert alert-warning" role="alert"
              style="visibility: hidden; opacity: 1.0">
             Cannot be empty!
@@ -103,7 +109,7 @@
 
 </div>
 
-
+<script src="/static/js/popper.min.js"></script>
 <script src="../../../static/js/teacher/lectureEdit.js"></script>
 
 <%@include file="../templates/footer.jsp"%>

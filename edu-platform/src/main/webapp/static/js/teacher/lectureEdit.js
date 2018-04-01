@@ -7,14 +7,22 @@ var lectureId = parseInt(url.match(/edit-lecture\/\d+/)[0].match(/\d+/));
 
 $(document).ready(function () {
 
+    // Initialize all popovers
+    $('#add-pdf-button').popover({
+        trigger: 'focus'
+    });
+    $('#add-file-button').popover({
+        trigger: 'focus'
+    });
+
+
     // Events of the button to update the lecture
     $('#update-lecture-button').click(function () {
         if ($('#update-lecture-name').val() == '') {
-            $('#update-lecture-input-warning').css("visibility", "visible")
-                .animate({opacity: 1.0}, 500);
-            // alert("Input values!")
+            $('#update-lecture-input-updated').hide();
+            $('#update-lecture-input-warning').show("slow");
         } else {
-            $('#update-lecture-input-warning').css("visibility", "hidden");
+            $('#update-lecture-input-warning').hide();
             $.ajax({
                 url: '/update-lecture',
                 type: 'PUT',
@@ -27,10 +35,7 @@ $(document).ready(function () {
                 success: function (lecture) {
                     $('#update-lecture-name').val(lecture.name);
 
-                    $('#update-lecture-input-updated').css({
-                        visibility: "visible",
-                        opacity: 1.0
-                    }).animate({opacity: 0.0}, 3000);
+                    $('#update-lecture-input-updated').show("slow").delay(4000).fadeOut();
                 },
                 error: function () {
                     alert("badfrom `update-lecture-button`.click");
@@ -42,8 +47,10 @@ $(document).ready(function () {
     // Events of the button to add new lecture file
     $('#add-file-button').click(function() {
         if($('#add-file-desc').val() == '' || $('#add-file-file')[0].files.length == 0){
-            $('#add-file-input-warning').css("visibility", "visible");
+            // $('#add-file-input-warning').css("visibility", "visible");
+            $('#add-file-button').popover('show');
         } else {
+            $('#add-file-button').popover('hide');
             $('#add-file-input-warning').css("visibility", "hidden");
             // Variable to store the file itself and JSON of its fileInfo
             var formData = new FormData();
@@ -90,7 +97,8 @@ $(document).ready(function () {
         if ($('#select-pdf-file').val() == '') {
             // $('#update-lecture-input-warning').css("visibility", "visible")
             //     .animate({opacity: 1.0}, 500);
-            alert("Input values!")
+            $('#add-pdf-button').popover('show');
+            // alert("Input values!")
         } else {
             // $('#update-lecture-input-warning').css("visibility", "hidden");
             $.ajax({
