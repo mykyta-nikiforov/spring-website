@@ -18,12 +18,10 @@
             <div class="col-md-3">
                 <input type="button" id="update-lecture-button" class="btn btn-dark" value="Save"/>
             </div>
-            <div id="update-lecture-input-warning" class="alert alert-warning col-md-4" role="alert"
-                 style="display: none">
+            <div id="update-lecture-input-warning" class="alert alert-warning alert-hide col-md-4" role="alert">
                 Cannot be empty!
             </div>
-            <div id="update-lecture-input-updated" class="alert alert-success col-md-4" role="alert"
-                 style="display: none">
+            <div id="update-lecture-input-updated" class="alert alert-success alert-hide col-md-4" role="alert">
                 Successfully updated.
             </div>
         </div>
@@ -52,9 +50,17 @@
                 </c:forEach>
             </select>
         </div>
-        <a tabindex="0" id="add-pdf-button" class="btn btn-dark" data-toggle="popover"
-           data-trigger="focus" data-placement="right" title="Dismissible popover"
-           data-content="Choose a file">Select</a>
+        <div class="form-group row">
+            <div class="col-md-3">
+                <input type="button" id="add-pdf-button" class="btn btn-dark" value="Select"/>
+            </div>
+            <div id="select-pdf-file-warning" class="alert alert-warning alert-hide col-md-4" role="alert">
+                Choose the file!
+            </div>
+            <div id="select-pdf-file-updated" class="alert alert-success alert-hide col-md-4" role="alert">
+                Successfully updated.
+            </div>
+        </div>
     </form>
 
     <h3>Download files</h3>
@@ -66,18 +72,22 @@
                 <textarea type="text" id="add-file-desc" class="form-control" rows="4"></textarea>
             </div>
         </div>
-
-        <input type="file" id="add-file-file"/>
-        <a tabindex="0" id="add-file-button" class="btn btn-dark" data-toggle="popover"
-           data-trigger="focus" data-placement="right" title="Error"
-           data-content="Fill in all the fields.">Upload</a>
-        <div id="add-file-input-warning" class="alert alert-warning" role="alert"
-             style="visibility: hidden; opacity: 1.0">
-            Cannot be empty!
+        <div class="form-group row">
+            <div class="col-md-4 offset-md-3">
+                <input type="file" id="add-file-file"/>
+            </div>
         </div>
-        <div id="add-file-input-updated" class="alert alert-success" role="alert"
-             style="visibility: hidden; opacity: 1.0">
-            Successfully updated.
+
+        <div class="form-group row">
+            <div class="col-md-3">
+                <input type="button" id="add-file-button" class="btn btn-dark" value="Upload"/>
+            </div>
+            <div id="add-file-input-warning" class="alert alert-warning alert-hide col-md-4" role="alert">
+                Cannot be empty!
+            </div>
+            <div id="add-file-input-updated" class="alert alert-success alert-hide col-md-4" role="alert">
+                Successfully downloaded.
+            </div>
         </div>
     </form>
 

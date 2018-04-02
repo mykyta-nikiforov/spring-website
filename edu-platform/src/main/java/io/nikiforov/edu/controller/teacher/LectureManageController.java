@@ -85,14 +85,6 @@ public class LectureManageController {
         response.getOutputStream().close();
     }
 
-    @GetMapping(value = "/displayPDF", produces = "application/pdf")
-    @ResponseBody
-    public byte[] showImage(@RequestParam("id") int lectureId)
-            throws IOException {
-        LectureFile lectureFile = lectureFileService.findById(lectureId);
-        return lectureFile.getData();
-    }
-
     @ResponseBody
     @RequestMapping(value = "/delete-lecture-file/{id}", method = RequestMethod.DELETE)
     public boolean deleteLectureFile(@PathVariable("id") int id) {

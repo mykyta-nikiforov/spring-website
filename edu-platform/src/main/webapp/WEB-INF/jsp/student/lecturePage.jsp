@@ -8,14 +8,13 @@
 </div>
 <%--<iframe src="/displayLecture?id=3" width="400px" height="300px"></iframe>--%>
 <%--<object data="/displayLecture?id=3" type="application/pdf" width="400px" height="300px"></object>--%>
-<div>
-    <embed src="" type="application/pdf" width="900px" height="500px"></embed>
-</div>
+<%--<div>--%>
+    <%--<embed src="" type="application/pdf" width="900px" height="500px"></embed>--%>
+<%--</div>--%>
 <%--</object>--%>
 <div class="container">
-    <embed id="pdf-container" width="900px" height="500px" name="plugin" src="" type="application/pdf">
+    <embed id="pdf-container" width="900px" height="500px" src="" type="application/pdf">
 </div>
-
 
 <%--<object data="/displayLecture?id=3" type="application/pdf" width="750px" height="750px">--%>
     <%--<embed src="/displayLecture?id=3" type="application/pdf">--%>

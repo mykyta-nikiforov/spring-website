@@ -1,14 +1,15 @@
 package io.nikiforov.edu.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import io.nikiforov.edu.entity.Course;
 import io.nikiforov.edu.entity.Lecture;
+import io.nikiforov.edu.entity.LectureFile;
+import io.nikiforov.edu.entity.LecturePDFFile;
 import io.nikiforov.edu.model.LabWorkInfo;
 import io.nikiforov.edu.model.LectureInfo;
-import io.nikiforov.edu.service.CourseService;
-import io.nikiforov.edu.service.LabWorkService;
-import io.nikiforov.edu.service.LectureService;
+import io.nikiforov.edu.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -31,6 +32,12 @@ public class CourseController {
     @Autowired
     private LabWorkService labWorkService;
 
+    @Autowired
+    private LectureFileService lectureFileService;
+
+    @Autowired
+    private LecturePDFFileService lecturePDFFileService;
+
     @RequestMapping("/all-courses")
     public String mainPage(HttpServletRequest request) {
         request.setAttribute("courses", courseService.getAllCourses());
@@ -42,5 +49,14 @@ public class CourseController {
         model.addAttribute("course", courseService.getCourse(id));
         model.addAttribute("lectures", lectureService.getAllLectures(id));
         return "student/coursePage";
+    }
+
+    @GetMapping(value = "/displayPDF", produces = "application/pdf")
+    @ResponseBody
+    public byte[] showImage(@RequestParam("id") int lectureId)
+            throws IOException {
+        LecturePDFFile lecturePDFFile = lecturePDFFileService.findOne(lectureId);
+        LectureFile lectureFile = lecturePDFFile.getLectureFile();
+        return lectureFile.getData();
     }
 }

@@ -1,5 +1,11 @@
-console.log("olaola");
+// Get courseId from url path
+var url = window.location.href;
+var courseId = parseInt(url.match(/course-\d+/)[0].match(/\d+/));
 
+// Get lectureId from url path
+var lectureId = parseInt(url.match(/\/\d+/)[0].match(/\d+/));
+
+console.log(courseId, " ", lectureId);
 $(document).ready(function () {
     console.log("hi2!");
     var req = new XMLHttpRequest();
@@ -14,7 +20,7 @@ $(document).ready(function () {
             console.log("hi!");
         }
     };
-    req.open("GET", "/displayPDF?id=4", true);
+    req.open("GET", "/displayPDF?id=" + lectureId, true);
     req.responseType = "blob";
     req.send();
 });
