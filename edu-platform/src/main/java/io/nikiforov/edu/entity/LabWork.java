@@ -1,9 +1,11 @@
 package io.nikiforov.edu.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.nikiforov.edu.model.LabWorkInfo;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @Entity
 public class LabWork {
@@ -19,6 +21,10 @@ public class LabWork {
 
     @Column
     private LocalDate deadLine;
+
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "labWork")
+    private List<LabWorkFile> labWorkFiles;
 
     public LabWork() {
     }
@@ -69,6 +75,14 @@ public class LabWork {
 
     public void setDeadLine(LocalDate deadLine) {
         this.deadLine = deadLine;
+    }
+
+    public List<LabWorkFile> getLabWorkFiles() {
+        return labWorkFiles;
+    }
+
+    public void setLabWorkFiles(List<LabWorkFile> labWorkFiles) {
+        this.labWorkFiles = labWorkFiles;
     }
 
     @Override
