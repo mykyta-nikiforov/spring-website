@@ -4,18 +4,17 @@ var courseId = parseInt(url.match(/courses-manage\/\d+/)[0].match(/\d+/));
 
 // Get labWorkId from url path
 var labWorkId = parseInt(url.match(/edit-labwork\/\d+/)[0].match(/\d+/));
-console.log("hi");
+
+
 $(document).ready(function () {
     // Events of the button to update the labwork
     $('#update-labwork-button').click(function () {
         if ($('#update-labwork-name').val() == ''
             && $('#update-labwork-desc').val() == ''
             && $('#update-labwork-deadline').val() == '') {
-            $('#update-labwork-input-warning').css("visibility", "visible")
-                .animate({opacity: 1.0}, 500);
-            // alert("Input values!")
+            $('#update-labwork-input-warning').show("slow");
         } else {
-            $('#update-labwork-input-warning').css("visibility", "hidden");
+            $('#update-labwork-input-warning').hide();
             $.ajax({
                 url: '/update-labwork',
                 type: 'PUT',
@@ -32,10 +31,7 @@ $(document).ready(function () {
                     $('#update-labwork-desc').val(labwork.description);
                     $('#update-labwork-deadline').val(labwork.deadLine);
 
-                    $('#update-labwork-input-updated').css({
-                        visibility: "visible",
-                        opacity: 1.0
-                    }).animate({opacity: 0.0}, 3000);
+                    $('#update-labwork-input-updated').show("slow").delay(600).fadeOut();
                 },
                 error: function () {
                     alert("badfrom `update-labwork-button`.click");
@@ -43,5 +39,37 @@ $(document).ready(function () {
             });
         }
     });
+
+    $('#add-file-button').click(function() {
+        if($('#add-file-desc').val() == '' || $('#add-file-file')[0].files.length == 0) {
+            $('#add-file-input-warning').show("slow");
+        } else {
+            $('#add-file-input-warning').hide();
+            // Variable to store the file itself and JSON of its fileInfo
+            var formData = new FormData();
+            var labWorkFileInfo = {
+                description: $('#add-file-desc').val(),
+                labWorkId: labWorkId
+            };
+            formData.append("labWorkFileInfo", new Blob(
+                [JSON.stringify(labWorkFileInfo)],
+                {type: "application/json"}));
+            formData.append("file", $('#add-file-file').prop('files')[0]);
+
+            $.ajax({
+                url: '/add-labwork-file',
+                type: 'POST',
+                contentType: false,
+                processData: false,
+                data: formData,
+                success: function(labWorkFile){
+                    // // Append new file to the table of all files
+                    // $('#files-table').find('tbody').append(TODO);
+                    alert("ТЫ ПИДОР");
+                }
+            });
+
+        }
+    })
 
 });

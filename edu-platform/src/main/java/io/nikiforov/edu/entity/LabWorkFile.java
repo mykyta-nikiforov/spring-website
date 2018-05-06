@@ -1,10 +1,14 @@
 package io.nikiforov.edu.entity;
 
+import io.nikiforov.edu.model.LabWorkFileInfo;
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.persistence.*;
+import java.io.IOException;
+import java.util.Arrays;
 
 @Entity
 public class LabWorkFile {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -21,6 +25,18 @@ public class LabWorkFile {
     private LabWork labWork;
 
     public LabWorkFile() {
+    }
+
+    public LabWorkFile(LabWorkFileInfo labWorkFileInfo, MultipartFile file) {
+        fileName = file.getOriginalFilename();
+        description = labWorkFileInfo.getDescription();
+        try {
+            data = file.getBytes();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        contentType = file.getContentType();
+
     }
 
     public int getId() {
@@ -69,5 +85,17 @@ public class LabWorkFile {
 
     public void setLabWork(LabWork labWork) {
         this.labWork = labWork;
+    }
+
+    @Override
+    public String toString() {
+        return "LabWorkFile{" +
+                "id=" + id +
+                ", fileName='" + fileName + '\'' +
+                ", description='" + description + '\'' +
+                ", data=" + Arrays.toString(data) +
+                ", contentType='" + contentType + '\'' +
+                ", labWork=" + labWork +
+                '}';
     }
 }

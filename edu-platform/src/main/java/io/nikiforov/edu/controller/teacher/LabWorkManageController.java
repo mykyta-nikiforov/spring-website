@@ -2,13 +2,18 @@ package io.nikiforov.edu.controller.teacher;
 
 import io.nikiforov.edu.entity.Course;
 import io.nikiforov.edu.entity.LabWork;
+import io.nikiforov.edu.entity.LabWorkFile;
+import io.nikiforov.edu.model.LabWorkFileInfo;
 import io.nikiforov.edu.model.LabWorkInfo;
 import io.nikiforov.edu.service.CourseService;
+import io.nikiforov.edu.service.LabWorkFileService;
 import io.nikiforov.edu.service.LabWorkService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class LabWorkManageController {
@@ -18,6 +23,9 @@ public class LabWorkManageController {
 
     @Autowired
     CourseService courseService;
+
+    @Autowired
+    private LabWorkFileService labWorkFileService;
 
     @ResponseBody
     @PostMapping("/add-labwork")
@@ -45,5 +53,14 @@ public class LabWorkManageController {
     @RequestMapping(value = "/update-labwork", method = RequestMethod.PUT)
     public LabWork updateLabWork(@RequestBody LabWorkInfo labWorkInfo) {
         return labWorkService.saveFromModel(labWorkInfo);
+    }
+
+    @RequestMapping(value = "/add-labwork-file", method = RequestMethod.POST,
+            consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public LabWorkFile uploadLabWorkFile(@RequestPart("labWorkFileInfo")
+                                                     LabWorkFileInfo labWorkFileInfo,
+                                         @RequestPart("file") MultipartFile file)
+            throws Exception {
+        return labWorkFileService.save(labWorkFileInfo, file);
     }
 }
