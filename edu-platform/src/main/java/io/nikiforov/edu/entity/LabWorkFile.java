@@ -93,7 +93,6 @@ public class LabWorkFile {
                 "id=" + id +
                 ", fileName='" + fileName + '\'' +
                 ", description='" + description + '\'' +
-                ", data=" + Arrays.toString(data) +
                 ", contentType='" + contentType + '\'' +
                 ", labWork=" + labWork +
                 '}';

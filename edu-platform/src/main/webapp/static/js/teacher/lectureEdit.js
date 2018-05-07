@@ -34,7 +34,7 @@ $(document).ready(function () {
         }
     });
 
-    // Events of the button to add new lecture file
+    // Event of the button to add new lecture file
     $('#add-file-button').click(function() {
         if($('#add-file-desc').val() == '' || $('#add-file-file')[0].files.length == 0){
             $('#add-file-input-warning').show("slow");
@@ -81,6 +81,7 @@ $(document).ready(function () {
                         $('#select-pdf-file').append('<option value="' + lectureFile.id + '">' + lectureFile.fileName + '</option>');
                     }
 
+                    // successful alert
                     $('#add-file-input-updated').show("slow").delay(600).fadeOut();
                 },
                 error: function () {

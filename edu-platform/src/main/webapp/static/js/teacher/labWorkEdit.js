@@ -49,8 +49,9 @@ $(document).ready(function () {
         }
     });
 
-    $('#add-file-button').click(function() {
-        if($('#add-file-desc').val() == '' || $('#add-file-file')[0].files.length == 0) {
+    // Event of the button to add new labwork file
+    $('#add-file-button').click(function () {
+        if (!$('#add-file-desc').val() || $('#add-file-file')[0].files.length == 0) {
             $('#add-file-input-warning').show("slow");
         } else {
             $('#add-file-input-warning').hide();
@@ -71,14 +72,49 @@ $(document).ready(function () {
                 contentType: false,
                 processData: false,
                 data: formData,
-                success: function(labWorkFile){
+                success: function (labWorkFile) {
                     // // Append new file to the table of all files
-                    // $('#files-table').find('tbody').append(TODO);
-                    alert("ТЫ ПИДОР");
+                    $('#files-table').find('tbody').append('<tr>\n' +
+                        '                    <td>' + labWorkFile.id + '</td>\n' +
+                        '                    <td>' + labWorkFile.fileName + '</td>\n' +
+                        '                    <td>' + labWorkFile.description + '</td>\n' +
+                        '                    <td>' + labWorkFile.contentType + '</td>\n' +
+                        '                    <td><button labwork-file-id=\'' + labWorkFile.id + '\' class="remove-labwork-file-button btn btn-outline-danger"><span><i class="oi oi-trash"></i></span></button></td>\n' +
+                        '                    </tr>');
+                    var newElement = $('[labwork-file-id=\'' + labWorkFile.id + '\']');
+                    newElement.click(function () {
+                        makeRemoveLabWorkFileButton(labWorkFile.id);
+                    });
+
+                    // Reset inputs
+                    $('#add-file-form')[0].reset();
+
+                    $('#add-file-input-updated').show("slow").delay(600).fadeOut();
+                },
+                error: function () {
+                    alert("bad from `add-file-button`.click");
                 }
             });
-
         }
-    })
+    });
+
+    $('.remove-labwork-file-button').click(function () {
+        var id = $(this).attr('labwork-file-id');
+        makeRemoveLabWorkFileButton(id);
+    });
 
 });
+
+function makeRemoveLabWorkFileButton(id) {
+    $.ajax({
+        url: '/delete-labwork-file/' + id,
+        type: 'DELETE',
+        success: function() {
+            $('[labwork-file-id=\'' + id + '\']').parentsUntil('tbody').remove();
+        },
+        error: function() {
+            alert('bad from makeRemoveLabWorkFileButton()');
+        }
+    });
+
+}

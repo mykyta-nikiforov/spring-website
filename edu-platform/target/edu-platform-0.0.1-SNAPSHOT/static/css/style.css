@@ -1,0 +1,7 @@
+.alert {
+    padding: 4px 15px;
+    margin-bottom: 0;
+}
+.alert-hide {
+    display: none;
+}

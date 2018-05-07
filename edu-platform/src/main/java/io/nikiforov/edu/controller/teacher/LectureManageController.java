@@ -42,10 +42,10 @@ public class LectureManageController {
     public String editCoursePage(@PathVariable("courseId") int courseId,
                                  @PathVariable("id") int id, Model model) {
         model.addAttribute("lecture", lectureService.getLecture(id));
-        model.addAttribute("lectureFileInfo", new LectureFileInfo());
+        model.addAttribute("lectureFileInfo", new LectureFileInfo()); // TODO maybe delete
         model.addAttribute("lectureFiles", lectureFileService.findAllByLectureId(id));
         model.addAttribute("pdfFiles",
-                lectureFileRepository.findAllByLectureIdAndContentType(id, "application/pdf"));
+                lectureFileRepository.findAllByLectureIdAndContentType(id, "application/pdf")); // TODO replace to service
         model.addAttribute("lecturePdfFile", lecturePDFFileService.findOne(id));
         return "teacher/lectureEdit";
     }

@@ -38,6 +38,7 @@ public class LabWorkManageController {
     public String editLabWork(@PathVariable("id") int id, Model model) {
         model.addAttribute("labWork",
                 new LabWorkInfo(labWorkService.getLabWork(id)));
+        model.addAttribute("labWorkFiles", labWorkFileService.findAllByLabWorkId(id));
         return "teacher/labWorkEdit";
     }
 
@@ -56,12 +57,21 @@ public class LabWorkManageController {
         return labWorkService.saveFromModel(labWorkInfo);
     }
 
+    @ResponseBody
     @RequestMapping(value = "/add-labwork-file", method = RequestMethod.POST,
             consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public LabWorkFile uploadLabWorkFile(@RequestPart("labWorkFileInfo")
-                                                     LabWorkFileInfo labWorkFileInfo,
+                                                 LabWorkFileInfo labWorkFileInfo,
                                          @RequestPart("file") MultipartFile file)
             throws Exception {
         return labWorkFileService.save(labWorkFileInfo, file);
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/delete-labwork-file/{id}", method = RequestMethod.DELETE)
+    public String deleteLabWorkFile(@PathVariable("id") int id) {
+        labWorkFileService.delete(id);
+        return "success";
+    }
+
 }

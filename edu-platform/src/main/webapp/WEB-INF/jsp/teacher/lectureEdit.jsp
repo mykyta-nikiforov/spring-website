@@ -63,7 +63,7 @@
         </div>
     </form>
 
-    <h3>Download files</h3>
+    <h3>Download file</h3>
     <form method="POST" id="add-file-form" enctype="multipart/form-data">
 
         <div class="form-group row">
@@ -95,24 +95,24 @@
     <div class="table-responsive">
         <table id="files-table" class="table table-bordered table-striped text-left">
             <thead>
-            <tr>
-                <th>Id</th>
-                <th>File name</th>
-                <th>Description</th>
-                <th>Content type</th>
-                <th>Delete</th>
-            </tr>
+                <tr>
+                    <th>Id</th>
+                    <th>File name</th>
+                    <th>Description</th>
+                    <th>Content type</th>
+                    <th>Delete</th>
+                </tr>
             </thead>
             <tbody>
-            <c:forEach var="lectureFile" items="${lectureFiles}">
-                <tr>
-                    <td>${lectureFile.id}</td>
-                    <td><a href="/displayLecture?id=${lectureFile.id}" target="_blank">${lectureFile.fileName}</a></td>
-                    <td>${lectureFile.description}</td>
-                    <td>${lectureFile.contentType}</td>
-                    <td><button lecture-file-id='${lectureFile.id}' class="remove-lecture-file-button btn btn-outline-danger"><span><i class="oi oi-trash"></i></span></button></td>
-                </tr>
-            </c:forEach>
+                <c:forEach var="lectureFile" items="${lectureFiles}">
+                    <tr>
+                        <td>${lectureFile.id}</td>
+                        <td><a href="/displayLecture?id=${lectureFile.id}" target="_blank">${lectureFile.fileName}</a></td>
+                        <td>${lectureFile.description}</td>
+                        <td>${lectureFile.contentType}</td>
+                        <td><button lecture-file-id='${lectureFile.id}' class="remove-lecture-file-button btn btn-outline-danger"><span><i class="oi oi-trash"></i></span></button></td>
+                    </tr>
+                </c:forEach>
             </tbody>
         </table>
     </div>
