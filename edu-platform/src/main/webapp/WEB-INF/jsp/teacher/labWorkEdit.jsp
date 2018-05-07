@@ -30,14 +30,17 @@
             </div>
         </div>
         <div class="form-group row">
-            <input type="button" id="update-labwork-button" class="btn btn-dark" value="Save"/>
+            <div class="col-md-3">
+                <input type="button" id="update-labwork-button" class="btn btn-dark" value="Save"/>
+            </div>
+            <div id="update-labwork-input-warning" class="alert alert-warning alert-hide col-md-4" role="alert">
+                Cannot be empty!
+            </div>
+            <div id="update-labwork-input-updated" class="alert alert-success alert-hide col-md-4" role="alert">
+                Successfully updated.
+            </div>
         </div>
-        <div id="update-labwork-input-warning" class="alert alert-warning alert-hide" role="alert">
-            Cannot be empty!
-        </div>
-        <div id="update-labwork-input-updated" class="alert alert-success alert-hide" role="alert">
-            Successfully updated.
-        </div>
+
     </form>
 
     <h3>Download files</h3>

@@ -35,6 +35,8 @@ public class LabWork {
         this.description = labWorkInfo.getDescription();
         this.deadLine = LocalDate.parse(labWorkInfo.getDeadLine(),
                 DateTimeFormatter.ofPattern("uuuu-MM-dd"));
+        System.out.println("LabWork constructor. labWorkInfo.getDeadLine() — " +
+                labWorkInfo.getDeadLine() + ", deadLine — " + deadLine);
     }
 
     public int getId() {

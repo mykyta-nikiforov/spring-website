@@ -11,11 +11,9 @@ $(document).ready(function() {
     // Events of the button to update the course
     $('#edit-course-button').click(function() {
         if($('#edit-course-name').val() == '' || $('#edit-course-desc').val == ''){
-            $('#edit-course-input-warning').css("visibility", "visible")
-                .animate({opacity: 1.0}, 500);
-            // alert("Input values!")
+            $('#edit-course-input-warning').show("slow");
         } else {
-            $('#edit-course-input-warning').css("visibility", "hidden");
+            $('#edit-course-input-warning').hide();
             $.ajax({
                 url: '/update-course',
                 type: 'PUT',
@@ -30,8 +28,7 @@ $(document).ready(function() {
                     console.log(course.description);
                     $('#edit-course-name').val(course.name);
                     $('#edit-course-desc').val(course.description);
-                    $('#edit-course-input-updated').css({visibility: "visible",
-                        opacity: 1.0}).animate({opacity: 0.0}, 3000);
+                    $('#edit-course-input-updated').show("slow").delay(600).fadeOut();
                 },
                 error: function () {
                     alert("badfrom `edit-course-button`.click");

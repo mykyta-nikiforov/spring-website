@@ -46,6 +46,7 @@ public class LabWorkServiceImpl implements LabWorkService {
     public LabWork saveFromModel(LabWorkInfo labWorkInfo) {
         LabWork labWork = new LabWork(labWorkInfo);
         labWork.setCourse(courseService.getCourse(labWorkInfo.getCourseId()));
+        System.out.println("from service. labworkInfo: " + labWorkInfo + "\n labwork: " + labWork);
         return labWorkRepository.save(labWork);
     }
 }

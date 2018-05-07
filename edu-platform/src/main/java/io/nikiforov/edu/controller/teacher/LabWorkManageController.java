@@ -52,6 +52,7 @@ public class LabWorkManageController {
     @ResponseBody
     @RequestMapping(value = "/update-labwork", method = RequestMethod.PUT)
     public LabWork updateLabWork(@RequestBody LabWorkInfo labWorkInfo) {
+        System.out.println("from controller" + labWorkInfo);
         return labWorkService.saveFromModel(labWorkInfo);
     }
 

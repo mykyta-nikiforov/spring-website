@@ -9,12 +9,13 @@ var labWorkId = parseInt(url.match(/edit-labwork\/\d+/)[0].match(/\d+/));
 $(document).ready(function () {
     // Events of the button to update the labwork
     $('#update-labwork-button').click(function () {
-        if ($('#update-labwork-name').val() == ''
-            && $('#update-labwork-desc').val() == ''
-            && $('#update-labwork-deadline').val() == '') {
+        if (!$('#update-labwork-name').val()
+            || !$('#update-labwork-desc')
+            || !$('#update-labwork-deadline')) {
             $('#update-labwork-input-warning').show("slow");
         } else {
             $('#update-labwork-input-warning').hide();
+            console.log($('#update-labwork-deadline').val());
             $.ajax({
                 url: '/update-labwork',
                 type: 'PUT',
@@ -29,7 +30,15 @@ $(document).ready(function () {
                 success: function (labwork) {
                     $('#update-labwork-name').val(labwork.name);
                     $('#update-labwork-desc').val(labwork.description);
-                    $('#update-labwork-deadline').val(labwork.deadLine);
+                    console.log(labwork.deadLine);
+
+                    var date = new Date();
+                    date.setDate(labwork.deadLine.dayOfMonth);
+                    date.setMonth(labwork.deadLine.monthValue-1);
+                    date.setYear(labwork.deadLine.year);
+
+                    console.log(date);
+                    $('#update-labwork-deadline').valueAsDate = date;
 
                     $('#update-labwork-input-updated').show("slow").delay(600).fadeOut();
                 },

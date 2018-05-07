@@ -17,8 +17,9 @@ public class LabWorkInfo {
         id = labWork.getId();
         name = labWork.getName();
         description = labWork.getDescription();
-        System.out.println(labWork);
+        System.out.println("from LabWorkInfo constructor: " + labWork);
         deadLine = labWork.getDeadLine().format(DateTimeFormatter.ofPattern("uuuu-MM-dd"));
+        System.out.println("from LabWorkInfo constructor: " + deadLine);
         courseId = labWork.getCourse().getId();
     }
 
@@ -71,8 +72,10 @@ public class LabWorkInfo {
     @Override
     public String toString() {
         return "LabWorkInfo{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
+                ", deadLine='" + deadLine + '\'' +
                 ", courseId=" + courseId +
                 '}';
     }

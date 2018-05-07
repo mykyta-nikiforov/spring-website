@@ -41,7 +41,6 @@ public class LabWorkFileServiceImpl implements LabWorkFileService {
         LabWork labWork = labWorkService.getLabWork(labWorkFileInfo.getLabWorkId());
         LabWorkFile labWorkFile = new LabWorkFile(labWorkFileInfo, file);
         labWorkFile.setLabWork(labWork);
-        System.out.println(labWorkFile);
         return labWorkFileRepository.save(labWorkFile);
     }
 
