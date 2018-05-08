@@ -74,17 +74,6 @@ public class LectureManageController {
         return lectureFileService.save(lectureFileInfo, file);
     }
 
-    @GetMapping("/displayLecture")
-    public void showImage(@RequestParam("id") int lectureId, HttpServletResponse response)
-            throws IOException {
-        LectureFile lectureFile = lectureFileService.findById(lectureId);
-        byte[] lectureFileData = lectureFile.getData();
-        response.setContentType(lectureFile.getContentType());
-        response.getOutputStream().write(lectureFileData);
-        response.setContentLength(lectureFileData.length);
-        response.getOutputStream().close();
-    }
-
     @ResponseBody
     @RequestMapping(value = "/delete-lecture-file/{id}", method = RequestMethod.DELETE)
     public boolean deleteLectureFile(@PathVariable("id") int id) {

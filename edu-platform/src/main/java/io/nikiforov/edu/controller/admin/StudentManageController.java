@@ -50,7 +50,6 @@ public class StudentManageController {
     public String studentPage(@PathVariable("id") int id, Model model) {
         model.addAttribute("student", studentService.getById(id));
         model.addAttribute("groups", groupService.findAll());
-        System.out.println(groupService.findAll());
         return "admin/users/studentProfile";
     }
 

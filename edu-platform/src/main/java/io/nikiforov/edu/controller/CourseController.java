@@ -50,13 +50,4 @@ public class CourseController {
         model.addAttribute("lectures", lectureService.getAllLectures(id));
         return "student/coursePage";
     }
-
-    @GetMapping(value = "/displayPDF", produces = "application/pdf")
-    @ResponseBody
-    public byte[] showImage(@RequestParam("id") int lectureId)
-            throws IOException {
-        LecturePDFFile lecturePDFFile = lecturePDFFileService.findOne(lectureId);
-        LectureFile lectureFile = lecturePDFFile.getLectureFile();
-        return lectureFile.getData();
-    }
 }

@@ -61,7 +61,7 @@ $(document).ready(function () {
                     // Append new file to the table of files
                     $('#files-table').find('tbody').append('<tr>\n' +
                         '                    <td>' + lectureFile.id + '</td>\n' +
-                        '                    <td><a href="/displayLecture?id=' + lectureFile.id + '" target="_blank">' + lectureFile.fileName + '</a></td>\n' +
+                        '                    <td><a href="/lecture-file?id=' + lectureFile.id + '" target="_blank">' + lectureFile.fileName + '</a></td>\n' +
                         '                    <td>' + lectureFile.description + '</td>\n' +
                         '                    <td>' + lectureFile.contentType + '</td>\n' +
                         '                    <td><button lecture-file-id=\'' + lectureFile.id + '\' class="remove-lecture-file-button btn btn-outline-danger"><span><i class="oi oi-trash"></i></span></button></td>\n' +

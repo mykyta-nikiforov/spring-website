@@ -2,39 +2,35 @@
 <%@include file="../templates/header.jsp"%>
 
 <div class="container">
-    <div class="jumbotron">
+    <div class="jumbotron jumbo-header">
         <h1 class="display-4">${lecture.name}</h1>
     </div>
+
+    <embed id="pdf-container" width="100%" height="600px" src="" type="application/pdf">
+
+    <h3 class="pt-4">Other lecture files</h3>
+    <div class="table-responsive">
+        <table id="files-table" class="table table-bordered table-striped text-left">
+            <thead>
+            <tr>
+                <th>File name</th>
+                <th>Description</th>
+                <th>Content type</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach var="lectureFile" items="${lectureFiles}">
+                <tr>
+                    <td><a href="/lecture-file?id=${lectureFile.id}" target="_blank">${lectureFile.fileName}</a></td>
+                    <td>${lectureFile.description}</td>
+                    <td>${lectureFile.contentType}</td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+    </div>
+
 </div>
-<%--<iframe src="/displayLecture?id=3" width="400px" height="300px"></iframe>--%>
-<%--<object data="/displayLecture?id=3" type="application/pdf" width="400px" height="300px"></object>--%>
-<%--<div>--%>
-    <%--<embed src="" type="application/pdf" width="900px" height="500px"></embed>--%>
-<%--</div>--%>
-<%--</object>--%>
-<div class="container">
-    <embed id="pdf-container" width="900px" height="500px" src="" type="application/pdf">
-</div>
 
-<%--<object data="/displayLecture?id=3" type="application/pdf" width="750px" height="750px">--%>
-    <%--<embed src="/displayLecture?id=3" type="application/pdf">--%>
-        <%--<p>This browser does not support PDFs. Please download the PDF to view it: <a href="/displayImage?id=3">Download PDF</a>.</p>--%>
-    <%--</embed>--%>
-<%--</object>--%>
-
-<%--<object data="/displayLecture?id=3" type="application/pdf" height="100%" width="100%">--%>
-    <%--<iframe src="/displayLecture?id=3" style="border: none;" height="100%" width="100%">--%>
-        <%--This browser does not support PDFs. Please download the PDF to view it: <a href="/displayImage?id=3">Download PDF</a>--%>
-    <%--</iframe>--%>
-<%--</object>--%>
-
-
-
-<%--<div id="example1"></div>--%>
-
-<%--<script src="/static/js/pdfobject.js"></script>--%>
-<%--<script>PDFObject.embed("/displayImage?id=3", "#example1");</script>--%>
-
-<script src="../../../static/js/pdfobject.js"></script>
 <script src="../../../static/js/student/lecturePage.js"></script>
 <%@include file="../templates/footer.jsp"%>

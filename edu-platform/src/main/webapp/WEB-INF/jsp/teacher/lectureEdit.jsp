@@ -107,7 +107,7 @@
                 <c:forEach var="lectureFile" items="${lectureFiles}">
                     <tr>
                         <td>${lectureFile.id}</td>
-                        <td><a href="/displayLecture?id=${lectureFile.id}" target="_blank">${lectureFile.fileName}</a></td>
+                        <td><a href="/lecture-file?id=${lectureFile.id}" target="_blank">${lectureFile.fileName}</a></td>
                         <td>${lectureFile.description}</td>
                         <td>${lectureFile.contentType}</td>
                         <td><button lecture-file-id='${lectureFile.id}' class="remove-lecture-file-button btn btn-outline-danger"><span><i class="oi oi-trash"></i></span></button></td>

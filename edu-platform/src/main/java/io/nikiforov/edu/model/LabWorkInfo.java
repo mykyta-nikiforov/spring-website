@@ -17,9 +17,7 @@ public class LabWorkInfo {
         id = labWork.getId();
         name = labWork.getName();
         description = labWork.getDescription();
-        System.out.println("from LabWorkInfo constructor: " + labWork);
         deadLine = labWork.getDeadLine().format(DateTimeFormatter.ofPattern("uuuu-MM-dd"));
-        System.out.println("from LabWorkInfo constructor: " + deadLine);
         courseId = labWork.getCourse().getId();
     }
 
