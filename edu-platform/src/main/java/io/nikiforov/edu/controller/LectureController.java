@@ -6,12 +6,16 @@ import io.nikiforov.edu.service.LectureFileService;
 import io.nikiforov.edu.service.LecturePDFFileService;
 import io.nikiforov.edu.service.LectureService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 @Controller
 public class LectureController {
@@ -45,13 +49,15 @@ public class LectureController {
     }
 
     @GetMapping("/lecture-file")
-    public void showImage(@RequestParam("id") int lectureId, HttpServletResponse response)
-            throws IOException {
+    public HttpEntity<byte[]> downloadLectureFile(@RequestParam("id") int lectureId) throws UnsupportedEncodingException {
         LectureFile lectureFile = lectureFileService.findById(lectureId);
+        String fileName = URLEncoder.encode(lectureFile.getFileName(), "UTF-8");
+
         byte[] lectureFileData = lectureFile.getData();
-        response.setContentType(lectureFile.getContentType());
-        response.getOutputStream().write(lectureFileData);
-        response.setContentLength(lectureFileData.length);
-        response.getOutputStream().close();
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.add("Content-Type", lectureFile.getContentType());
+        responseHeaders.add("Content-Disposition",
+                "attachment; filename*=UTF-8''" + fileName);
+        return new HttpEntity<>(lectureFileData, responseHeaders);
     }
 }
