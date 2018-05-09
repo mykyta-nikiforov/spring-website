@@ -3,7 +3,7 @@ var url = window.location.href;
 var courseId = parseInt(url.match(/course-\d+/)[0].match(/\d+/));
 
 // Get lectureId from url path
-var lectureId = parseInt(url.match(/\/\d+/)[0].match(/\d+/));
+var lectureId = parseInt(url.match(/\/lec-\d+/)[0].match(/\d+/));
 
 $(document).ready(function () {
     var req = new XMLHttpRequest();

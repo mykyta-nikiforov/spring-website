@@ -2,9 +2,7 @@ package io.nikiforov.edu.controller;
 
 import io.nikiforov.edu.entity.LectureFile;
 import io.nikiforov.edu.entity.LecturePDFFile;
-import io.nikiforov.edu.service.LectureFileService;
-import io.nikiforov.edu.service.LecturePDFFileService;
-import io.nikiforov.edu.service.LectureService;
+import io.nikiforov.edu.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -29,14 +27,29 @@ public class LectureController {
     @Autowired
     private LectureFileService lectureFileService;
 
+    @Autowired
+    private LabWorkService labWorkService;
+
+    @Autowired
+    private LabWorkFileService labWorkFileService;
+
     //TODO make smthn with {course-id}
-    @GetMapping("/course-{course-id}/{lecture-id}")
+    @GetMapping("/course-{course-id}/lec-{lecture-id}")
     public String lecturePage(@PathVariable("course-id") int courseId,
                               @PathVariable("lecture-id") int lectureId,
                               Model model) {
         model.addAttribute("lecture", lectureService.getLecture(lectureId));
         model.addAttribute("lectureFiles", lectureFileService.findAllByLectureId(lectureId));
         return "student/lecturePage";
+    }
+
+    @GetMapping("/course-{course-id}/lab-{labWork-id}")
+    public String labWorkPage(@PathVariable("course-id") int courseId,
+                              @PathVariable("labWork-id") int labWorkId,
+                              Model model) {
+        model.addAttribute("labWork", labWorkService.getLabWork(labWorkId));
+        model.addAttribute("labWorkFiles", labWorkFileService.findAllByLabWorkId(labWorkId));
+        return "student/labworkPage";
     }
 
     @GetMapping(value = "/displayPDF", produces = "application/pdf")

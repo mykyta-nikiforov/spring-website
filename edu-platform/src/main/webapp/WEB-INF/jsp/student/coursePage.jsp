@@ -24,7 +24,28 @@
             <c:forEach var="lecture" items="${lectures}">
                 <tr>
                     <td>${lecture.id}</td>
-                    <td><a href="/course-${course.id}/${lecture.id}">${lecture.name}</a></td>
+                    <td><a href="/course-${course.id}/lec-${lecture.id}">${lecture.name}</a></td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+    </div>
+
+    <h3 class="mt-3">Laboratory works</h3>
+    <hr>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped text-left">
+            <thead>
+            <tr>
+                <th>No</th>
+                <th>Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach var="labWork" items="${labWorks}">
+                <tr>
+                    <td>${labWork.id}</td>
+                    <td><a href="/course-${course.id}/lab-${labWork.id}">${labWork.name}</a></td>
                 </tr>
             </c:forEach>
             </tbody>

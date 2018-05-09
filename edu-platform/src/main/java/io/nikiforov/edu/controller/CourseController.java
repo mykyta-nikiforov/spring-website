@@ -48,6 +48,7 @@ public class CourseController {
     public String coursePage(@PathVariable int id, Model model){
         model.addAttribute("course", courseService.getCourse(id));
         model.addAttribute("lectures", lectureService.getAllLectures(id));
+        model.addAttribute("labWorks", labWorkService.findAllByCourseId(id));
         return "student/coursePage";
     }
 }

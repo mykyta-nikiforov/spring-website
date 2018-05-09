@@ -3,12 +3,12 @@
 
 <div class="container">
     <div class="jumbotron jumbo-header">
-        <h1 class="display-4">${lecture.name}</h1>
+        <h1 class="display-4">${labWork.name}</h1>
+        <p>${labWork.description}</p>
+        <p>Deadline: ${labWork.deadLine}</p>
     </div>
 
-    <embed id="pdf-container" width="100%" height="600px" src="" type="application/pdf">
-
-    <h3 class="pt-4">Other lecture files</h3>
+    <h3 class="pt-4">Labwork files</h3>
     <div class="table-responsive">
         <table id="files-table" class="table table-bordered table-striped text-left">
             <thead>
@@ -18,10 +18,10 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="lectureFile" items="${lectureFiles}">
+            <c:forEach var="labWorkFile" items="${labWorkFiles}">
                 <tr>
-                    <td><a href="/lecture-file?id=${lectureFile.id}" target="_blank">${lectureFile.fileName}</a></td>
-                    <td>${lectureFile.description}</td>
+                    <td><a href="/labwork-file?id=${labWorkFile.id}" target="_blank">${labWorkFile.fileName}</a></td>
+                    <td>${labWorkFile.description}</td>
                 </tr>
             </c:forEach>
             </tbody>
@@ -30,5 +30,4 @@
 
 </div>
 
-<script src="../../../static/js/student/lecturePage.js"></script>
 <%@include file="../templates/footer.jsp"%>
