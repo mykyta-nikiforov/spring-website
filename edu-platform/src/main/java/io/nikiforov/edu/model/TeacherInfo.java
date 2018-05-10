@@ -1,26 +1,24 @@
 package io.nikiforov.edu.model;
 
-import io.nikiforov.edu.entity.Degree;
-
 public class TeacherInfo {
     private String email;
     private String password;
     private String name;
     private String surname;
     private String patronymic;
-    private Degree degree;
+    private int degreeId;
 
     public TeacherInfo() {
     }
 
     public TeacherInfo(String email, String password, String name, String surname,
-                       String patronymic, Degree degree) {
+                       String patronymic, int degreeId) {
         this.email = email;
         this.password = password;
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
-        this.degree = degree;
+        this.degreeId = degreeId;
     }
 
     public String getEmail() {
@@ -63,11 +61,11 @@ public class TeacherInfo {
         this.patronymic = patronymic;
     }
 
-    public Degree getDegree() {
-        return degree;
+    public int getDegreeId() {
+        return degreeId;
     }
 
-    public void setDegree(Degree degree) {
-        this.degree = degree;
+    public void setDegreeId(int degreeId) {
+        this.degreeId = degreeId;
     }
 }

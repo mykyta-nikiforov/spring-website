@@ -6,55 +6,59 @@
     <h3>Manage Teachers</h3>
     <hr>
     <h4>Add new teacher</h4>
-    <sf:form method="post" action="/admin/add-teacher" modelAttribute="newTeacher">
+    <sf:form id="add-teacher-form" method="post">
         <div class="form-group row">
             <label class="col-form-label col-md-3">Email</label>
             <div class="col-md-5">
-                <sf:input type="text" class="form-control" path="email" value="${newTeacher.email}"/>
+                <input type="text" class="form-control" id="add-teacher-email"/>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-form-label col-md-3">Password</label>
             <div class="col-md-5">
-                <sf:input type="text" class="form-control" path="password"
-                          value="${newTeacher.password}"/>
+                <input type="text" class="form-control" id="add-teacher-password"/>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-form-label col-md-3">Surname</label>
             <div class="col-md-5">
-                <sf:input type="text" class="form-control" path="surname"
-                          value="${newTeacher.surname}"/>
+                <input type="text" class="form-control" id="add-teacher-surname"/>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-form-label col-md-3">Name</label>
             <div class="col-md-5">
-                <sf:input type="text" class="form-control" path="name"
-                          value="${newTeacher.name}"/>
+                <input type="text" class="form-control" id="add-teacher-name"/>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-form-label col-md-3">Patronymic</label>
             <div class="col-md-5">
-                <sf:input type="text" class="form-control" path="patronymic"
-                          value="${newTeacher.patronymic}"/>
+                <input type="text" class="form-control" id="add-teacher-patronymic"/>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-form-label col-md-3">Degree</label>
-            <sf:select path="degree">
-                <sf:option value="">Select the degree</sf:option>
+            <select id="add-teacher-degree">
+                <option value="">Select the degree</option>
                 <%--<sf:options itemLabel="name" items="${}"></sf:options>--%>
                 <c:forEach var="degree" items="${degrees}">
-                    <sf:option value="${degree.id}">
+                    <option value="${degree.id}">
                         <c:out value="${degree.name}"></c:out>
-                    </sf:option>
+                    </option>
                 </c:forEach>
-            </sf:select>
+            </select>
         </div>
         <div class="form-group row">
-            <input type="submit" class="btn btn-dark" value="Add"/>
+            <div class="col-md-3">
+                <input type="button" id="add-teacher-button" class="btn btn-dark" value="Add"/>
+            </div>
+            <div id="add-teacher-warning" class="alert alert-warning alert-hide col-md-4" role="alert">
+                Input all values, please.
+            </div>
+            <div id="add-teacher-added" class="alert alert-success alert-hide col-md-4" role="alert">
+                Successfully added.
+            </div>
         </div>
     </sf:form>
 </div>
@@ -64,7 +68,7 @@
     <h3>Teachers</h3>
     <hr>
     <div class="table-responsive">
-        <table class="table table-bordered table-striped text-left">
+        <table id="teachers-table" class="table table-bordered table-striped text-left">
             <thead>
             <tr>
                 <th>Name</th>
@@ -88,6 +92,8 @@
         </table>
     </div>
 </div>
+
+<script src="../../../../static/js/admin/manageTeachers.js"></script>
 
 
 <%@include file="../../templates/footer.jsp" %>

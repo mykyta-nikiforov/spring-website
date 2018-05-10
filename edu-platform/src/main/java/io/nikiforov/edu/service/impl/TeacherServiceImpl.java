@@ -21,6 +21,9 @@ public class TeacherServiceImpl implements TeacherService {
     @Autowired
     RoleService roleService;
 
+    @Autowired
+    DegreeService degreeService;
+
     @Override
     public List<Teacher> findAll() {
         return teacherRepository.findAll();
@@ -37,13 +40,17 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public void save(TeacherInfo teacherInfo) {
-        Teacher result = new Teacher(teacherInfo); // Create Teacher from TeacherInfo
+    public Teacher save(TeacherInfo teacherInfo) {
+        // find degree by id
+        Degree degree = degreeService.findOne(teacherInfo.getDegreeId());
+        // Create Teacher from TeacherInfo and degree
+        Teacher result = new Teacher(teacherInfo, degree);
         Set<Role> rolesSet = new HashSet<>(); // Create roleSet and set it
         rolesSet.add(roleService.getRole("TEACHER"));
         result.setRoles(rolesSet);
         result.setPassword(passwordEncoder.encode(result.getPassword())); // Encode password
         save(result); // Save the teacher
+        return result;
     }
 
     @Override

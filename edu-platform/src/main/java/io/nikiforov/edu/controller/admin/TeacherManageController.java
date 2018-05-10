@@ -39,11 +39,18 @@ public class TeacherManageController {
         return "admin/users/usersManageTeachers";
     }
 
+//    @PostMapping("/admin/add-teacher")
+//    public String addTeacher(@ModelAttribute("newTeacher") TeacherInfo teacherInfo) {
+//        teacherService.save(teacherInfo);
+//        return "redirect:/admin/users-manage/teachers";
+//    }
+
+    @ResponseBody
     @PostMapping("/admin/add-teacher")
-    public String addTeacher(@ModelAttribute("newTeacher") TeacherInfo teacherInfo) {
-        teacherService.save(teacherInfo);
-        return "redirect:/admin/users-manage/teachers";
+    public Teacher addTeacher(@RequestBody TeacherInfo teacherInfo){
+        return teacherService.save(teacherInfo);
     }
+
 
     @GetMapping("/admin/users-manage/teachers/{id}")
     public String teacherPage(@PathVariable("id") int id, Model model) {

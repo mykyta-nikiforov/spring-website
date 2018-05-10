@@ -30,13 +30,13 @@ public class Teacher extends User{
     public Teacher() {
     }
 
-    public Teacher(TeacherInfo teacherInfo) {
+    public Teacher(TeacherInfo teacherInfo, Degree degree) {
         this.email = teacherInfo.getEmail();
         this.password = teacherInfo.getPassword();
         this.name = teacherInfo.getName();
         this.surname = teacherInfo.getSurname();
         this.patronymic = teacherInfo.getPatronymic();
-        this.degree = teacherInfo.getDegree();
+        this.degree = degree;
     }
 
     public Teacher(String name, String surname, String patronymic, Degree degree) {

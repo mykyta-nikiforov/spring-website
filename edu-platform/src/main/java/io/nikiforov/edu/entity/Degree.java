@@ -1,5 +1,7 @@
 package io.nikiforov.edu.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -10,6 +12,7 @@ public class Degree {
     private int id;
     private String name;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "degree")
     private List<Teacher> teachers;
 

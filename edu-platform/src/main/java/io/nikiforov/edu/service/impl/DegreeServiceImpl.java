@@ -17,4 +17,9 @@ public class DegreeServiceImpl implements DegreeService {
     public List<Degree> findAll() {
         return degreeRepository.findAll();
     }
+
+    @Override
+    public Degree findOne(int id) {
+        return degreeRepository.findOne(id);
+    }
 }
