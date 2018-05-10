@@ -40,8 +40,6 @@ $(document).ready(function() {
     $('.remove-button').click(function () {
         var button = $(this);
         var id = $(this).attr("course-id");
-        console.log(id);
-        console.log("from initial remove-button func")
         makeRemoveButton(id, button);
     });
 });

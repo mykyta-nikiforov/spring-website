@@ -33,13 +33,13 @@
         </div>
         <div class="form-group row">
             <label class="col-form-label col-md-3">Degree</label>
-            <sf:select path="degreeId">
-                <option value="${teacher.degreeId.id}">${teacher.degreeId.name}</option>
-                <c:forEach var="degreeId" items="${degrees}">
-                    <%--Check in order to get rid of double showing the current degreeId of teacher--%>
-                    <c:if test="${teacher.degreeId.id != degreeId.id}">
-                        <sf:option value="${degreeId.id}">
-                            <c:out value="${degreeId.name}"></c:out>
+            <sf:select path="degree">
+                <option value="${teacher.degree.id}">${teacher.degree.name}</option>
+                <c:forEach var="degree" items="${degrees}">
+                    <%--Check in order to get rid of double showing the current degree of teacher--%>
+                    <c:if test="${teacher.degree.id != degree.id}">
+                        <sf:option value="${degree.id}">
+                            <c:out value="${degree.name}"></c:out>
                         </sf:option>
                     </c:if>
                 </c:forEach>

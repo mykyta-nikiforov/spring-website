@@ -76,9 +76,16 @@ public class TeacherManageController {
         return "redirect:/admin/users-manage/teachers/" + teacher.getId();
     }
 
-    @GetMapping("/admin/users-manage/teachers/delete-teacher")
-    public String deleteTeacher(@RequestParam("id") int id) {
+//    @GetMapping("/admin/users-manage/teachers/delete-teacher")
+//    public String deleteTeacher(@RequestParam("id") int id) {
+//        teacherService.delete(id);
+//        return "redirect:/admin/users-manage/teachers";
+//    }
+
+    @ResponseBody
+    @RequestMapping(value = "/admin/delete-teacher", method = RequestMethod.DELETE)
+    public String deleteTeacher2(@RequestParam("id") int id) {
         teacherService.delete(id);
-        return "redirect:/admin/users-manage/teachers";
+        return "deleted";
     }
 }

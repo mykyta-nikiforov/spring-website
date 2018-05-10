@@ -10,24 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="79095938-a192-4c3f-9ab6-0891bdd5288d" name="Default" comment="Add view of lecture's attached documents">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/io/nikiforov/edu/entity/Teacher.class" afterPath="$PROJECT_DIR$/target/classes/io/nikiforov/edu/entity/Teacher.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/io/nikiforov/edu/model/TeacherInfo.class" afterPath="$PROJECT_DIR$/target/classes/io/nikiforov/edu/model/TeacherInfo.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/io/nikiforov/edu/service/DegreeService.class" afterPath="$PROJECT_DIR$/target/classes/io/nikiforov/edu/service/DegreeService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/io/nikiforov/edu/service/impl/DegreeServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/io/nikiforov/edu/service/impl/DegreeServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/io/nikiforov/edu/service/impl/TeacherServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/io/nikiforov/edu/service/impl/TeacherServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/controller/admin/TeacherManageController.java" afterPath="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/controller/admin/TeacherManageController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/entity/Degree.java" afterPath="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/entity/Degree.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/entity/Teacher.java" afterPath="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/entity/Teacher.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/model/TeacherInfo.java" afterPath="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/model/TeacherInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/service/DegreeService.java" afterPath="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/service/DegreeService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/service/TeacherService.java" afterPath="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/service/TeacherService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/service/impl/DegreeServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/service/impl/DegreeServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/service/impl/TeacherServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/service/impl/TeacherServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/import.sql" afterPath="$PROJECT_DIR$/src/main/resources/import.sql" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/users/teacherProfile.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/users/teacherProfile.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/users/usersManageTeachers.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/users/usersManageTeachers.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/import.sql" afterPath="$PROJECT_DIR$/target/classes/import.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/admin/manageTeachers.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/admin/manageTeachers.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/teacher/coursesManage.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/teacher/coursesManage.js" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -67,8 +54,38 @@
       <file leaf-file-name="manageTeachers.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/admin/manageTeachers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="34" column="44" lean-forward="false" selection-start-line="34" selection-start-column="44" selection-end-line="34" selection-end-column="44" />
+            <state relative-caret-position="216">
+              <caret line="30" column="36" lean-forward="false" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="teacherProfile.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/users/teacherProfile.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="40" column="45" lean-forward="false" selection-start-line="40" selection-start-column="45" selection-end-line="40" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TeacherManageController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/io/nikiforov/edu/controller/admin/TeacherManageController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="775">
+              <caret line="87" column="16" lean-forward="true" selection-start-line="87" selection-start-column="16" selection-end-line="87" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="coursesManage.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/teacher/coursesManage.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="426">
+              <caret line="29" column="53" lean-forward="true" selection-start-line="29" selection-start-column="53" selection-end-line="29" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -87,32 +104,22 @@
       <file leaf-file-name="Teacher.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/io/nikiforov/edu/entity/Teacher.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
+            <state relative-caret-position="90">
               <caret line="30" column="5" lean-forward="false" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TeacherManageController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/io/nikiforov/edu/controller/admin/TeacherManageController.java">
+      <file leaf-file-name="LectureManageController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/io/nikiforov/edu/controller/teacher/LectureManageController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="50" column="48" lean-forward="true" selection-start-line="50" selection-start-column="48" selection-end-line="50" selection-end-column="48" />
+            <state relative-caret-position="-488">
+              <caret line="36" column="27" lean-forward="true" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
               <folding>
-                <element signature="e#1625#1626#0" expanded="true" />
-                <element signature="e#1680#1681#0" expanded="true" />
+                <element signature="e#1106#1107#0" expanded="true" />
+                <element signature="e#1167#1168#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TeacherService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/io/nikiforov/edu/service/TeacherService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="13" column="11" lean-forward="false" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -127,21 +134,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="coursesManage.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/teacher/coursesManage.js">
+      <file leaf-file-name="coursesManage.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/teacher/coursesManage.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="20" column="38" lean-forward="false" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="lectureEdit.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/teacher/lectureEdit.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="27" column="19" lean-forward="true" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
+            <state relative-caret-position="354">
+              <caret line="58" column="24" lean-forward="true" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -150,8 +147,8 @@
       <file leaf-file-name="usersManageTeachers.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/users/usersManageTeachers.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="8" column="17" lean-forward="true" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="33" />
+            <state relative-caret-position="324">
+              <caret line="87" column="158" lean-forward="false" selection-start-line="87" selection-start-column="20" selection-end-line="87" selection-end-column="158" />
               <folding />
             </state>
           </provider>
@@ -173,7 +170,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>lecturePage</find>
       <find>labWorkEdit</find>
       <find>LabWorkInfo</find>
       <find>System.out.println</find>
@@ -203,6 +199,7 @@
       <find>files-table</find>
       <find>displayLecture</find>
       <find>email</find>
+      <find>degreeI</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -224,8 +221,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/service/LabWorkService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/service/LecturePDFFileService.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/service/LectureService.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/service/RoleService.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/service/SpecialtyService.java" />
@@ -269,12 +264,14 @@
         <option value="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/entity/Teacher.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/service/impl/DegreeServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/model/TeacherInfo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/controller/admin/TeacherManageController.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/service/TeacherService.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/service/impl/TeacherServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/entity/Degree.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/users/usersManageTeachers.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/controller/admin/TeacherManageController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/static/js/teacher/coursesManage.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/js/admin/manageTeachers.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/users/teacherProfile.jsp" />
       </list>
     </option>
   </component>
@@ -893,7 +890,7 @@
       <workItem from="1525712176269" duration="8257000" />
       <workItem from="1525776374059" duration="7008000" />
       <workItem from="1525859704787" duration="9273000" />
-      <workItem from="1525949519897" duration="8408000" />
+      <workItem from="1525949519897" duration="10026000" />
     </task>
     <task id="LOCAL-00001" summary="Add loading lecture files to database">
       <created>1521056258208</created>
@@ -913,7 +910,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="497174000" />
+    <option name="totallyTimeSpent" value="498792000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -942,9 +939,9 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970452" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25258964" sideWeight="0.47900465" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25258964" sideWeight="0.47278383" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32988048" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24860558" sideWeight="0.5209953" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25258964" sideWeight="0.5272162" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32988048" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3281493" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24940239" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1020,13 +1017,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-web/4.2.4.RELEASE/spring-security-web-4.2.4.RELEASE.jar!/org/springframework/security/web/authentication/AnonymousAuthenticationFilter.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-web/4.2.4.RELEASE/spring-security-web-4.2.4.RELEASE.jar!/org/springframework/security/web/servletapi/SecurityContextHolderAwareRequestFilter.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
@@ -1163,6 +1153,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1238,26 +1229,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/teacher/coursesManage.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-56">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/teacher/lectureEdit.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="329">
           <caret line="61" column="18" lean-forward="true" selection-start-line="61" selection-start-column="18" selection-end-line="61" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/nikiforov/edu/controller/teacher/LectureManageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="36" column="27" lean-forward="true" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
           <folding />
         </state>
       </provider>
@@ -1329,14 +1304,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/nikiforov/edu/service/impl/TeacherServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="52" column="22" lean-forward="false" selection-start-line="52" selection-start-column="22" selection-end-line="52" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/io/nikiforov/edu/service/TeacherService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -1345,29 +1312,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/nikiforov/edu/controller/admin/TeacherManageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="50" column="48" lean-forward="true" selection-start-line="50" selection-start-column="48" selection-end-line="50" selection-end-column="48" />
-          <folding>
-            <element signature="e#1625#1626#0" expanded="true" />
-            <element signature="e#1680#1681#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/teacher/lectureEdit.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="361">
           <caret line="27" column="19" lean-forward="true" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/nikiforov/edu/entity/Teacher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="30" column="5" lean-forward="false" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -1388,26 +1336,77 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/users/usersManageTeachers.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/nikiforov/edu/service/impl/TeacherServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="17" lean-forward="true" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="33" />
+        <state relative-caret-position="390">
+          <caret line="52" column="22" lean-forward="false" selection-start-line="52" selection-start-column="22" selection-end-line="52" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/admin/manageTeachers.js">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/teacher/coursesManage.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="34" column="44" lean-forward="false" selection-start-line="34" selection-start-column="44" selection-end-line="34" selection-end-column="44" />
+        <state relative-caret-position="354">
+          <caret line="58" column="24" lean-forward="true" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/nikiforov/edu/controller/teacher/LectureManageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-488">
+          <caret line="36" column="27" lean-forward="true" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
+          <folding>
+            <element signature="e#1106#1107#0" expanded="true" />
+            <element signature="e#1167#1168#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/nikiforov/edu/entity/Teacher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="30" column="5" lean-forward="false" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/users/usersManageTeachers.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="87" column="158" lean-forward="false" selection-start-line="87" selection-start-column="20" selection-end-line="87" selection-end-column="158" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/teacher/coursesManage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="20" column="38" lean-forward="false" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
+        <state relative-caret-position="426">
+          <caret line="29" column="53" lean-forward="true" selection-start-line="29" selection-start-column="53" selection-end-line="29" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/admin/manageTeachers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="30" column="36" lean-forward="false" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/nikiforov/edu/controller/admin/TeacherManageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="775">
+          <caret line="87" column="16" lean-forward="true" selection-start-line="87" selection-start-column="16" selection-end-line="87" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/users/teacherProfile.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="40" column="45" lean-forward="false" selection-start-line="40" selection-start-column="45" selection-end-line="40" selection-end-column="45" />
           <folding />
         </state>
       </provider>

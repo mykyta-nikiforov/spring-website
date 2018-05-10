@@ -1,16 +1,11 @@
-$(document).ready(function() {
-    $('#add-teacher-button').click(function() {
-        if(!$('#add-teacher-email').val() || !$('#add-teacher-password').val()
-            || !$('#add-teacher-surname').val()  || !$('#add-teacher-name').val()
-            || !$('#add-teacher-patronymic').val()  || !$('#add-teacher-degree').val()){
+$(document).ready(function () {
+
+    $('#add-teacher-button').click(function () {
+        if (!$('#add-teacher-email').val() || !$('#add-teacher-password').val()
+            || !$('#add-teacher-surname').val() || !$('#add-teacher-name').val()
+            || !$('#add-teacher-patronymic').val() || !$('#add-teacher-degree').val()) {
             $('#add-teacher-warning').show('slow');
-            console.log(!$('#add-teacher-email').val());
-            console.log(!$('#add-teacher-password').val());
-            console.log(!$('#add-teacher-surname').val());
-            console.log(!$('#add-teacher-name').val());
-            console.log(!$('#add-teacher-patronymic').val());
-            console.log(!$('#add-teacher-degree').val());
-        } else{
+        } else {
             $('#add-teacher-warning').hide();
             $.ajax({
                 url: '/admin/add-teacher',
@@ -25,17 +20,42 @@ $(document).ready(function() {
                     degreeId: $('#add-teacher-degree').val()
                 }),
                 success: function (teacher) {
+                    $('#add-teacher-added').show("slow").delay(600).fadeOut();
                     $('#teachers-table').find('tbody').append('<tr>\n' +
                         '                    <td><a href="/admin/users-manage/teachers/' + teacher.id + '">' + teacher.surname + teacher.name + teacher.patronymic + '</a></td>\n' +
                         '                    <td>' + teacher.email + '</td>\n' +
                         '                    <td>' + teacher.degree.name + '</td>\n' +
-                        '                    <td><a href="/admin/users-manage/teachers/delete-teacher?id=' + teacher.id + '"><span class="oi oi-trash"></span></a></td>\n' +
+                        '                    <td><button teacher-id=\"' + teacher.id + '\" class="remove-button btn btn-outline-danger"><span><i class="oi oi-trash"></i></span></button></td>\n' +
                         '                </tr>');
-                    $('#add-teacher-added').show("slow").delay(600).fadeOut();
+
+                    var deleteButton = $('[teacher-id=\'' + teacher.id + '\']');
+                    deleteButton.click(function() {
+                        makeRemoveButton(deleteButton);
+                    })
                     $('#add-teacher-form')[0].reset();
                 }
             });
         }
 
-    })
-})
+    });
+
+    $('.remove-button').click(function () {
+        var button = $(this);
+        makeRemoveButton(button);
+    });
+});
+
+function makeRemoveButton(button) {
+    var id = button.attr("teacher-id");
+    $.ajax({
+        url: '/admin/delete-teacher?id=' + id,
+        type: 'DELETE',
+        datatype: 'text',
+        success: function () {
+            button.parentsUntil('tbody').remove();
+        },
+        error: function() {
+            alert("bad!");
+        }
+    });
+}
