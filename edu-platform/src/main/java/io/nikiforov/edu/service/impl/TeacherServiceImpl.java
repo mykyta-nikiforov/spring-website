@@ -35,8 +35,8 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public void save(Teacher teacher) {
-        teacherRepository.save(teacher);
+    public Teacher save(Teacher teacher) {
+        return teacherRepository.save(teacher);
     }
 
     @Override
@@ -51,6 +51,20 @@ public class TeacherServiceImpl implements TeacherService {
         result.setPassword(passwordEncoder.encode(result.getPassword())); // Encode password
         save(result); // Save the teacher
         return result;
+    }
+
+    @Override
+    public Teacher saveWithoutPassword(TeacherInfo teacherInfo) {
+        Teacher result = getById(teacherInfo.getId());
+        // find degree by id
+        Degree degree = degreeService.findOne(teacherInfo.getDegreeId());
+        // Set all new values
+        result.setEmail(teacherInfo.getEmail());
+        result.setSurname(teacherInfo.getSurname());
+        result.setName(teacherInfo.getName());
+        result.setPatronymic(teacherInfo.getPatronymic());
+        result.setDegree(degree);
+        return save(result);
     }
 
     @Override

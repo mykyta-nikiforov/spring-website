@@ -53,10 +53,10 @@
             <div class="col-md-3">
                 <input type="button" id="add-teacher-button" class="btn btn-dark" value="Add"/>
             </div>
-            <div id="add-teacher-warning" class="alert alert-warning alert-hide col-md-4" role="alert">
+            <div id="add-teacher-warning" class="alert alert-warning alert-hide alert-small col-md-4" role="alert">
                 Input all values, please.
             </div>
-            <div id="add-teacher-added" class="alert alert-success alert-hide col-md-4" role="alert">
+            <div id="add-teacher-added" class="alert alert-success alert-hide alert-small col-md-4" role="alert">
                 Successfully added.
             </div>
         </div>

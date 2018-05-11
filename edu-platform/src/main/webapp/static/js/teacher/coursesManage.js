@@ -2,11 +2,10 @@ console.log("hello");
 
 $(document).ready(function() {
     $('#add-course-button').click(function() {
-        if($('#course-name').val() == '' || $('#course-desc').val() == ''){
-            $('#add-course-input-warning').css("display", "inline");
-            // alert("Input values!")
+        if(!$('#course-name').val() || !$('#course-desc').val()){
+            $('#add-course-input-warning').show("slow");
         } else {
-            $('#add-course-input-warning').css("display", "none");
+            $('#add-course-input-warning').hide();
             $.ajax({
                 url: 'add-course',
                 type: 'POST',
@@ -28,6 +27,8 @@ $(document).ready(function() {
                         makeRemoveButton(course.id, newElement);
                     });
                     $('#new-course-form')[0].reset();
+
+                    $('#add-course-input-added').show("slow").delay(600).fadeOut();
                 },
                 error: function () {
                     alert("bad");

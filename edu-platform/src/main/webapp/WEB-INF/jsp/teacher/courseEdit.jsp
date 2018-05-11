@@ -2,7 +2,7 @@
 <%@page pageEncoding="UTF-8" %>
 <%@include file="../templates/header.jsp"%>
 <link href="/static/css/open-iconic-bootstrap.css" rel="stylesheet">
-<link href="/static/css/style.css" rel="stylesheet">
+<%--<link href="/static/css/style.css" rel="stylesheet">--%>
 
 
 <br>
@@ -27,10 +27,10 @@
             <div class="col-md-3">
                 <input type="button" id="edit-course-button" class="btn btn-dark" value="Save"/>
             </div>
-            <div id="edit-course-input-warning" class="alert alert-warning alert-hide col-md-4" role="alert">
+            <div id="edit-course-input-warning" class="alert alert-warning alert-hide alert-small col-md-4" role="alert">
                 Cannot be empty!
             </div>
-            <div id="edit-course-input-updated" class="alert alert-success alert-hide col-md-4" role="alert">
+            <div id="edit-course-input-updated" class="alert alert-success alert-hide alert-small col-md-4" role="alert">
                 Successfully updated.
             </div>
         </div>

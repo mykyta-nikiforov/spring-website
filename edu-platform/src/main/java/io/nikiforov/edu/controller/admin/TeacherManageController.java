@@ -67,13 +67,21 @@ public class TeacherManageController {
         return "redirect:/admin/users-manage/teachers/" + teacher.getId();
     }
 
-    @PostMapping("/admin/users-manage/teachers/update-password")
-    public String updateTeacherPassword(@ModelAttribute("teacher") Teacher teacher) {
-        String password = teacher.getPassword();
-        teacher = teacherService.getById(teacher.getId());
+    @ResponseBody
+    @RequestMapping(value = "/admin/update-teacher", method = RequestMethod.PUT)
+    public Teacher updateTeacherREST(@RequestBody TeacherInfo teacherInfo) {
+        return teacherService.saveWithoutPassword(teacherInfo);
+    }
+
+    @ResponseBody
+    @PostMapping("/admin/update-teacher-password")
+    public String updateTeacherPassword(@RequestBody TeacherInfo teacherInfo) {
+
+        String password = teacherInfo.getPassword();
+        Teacher teacher = teacherService.getById(teacherInfo.getId());
         teacher.setPassword(passwordEncoder.encode(password));
         teacherService.save(teacher);
-        return "redirect:/admin/users-manage/teachers/" + teacher.getId();
+        return "success";
     }
 
 //    @GetMapping("/admin/users-manage/teachers/delete-teacher")

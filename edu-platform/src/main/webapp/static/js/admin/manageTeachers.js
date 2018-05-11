@@ -50,7 +50,7 @@ function makeRemoveButton(button) {
     $.ajax({
         url: '/admin/delete-teacher?id=' + id,
         type: 'DELETE',
-        datatype: 'text',
+        dataType: 'text',
         success: function () {
             button.parentsUntil('tbody').remove();
         },

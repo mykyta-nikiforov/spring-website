@@ -1,7 +1,6 @@
 <%@page pageEncoding="UTF-8" %>
 <%@include file="../templates/header.jsp"%>
 <link href="/static/css/open-iconic-bootstrap.css" rel="stylesheet">
-<link href="/static/css/bootstrap.min.css" rel="stylesheet">
 
 <div class="container ">
     <h3>Manage Courses</h3>
@@ -22,12 +21,17 @@
             </div>
         </div>
         <div class="form-group row">
-            <input type="button" class="btn btn-dark" id="add-course-button" value="Add"/>
+            <div class="col-md-3">
+                <input type="button" class="btn btn-dark" id="add-course-button" value="Add"/>
+            </div>
+            <div id="add-course-input-warning" class="alert alert-warning alert-hide alert-small col-md-4" role="alert">
+                You should fill in all the inputs.
+            </div>
+            <div id="add-course-input-added" class="alert alert-success alert-hide alert-small col-md-4" role="alert">
+                Successfully added.
+            </div>
         </div>
-        <div id="add-course-input-warning" class="alert alert-warning" role="alert"
-             style="display: none">
-            You should fill in all the inputs.
-        </div>
+
 
     </form>
 </div>

@@ -10,7 +10,7 @@ var courseId = parseInt(result[0].match(/\d+/));
 $(document).ready(function() {
     // Events of the button to update the course
     $('#edit-course-button').click(function() {
-        if($('#edit-course-name').val() == '' || $('#edit-course-desc').val == ''){
+        if(!$('#edit-course-name').val() || !$('#edit-course-desc').val()){
             $('#edit-course-input-warning').show("slow");
         } else {
             $('#edit-course-input-warning').hide();

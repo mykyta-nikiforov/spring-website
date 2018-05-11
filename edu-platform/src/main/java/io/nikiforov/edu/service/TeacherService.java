@@ -9,9 +9,11 @@ public interface TeacherService {
 
     Teacher getById(int id);
 
-    void save(Teacher teacher);
+    Teacher save(Teacher teacher);
 
     Teacher save(TeacherInfo teacherInfo);
+
+    Teacher saveWithoutPassword(TeacherInfo teacherInfo);
 
     void delete(int id);
 }

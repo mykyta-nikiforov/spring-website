@@ -1,6 +1,7 @@
 package io.nikiforov.edu.model;
 
 public class TeacherInfo {
+    private int id;
     private String email;
     private String password;
     private String name;
@@ -11,14 +12,23 @@ public class TeacherInfo {
     public TeacherInfo() {
     }
 
-    public TeacherInfo(String email, String password, String name, String surname,
+    public TeacherInfo(int id, String email, String password, String name, String surname,
                        String patronymic, int degreeId) {
+        this.id = id;
         this.email = email;
         this.password = password;
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
         this.degreeId = degreeId;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getEmail() {
