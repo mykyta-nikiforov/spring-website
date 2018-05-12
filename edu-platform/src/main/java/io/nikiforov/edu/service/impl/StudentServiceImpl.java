@@ -19,6 +19,9 @@ public class StudentServiceImpl implements StudentService {
     UserRepository userRepository;
 
     @Autowired
+    GroupService groupService;
+
+    @Autowired
     RoleService roleService;
 
     @Autowired
@@ -40,18 +43,19 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void save(Student student) {
-        studentRepository.save(student);
+    public Student save(Student student) {
+        return studentRepository.save(student);
     }
 
     @Override
-    public void save(StudentInfo studentInfo) {
-        Student result = new Student(studentInfo); // Create Student from StudentInfo
+    public Student save(StudentInfo studentInfo) {
+        Group group = groupService.getGroup(studentInfo.getGroupId());
+        Student result = new Student(studentInfo, group); // Create Student from StudentInfo
         Set<Role> roleSet = new HashSet<>(); // Create roleSet and set it
         roleSet.add(roleService.getRole("STUDENT"));
         result.setRoles(roleSet);
         result.setPassword(passwordEncoder.encode(result.getPassword())); // Encode password
-        save(result); // Save the student
+        return save(result); // Save the student
     }
 
     @Override

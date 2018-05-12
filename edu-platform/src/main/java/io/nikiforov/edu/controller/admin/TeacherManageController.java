@@ -39,12 +39,6 @@ public class TeacherManageController {
         return "admin/users/usersManageTeachers";
     }
 
-//    @PostMapping("/admin/add-teacher")
-//    public String addTeacher(@ModelAttribute("newTeacher") TeacherInfo teacherInfo) {
-//        teacherService.save(teacherInfo);
-//        return "redirect:/admin/users-manage/teachers";
-//    }
-
     @ResponseBody
     @PostMapping("/admin/add-teacher")
     public Teacher addTeacher(@RequestBody TeacherInfo teacherInfo){
@@ -57,14 +51,6 @@ public class TeacherManageController {
         model.addAttribute("teacher", teacherService.getById(id));
         model.addAttribute("degrees", degreeService.findAll());
         return "admin/users/teacherProfile";
-    }
-
-    @PostMapping("/admin/users-manage/teachers/update")
-    public String updateTeacher(@ModelAttribute("teacher") Teacher teacher) {
-        // Set password from DB, because the parameter is absent on JSP
-        teacher.setPassword(teacherService.getById(teacher.getId()).getPassword());
-        teacherService.save(teacher);
-        return "redirect:/admin/users-manage/teachers/" + teacher.getId();
     }
 
     @ResponseBody
@@ -84,15 +70,9 @@ public class TeacherManageController {
         return "success";
     }
 
-//    @GetMapping("/admin/users-manage/teachers/delete-teacher")
-//    public String deleteTeacher(@RequestParam("id") int id) {
-//        teacherService.delete(id);
-//        return "redirect:/admin/users-manage/teachers";
-//    }
-
     @ResponseBody
     @RequestMapping(value = "/admin/delete-teacher", method = RequestMethod.DELETE)
-    public String deleteTeacher2(@RequestParam("id") int id) {
+    public String deleteTeacher(@RequestParam("id") int id) {
         teacherService.delete(id);
         return "deleted";
     }

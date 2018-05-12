@@ -46,7 +46,7 @@ $(document).ready(function() {
 });
 
 function makeRemoveButton(id, element) {
-    console.log("from function makeRemoveButton(), " + id + ", " + element)
+    console.log("from function removeStudent(), " + id + ", " + element)
     $.ajax({
         url: '/delete-course?id=' + id,
         type: 'DELETE',

@@ -1,5 +1,6 @@
 package io.nikiforov.edu.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.nikiforov.edu.model.GroupInfo;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -27,6 +28,7 @@ public class Group {
     @JoinColumn(name = "curator_id", unique = true)
     private Teacher curator;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "group")
     private Set<Student> students;
 

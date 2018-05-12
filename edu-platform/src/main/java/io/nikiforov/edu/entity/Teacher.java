@@ -1,5 +1,6 @@
 package io.nikiforov.edu.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.nikiforov.edu.model.TeacherInfo;
 import org.hibernate.annotations.Proxy;
 import javax.persistence.*;
@@ -24,6 +25,7 @@ public class Teacher extends User{
     @JoinColumn(name = "degree_id")
     private Degree degree;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "curator", fetch = FetchType.LAZY)
     private Group curatedGroup;
 

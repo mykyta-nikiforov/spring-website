@@ -8,19 +8,19 @@ public class StudentInfo {
     private String name;
     private String surname;
     private String patronymic;
-    private Group group;
+    private int groupId;
 
     public StudentInfo() {
     }
 
     public StudentInfo(String email, String password, String name, String surname,
-                       String patronymic, Group group) {
+                       String patronymic, int groupId) {
         this.email = email;
         this.password = password;
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
-        this.group = group;
+        this.groupId = groupId;
     }
 
     public String getEmail() {
@@ -63,11 +63,11 @@ public class StudentInfo {
         this.patronymic = patronymic;
     }
 
-    public Group getGroup() {
-        return group;
+    public int getGroupId() {
+        return groupId;
     }
 
-    public void setGroup(Group group) {
-        this.group = group;
+    public void setGroupId(int groupId) {
+        this.groupId = groupId;
     }
 }

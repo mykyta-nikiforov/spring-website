@@ -30,7 +30,7 @@ $(document).ready(function () {
 
                     var deleteButton = $('[teacher-id=\'' + teacher.id + '\']');
                     deleteButton.click(function() {
-                        makeRemoveButton(deleteButton);
+                        removeTeacher(deleteButton);
                     })
                     $('#add-teacher-form')[0].reset();
                 }
@@ -41,11 +41,11 @@ $(document).ready(function () {
 
     $('.remove-button').click(function () {
         var button = $(this);
-        makeRemoveButton(button);
+        removeTeacher(button);
     });
 });
 
-function makeRemoveButton(button) {
+function removeTeacher(button) {
     var id = button.attr("teacher-id");
     $.ajax({
         url: '/admin/delete-teacher?id=' + id,

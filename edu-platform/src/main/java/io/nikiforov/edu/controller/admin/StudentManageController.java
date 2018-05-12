@@ -34,16 +34,29 @@ public class StudentManageController {
         return "admin/users/usersManageStudents";
     }
 
-    @PostMapping("/admin/users-manage/students/add-student")
-    public String addUser(@ModelAttribute("newStudent") StudentInfo studentInfo) {
-        studentService.save(studentInfo);
-        return "redirect:/admin/users-manage/students";
+//    @PostMapping("/admin/users-manage/students/add-student")
+//    public String addUser(@ModelAttribute("newStudent") StudentInfo studentInfo) {
+//        studentService.save(studentInfo);
+//        return "redirect:/admin/users-manage/students";
+//    }
+
+    @ResponseBody
+    @PostMapping("/admin/add-student")
+    public Student addStudent(@RequestBody StudentInfo studentInfo) {
+        return studentService.save(studentInfo);
     }
 
     @GetMapping("/admin/users-manage/students/delete-student")
     public String deleteStudent(@RequestParam("id") int id) {
         studentService.delete(id);
         return "redirect:/admin/users-manage/students";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/admin/delete-student", method = RequestMethod.DELETE)
+    public String removeStudent(@RequestParam("id") int id) {
+        studentService.delete(id);
+        return "deleted";
     }
 
     @GetMapping("/admin/users-manage/students/{id}")

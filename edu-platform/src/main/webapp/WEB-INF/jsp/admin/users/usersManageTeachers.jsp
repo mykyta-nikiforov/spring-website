@@ -84,9 +84,13 @@
                     <td><a href="/admin/users-manage/teachers/${teacher.id}">${teacher.surname} ${teacher.name} ${teacher.patronymic}</a></td>
                     <td>${teacher.email}</td>
                     <td>${teacher.degree.name}</td>
-                    <%--<td><a href="/admin/users-manage/teachers/delete-teacher?id=${teacher.id}"><span class="oi oi-trash"></span></a></td>--%>
-                    <td><button teacher-id="${teacher.id}" class="remove-button btn btn-outline-danger"><span><i class="oi oi-trash"></i></span></button></td>
-
+                    <td>
+                        <button teacher-id="${teacher.id}" class="remove-button btn btn-outline-danger">
+                            <span>
+                                <i class="oi oi-trash"></i>
+                            </span>
+                        </button>
+                    </td>
                 </tr>
             </c:forEach>
             </tbody>

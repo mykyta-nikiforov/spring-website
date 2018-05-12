@@ -25,13 +25,22 @@ public class Student extends User{
     public Student() {
     }
 
+    // maybe unused
     public Student(StudentInfo studentInfo) {
         this.email = studentInfo.getEmail();
         this.password = studentInfo.getPassword();
         this.name = studentInfo.getName();
         this.surname = studentInfo.getSurname();
         this.patronymic = studentInfo.getPatronymic();
-        this.group = studentInfo.getGroup();
+//        this.group = studentInfo.getGroup();
+    }
+    public Student(StudentInfo studentInfo, Group group) {
+        this.email = studentInfo.getEmail();
+        this.password = studentInfo.getPassword();
+        this.name = studentInfo.getName();
+        this.surname = studentInfo.getSurname();
+        this.patronymic = studentInfo.getPatronymic();
+        this.group = group;
     }
 
     public Student(String email, String password, boolean enabled,

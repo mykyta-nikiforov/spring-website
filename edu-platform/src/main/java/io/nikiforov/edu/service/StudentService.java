@@ -11,9 +11,9 @@ public interface StudentService {
 
     List<Student> getByGroupId(int id);
 
-    void save(Student student);
+    Student save(Student student);
 
-    void save(StudentInfo studentInfo);
+    Student save(StudentInfo studentInfo);
 
     void delete(int id);
 }
