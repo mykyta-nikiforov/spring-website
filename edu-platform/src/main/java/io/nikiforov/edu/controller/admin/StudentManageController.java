@@ -2,6 +2,7 @@ package io.nikiforov.edu.controller.admin;
 
 import io.nikiforov.edu.entity.Student;
 import io.nikiforov.edu.model.StudentInfo;
+import io.nikiforov.edu.model.TeacherInfo;
 import io.nikiforov.edu.service.GroupService;
 import io.nikiforov.edu.service.RoleService;
 import io.nikiforov.edu.service.StudentService;
@@ -34,23 +35,17 @@ public class StudentManageController {
         return "admin/users/usersManageStudents";
     }
 
-//    @PostMapping("/admin/users-manage/students/add-student")
-//    public String addUser(@ModelAttribute("newStudent") StudentInfo studentInfo) {
-//        studentService.save(studentInfo);
-//        return "redirect:/admin/users-manage/students";
-//    }
-
     @ResponseBody
     @PostMapping("/admin/add-student")
     public Student addStudent(@RequestBody StudentInfo studentInfo) {
         return studentService.save(studentInfo);
     }
 
-    @GetMapping("/admin/users-manage/students/delete-student")
-    public String deleteStudent(@RequestParam("id") int id) {
-        studentService.delete(id);
-        return "redirect:/admin/users-manage/students";
-    }
+//    @GetMapping("/admin/users-manage/students/delete-student")
+//    public String deleteStudent(@RequestParam("id") int id) {
+//        studentService.delete(id);
+//        return "redirect:/admin/users-manage/students";
+//    }
 
     @ResponseBody
     @RequestMapping(value = "/admin/delete-student", method = RequestMethod.DELETE)
@@ -58,7 +53,7 @@ public class StudentManageController {
         studentService.delete(id);
         return "deleted";
     }
-
+    
     @GetMapping("/admin/users-manage/students/{id}")
     public String studentPage(@PathVariable("id") int id, Model model) {
         model.addAttribute("student", studentService.getById(id));
@@ -66,12 +61,11 @@ public class StudentManageController {
         return "admin/users/studentProfile";
     }
 
-    @PostMapping("/admin/users-manage/students/update")
-    public String updateStudent(@ModelAttribute("student") Student student) {
-        // Set password from DB, because the parameter is absent on JSP
-        student.setPassword(studentService.getById(student.getId()).getPassword());
-        studentService.save(student);
-        return "redirect:/admin/users-manage/students/" + student.getId();
+    @ResponseBody
+    @RequestMapping(value = "/admin/update-student", method = RequestMethod.PUT)
+    public Student updateStudent(@RequestBody StudentInfo studentInfo) {
+        System.out.println(studentInfo);
+        return studentService.saveWithoutPassword(studentInfo);
     }
 
     @PostMapping("/admin/users-manage/students/update-password")
@@ -81,5 +75,12 @@ public class StudentManageController {
         student.setPassword(passwordEncoder.encode(password));
         studentService.save(student);
         return "redirect:/admin/users-manage/students/" + student.getId();
+    }
+
+    @ResponseBody
+    @PostMapping("/admin/update-student-password")
+    public String updatePassword(@RequestBody StudentInfo studentInfo) {
+        studentService.savePassword(studentInfo);
+        return "success";
     }
 }

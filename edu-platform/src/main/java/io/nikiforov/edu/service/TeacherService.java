@@ -15,5 +15,7 @@ public interface TeacherService {
 
     Teacher saveWithoutPassword(TeacherInfo teacherInfo);
 
+    void savePassword(TeacherInfo teacherInfo);
+
     void delete(int id);
 }

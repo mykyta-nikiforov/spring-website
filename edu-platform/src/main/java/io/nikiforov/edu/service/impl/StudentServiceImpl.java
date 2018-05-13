@@ -62,4 +62,23 @@ public class StudentServiceImpl implements StudentService {
     public void delete(int id) {
         userRepository.delete(id);
     }
+
+    @Override
+    public Student saveWithoutPassword(StudentInfo studentInfo) {
+        Student student = getById(studentInfo.getId());
+        Group group = groupService.getGroup(studentInfo.getGroupId());
+        student.setEmail(studentInfo.getEmail());
+        student.setName(studentInfo.getName());
+        student.setSurname(studentInfo.getSurname());
+        student.setPatronymic(studentInfo.getPatronymic());
+        student.setGroup(group);
+        return save(student);
+    }
+
+    @Override
+    public void savePassword(StudentInfo studentInfo) {
+        Student student = getById(studentInfo.getId());
+        student.setPassword(passwordEncoder.encode(studentInfo.getPassword()));
+        save(student);
+    }
 }

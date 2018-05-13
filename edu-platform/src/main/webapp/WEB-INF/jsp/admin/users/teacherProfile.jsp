@@ -1,7 +1,7 @@
 <%@page pageEncoding="UTF-8" %>
 <%@include file="../../templates/header.jsp"%>
 <link href="/static/css/open-iconic-bootstrap.css" rel="stylesheet">
-<script src='../../../../static/js/admin/teacherProfile.js'></script>
+<script src='/static/js/admin/teacherProfile.js'></script>
 
 <div class="container">
     <h3>Teacher Profile</h3>
@@ -81,7 +81,6 @@
         </div>
     </form>
 
-    <%--<a href="/admin/delete-teacher?id=${teacher.id}" class="btn btn-danger">Delete teacher</a>--%>
     <input type="button" id="delete-teacher-button" class="btn btn-danger" value="Delete teacher">
 </div>
 

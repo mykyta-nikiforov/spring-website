@@ -68,6 +68,14 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
+    public void savePassword(TeacherInfo teacherInfo) {
+        String password = teacherInfo.getPassword();
+        Teacher teacher = getById(teacherInfo.getId());
+        teacher.setPassword(passwordEncoder.encode(password));
+        save(teacher);
+    }
+
+    @Override
     public void delete(int id) {
         teacherRepository.delete(id);
     }

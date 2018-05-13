@@ -3,6 +3,7 @@ package io.nikiforov.edu.model;
 import io.nikiforov.edu.entity.Group;
 
 public class StudentInfo {
+    private int id;
     private String email;
     private String password;
     private String name;
@@ -13,14 +14,23 @@ public class StudentInfo {
     public StudentInfo() {
     }
 
-    public StudentInfo(String email, String password, String name, String surname,
+    public StudentInfo(int id, String email, String password, String name, String surname,
                        String patronymic, int groupId) {
+        this.id = id;
         this.email = email;
         this.password = password;
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
         this.groupId = groupId;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getEmail() {
@@ -69,5 +79,18 @@ public class StudentInfo {
 
     public void setGroupId(int groupId) {
         this.groupId = groupId;
+    }
+
+    @Override
+    public String toString() {
+        return "StudentInfo{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", patronymic='" + patronymic + '\'' +
+                ", groupId=" + groupId +
+                '}';
     }
 }

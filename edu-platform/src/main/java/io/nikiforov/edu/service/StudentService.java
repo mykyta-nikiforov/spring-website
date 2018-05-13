@@ -16,4 +16,8 @@ public interface StudentService {
     Student save(StudentInfo studentInfo);
 
     void delete(int id);
+
+    Student saveWithoutPassword(StudentInfo studentInfo);
+
+    void savePassword(StudentInfo studentInfo);
 }

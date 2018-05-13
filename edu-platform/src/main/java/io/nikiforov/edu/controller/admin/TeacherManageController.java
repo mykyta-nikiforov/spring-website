@@ -55,18 +55,14 @@ public class TeacherManageController {
 
     @ResponseBody
     @RequestMapping(value = "/admin/update-teacher", method = RequestMethod.PUT)
-    public Teacher updateTeacherREST(@RequestBody TeacherInfo teacherInfo) {
+    public Teacher updateTeacher(@RequestBody TeacherInfo teacherInfo) {
         return teacherService.saveWithoutPassword(teacherInfo);
     }
 
     @ResponseBody
     @PostMapping("/admin/update-teacher-password")
     public String updateTeacherPassword(@RequestBody TeacherInfo teacherInfo) {
-
-        String password = teacherInfo.getPassword();
-        Teacher teacher = teacherService.getById(teacherInfo.getId());
-        teacher.setPassword(passwordEncoder.encode(password));
-        teacherService.save(teacher);
+        teacherService.savePassword(teacherInfo);
         return "success";
     }
 
