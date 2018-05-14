@@ -2,6 +2,11 @@ package io.nikiforov.edu.config;
 
 import io.nikiforov.edu.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
+import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
+import org.springframework.boot.context.embedded.tomcat.TomcatConnectorCustomizer;
+import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer;
+import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
 import org.springframework.context.annotation.*;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -10,6 +15,10 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.util.ResourceUtils;
+
+import javax.swing.filechooser.FileNameExtensionFilter;
+import java.io.FileNotFoundException;
 
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @Configuration
@@ -23,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     AuthenticationSuccessHandlerImpl successHandler;
 
     @Override
-    public void configure(HttpSecurity httpSecurity) throws Exception {
+        public void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeRequests()
                     .antMatchers("/admin/**").hasRole("ADMIN")
@@ -43,6 +52,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .exceptionHandling()
 //                    .accessDeniedPage("/403")
 //                    .and()
+                .requiresChannel()
+                    .anyRequest().requiresSecure()
+                    .and()
                 .csrf()
                     .disable();
     }
