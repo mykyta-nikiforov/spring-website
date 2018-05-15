@@ -9,9 +9,9 @@ public interface GroupService {
 
     Group getGroup(int id);
 
-    void save(Group group);
+    Group save(Group group);
 
-    void save(GroupInfo groupInfo);
+    Group save(GroupInfo groupInfo);
 
     void update(Group group);
 

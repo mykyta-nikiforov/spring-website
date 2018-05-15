@@ -4,9 +4,9 @@ INSERT INTO `role` (`role`) VALUES ('TEACHER');
 INSERT INTO `role` (`role`) VALUES ('STUDENT');
 
 #------------- Create degrees
-INSERT INTO `degreeId` (`name`) VALUES ('Професор');
-INSERT INTO `degreeId` (`name`) VALUES ('Доцент');
-INSERT INTO `degreeId` (`name`) VALUES ('Кандидат наук');
+INSERT INTO `degree` (`name`) VALUES ('Професор');
+INSERT INTO `degree` (`name`) VALUES ('Доцент');
+INSERT INTO `degree` (`name`) VALUES ('Кандидат наук');
 
 #------------- Create teachers
 INSERT INTO `user` (`email`, `password`, `account_non_expired`, `account_non_locked`, `credentials_non_expired`, `enabled`) VALUES ('romaka@ukr.net', '$2a$10$BiLVI1THGI4MUU5VzEB.5.GiOi3d58ctE23rWJAnhrok16sTTDtCe', b'1', b'1', b'1', b'1');

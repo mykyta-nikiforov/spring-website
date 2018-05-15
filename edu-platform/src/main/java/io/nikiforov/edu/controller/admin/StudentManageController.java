@@ -53,7 +53,7 @@ public class StudentManageController {
         studentService.delete(id);
         return "deleted";
     }
-    
+
     @GetMapping("/admin/users-manage/students/{id}")
     public String studentPage(@PathVariable("id") int id, Model model) {
         model.addAttribute("student", studentService.getById(id));

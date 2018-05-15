@@ -43,12 +43,11 @@ public class Group {
         this.students = students;
     }
 
-    public Group(GroupInfo groupInfo) {
+    public Group(GroupInfo groupInfo, Specialty specialty, Teacher curator) {
         this.number = groupInfo.getNumber();
-        this.specialty = groupInfo.getSpecialty();
+        this.specialty = specialty;
         this.yearOfStudy = groupInfo.getYearOfStudy();
-        this.curator = groupInfo.getCurator();
-
+        this.curator = curator;
     }
 
     // When delete Group, set null for "group" field of every student

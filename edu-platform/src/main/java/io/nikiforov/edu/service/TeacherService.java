@@ -18,4 +18,6 @@ public interface TeacherService {
     void savePassword(TeacherInfo teacherInfo);
 
     void delete(int id);
+
+    List<Teacher> findFreeCurators();
 }

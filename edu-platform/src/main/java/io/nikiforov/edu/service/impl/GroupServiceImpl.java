@@ -2,8 +2,12 @@ package io.nikiforov.edu.service.impl;
 
 import io.nikiforov.edu.dao.*;
 import io.nikiforov.edu.entity.Group;
+import io.nikiforov.edu.entity.Specialty;
+import io.nikiforov.edu.entity.Teacher;
 import io.nikiforov.edu.model.GroupInfo;
 import io.nikiforov.edu.service.GroupService;
+import io.nikiforov.edu.service.SpecialtyService;
+import io.nikiforov.edu.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -17,6 +21,12 @@ public class GroupServiceImpl implements GroupService{
     @Autowired
     private TeacherRepository teacherRepository;
 
+    @Autowired
+    private TeacherService teacherService;
+
+    @Autowired
+    private SpecialtyService specialtyService;
+
     @Override
     public List<Group> findAll() {
         return groupRepository.findAll();
@@ -28,15 +38,17 @@ public class GroupServiceImpl implements GroupService{
     }
 
     @Override
-    public void save(Group group) {
-        groupRepository.save(group);
+    public Group save(Group group) {
+        return groupRepository.save(group);
     }
 
-    // Transform from GroupInfo to Group and save
+    // Get values from GroupInfo and save
     @Override
-    public void save(GroupInfo groupInfo) {
-        Group group = new Group(groupInfo);
-        save(group);
+    public Group save(GroupInfo groupInfo) {
+        Teacher curator = teacherService.getById(groupInfo.getCuratorId());
+        Specialty specialty = specialtyService.getById(groupInfo.getSpecialtyId());
+        Group group = new Group(groupInfo, specialty, curator);
+        return save(group);
     }
 
     @Override

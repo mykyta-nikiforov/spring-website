@@ -1,5 +1,6 @@
 package io.nikiforov.edu.controller.admin;
 
+import io.nikiforov.edu.dao.TeacherRepository;
 import io.nikiforov.edu.entity.Group;
 import io.nikiforov.edu.model.GroupInfo;
 import io.nikiforov.edu.service.GroupService;
@@ -30,15 +31,21 @@ public class GroupManageController {
     public String groupsManagePage(Model model) {
         model.addAttribute("newGroup", new GroupInfo());
         model.addAttribute("groups", groupService.findAll());
-        model.addAttribute("teachers", teacherService.findAll());
+        model.addAttribute("teachers", teacherService.findFreeCurators());
         model.addAttribute("specialties", specialtyService.findAll());
         return "admin/groups/groupsManage";
     }
 
-    @PostMapping("/admin/groups-manage/add-group")
-    public String addGroup(@ModelAttribute("newGroup") GroupInfo modelGroup) {
-        groupService.save(new Group(modelGroup));
-        return "redirect:/admin/groups-manage";
+//    @PostMapping("/admin/groups-manage/add-group")
+//    public String addGroup(@ModelAttribute("newGroup") GroupInfo modelGroup) {
+//        groupService.save(new Group(modelGroup));
+//        return "redirect:/admin/groups-manage";
+//    }
+
+    @ResponseBody
+    @PostMapping("/admin/add-group")
+    public Group addGroup(@RequestBody GroupInfo groupInfo) {
+        return groupService.save(groupInfo);
     }
 
     @GetMapping("/admin/groups-manage/group-{id}")

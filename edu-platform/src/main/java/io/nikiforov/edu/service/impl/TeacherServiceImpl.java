@@ -79,4 +79,9 @@ public class TeacherServiceImpl implements TeacherService {
     public void delete(int id) {
         teacherRepository.delete(id);
     }
+
+    @Override
+    public List<Teacher> findFreeCurators() {
+        return teacherRepository.findFreeCurators();
+    }
 }

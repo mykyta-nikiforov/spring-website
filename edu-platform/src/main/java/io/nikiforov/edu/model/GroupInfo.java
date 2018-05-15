@@ -4,29 +4,23 @@ import io.nikiforov.edu.entity.*;
 
 public class GroupInfo {
     private String number;
-    private Specialty specialty;
+    private int specialtyId;
     private int yearOfStudy;
-    private Teacher curator;
+    private int curatorId;
 
     public GroupInfo() {
     }
 
-    public GroupInfo(String number, Teacher curator) {
+    public GroupInfo(String number, int curatorId) {
         this.number = number;
-        this.curator = curator;
+        this.curatorId = curatorId;
     }
 
-    public GroupInfo(String number, Specialty specialty, int yearOfStudy, Teacher curator) {
+    public GroupInfo(String number, int specialtyId, int yearOfStudy, int curatorId) {
         this.number = number;
-        this.specialty = specialty;
+        this.specialtyId = specialtyId;
         this.yearOfStudy = yearOfStudy;
-        this.curator = curator;
-    }
-
-    public GroupInfo(Group group) {
-        this.number = group.getNumber();
-        this.yearOfStudy = group.getYearOfStudy();
-        this.curator = group.getCurator();
+        this.curatorId = curatorId;
     }
 
     public String getNumber() {
@@ -37,12 +31,12 @@ public class GroupInfo {
         this.number = number;
     }
 
-    public Specialty getSpecialty() {
-        return specialty;
+    public int getSpecialtyId() {
+        return specialtyId;
     }
 
-    public void setSpecialty(Specialty specialty) {
-        this.specialty = specialty;
+    public void setSpecialtyId(int specialtyId) {
+        this.specialtyId = specialtyId;
     }
 
     public int getYearOfStudy() {
@@ -53,11 +47,11 @@ public class GroupInfo {
         this.yearOfStudy = yearOfStudy;
     }
 
-    public Teacher getCurator() {
-        return curator;
+    public int getCuratorId() {
+        return curatorId;
     }
 
-    public void setCurator(Teacher curator) {
-        this.curator = curator;
+    public void setCuratorId(int curatorId) {
+        this.curatorId = curatorId;
     }
 }

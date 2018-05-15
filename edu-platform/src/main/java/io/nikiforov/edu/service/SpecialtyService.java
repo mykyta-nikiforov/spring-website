@@ -5,4 +5,6 @@ import java.util.List;
 
 public interface SpecialtyService {
     List<Specialty> findAll();
+
+    Specialty getById(int id);
 }

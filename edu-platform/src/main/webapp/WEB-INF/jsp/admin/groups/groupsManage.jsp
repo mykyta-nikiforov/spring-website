@@ -1,54 +1,63 @@
 <%@page pageEncoding="UTF-8" %>
 <%@include file="../../templates/header.jsp"%>
 <link href="/static/css/open-iconic-bootstrap.css" rel="stylesheet">
+<script src="/static/js/admin/manageGroups.js"></script>
 
 
 <div class="container">
     <h3>Manage Groups</h3>
     <hr>
     <h4>Add new group</h4>
-    <sf:form method="post" action="/admin/groups-manage/add-group" modelAttribute="newGroup">
+    <form>
+        <%--TODO--%>
         <input type="hidden" name="yearOfStudy" value="1">
         <div class="form-group row">
             <label class="col-form-label col-md-3">Number</label>
             <div class="col-md-5">
-                <sf:input type="text" class="form-control" path="number"
-                value="${newGroup.number}"/>
+                <input id="add-group-number" type="text" class="form-control"/>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-form-label col-md-3">Specialty</label>
-            <sf:select path="specialty">
+            <select id="add-group-specialty">
                 <option value="">Select the specialty</option>
                 <c:forEach var="specialty" items="${specialties}">
-                    <sf:option value="${specialty.id}">
+                    <option value="${specialty.id}">
                         <c:out value="${specialty.name}"></c:out>
-                    </sf:option>
+                    </option>
                 </c:forEach>
-            </sf:select>
+            </select>
         </div>
         <div class="form-group row">
             <label class="col-form-label col-md-3">Curator</label>
-            <sf:select path="curator">
+            <select id="add-group-curator" >
                 <option value="">Select the curator</option>
                 <c:forEach var="teacher" items="${teachers}">
-                    <sf:option value="${teacher.id}">
+                    <option value="${teacher.id}">
                         <c:out value="${teacher.name} ${teacher.surname}"></c:out>
-                    </sf:option>
+                    </option>
                 </c:forEach>
-            </sf:select>
+            </select>
         </div>
         <div class="form-group row">
-            <input type="submit" class="btn btn-dark" value="Add"/>
+            <div class="col-md-3">
+                <input id="add-group-button" type="button" class="btn btn-dark" value="Add"/>
+            </div>
+            <div id="add-group-warning" class="alert alert-warning alert-hide alert-small col-md-4" role="alert">
+                Input all values, please.
+            </div>
+            <div id="add-group-success" class="alert alert-success alert-hide alert-small col-md-4" role="alert">
+                Successfully added.
+            </div>
         </div>
-    </sf:form>
+    </form>
 </div>
 
 <div class="container text-center">
     <h3>List of Groups</h3>
     <hr>
     <div class="table-responsive">
-        <table class="table table-bordered table-striped text-left">
+        <table id="groups-table" class="table table-bordered table-striped text-left">
             <thead>
             <tr>
                 <th>Number</th>
@@ -65,7 +74,11 @@
                         </a>
                     </td>
                     <td><a href="/admin/users-manage/teachers/${group.curator.id}">${group.curator.surname} ${group.curator.name} ${group.curator.patronymic}</a></td>
-                    <td><a href="/admin/groups-manage/delete-group?id=${group.id}"><span class="oi oi-trash"></span></a></td>
+                    <td>
+                        <button group-id="${group.id}" class="remove-button btn btn-outline-danger">
+                            <span><i class="oi oi-trash"></i></span>
+                        </button>
+                    </td>
                 </tr>
             </c:forEach>
             </tbody>
