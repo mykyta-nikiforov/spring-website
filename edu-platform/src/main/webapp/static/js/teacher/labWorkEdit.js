@@ -10,8 +10,8 @@ $(document).ready(function () {
     // Events of the button to update the labwork
     $('#update-labwork-button').click(function () {
         if (!$('#update-labwork-name').val()
-            || !$('#update-labwork-desc')
-            || !$('#update-labwork-deadline')) {
+            || !$('#update-labwork-desc').val()
+            || !$('#update-labwork-deadline').val()) {
             $('#update-labwork-input-warning').show("slow");
         } else {
             $('#update-labwork-input-warning').hide();
