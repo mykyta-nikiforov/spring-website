@@ -51,7 +51,6 @@ public class GroupServiceImpl implements GroupService{
         return save(group);
     }
 
-    @Override
     public void update(Group group) {
         Group previousGroupOfTeacher = teacherRepository
                 .findOne(group.getCurator().getId())
@@ -61,6 +60,23 @@ public class GroupServiceImpl implements GroupService{
             groupRepository.save(previousGroupOfTeacher);
         }
         groupRepository.save(group);
+    }
+
+    @Override
+    public Group update(GroupInfo groupInfo) {
+        Teacher newCurator = teacherRepository.findOne(groupInfo.getCuratorId());
+        Group result = getGroup(groupInfo.getGroupId());
+        result.setNumber(groupInfo.getNumber());
+        result.setCurator(newCurator);
+
+        // If curator had a group, set curator of this group to null
+        // The second check is to sure that previousGroup is not current
+        Group previousGroupOfTeacher = newCurator.getCuratedGroup();
+        if (previousGroupOfTeacher != null && previousGroupOfTeacher.getId() != groupInfo.getGroupId()) {
+            previousGroupOfTeacher.setCurator(null);
+            groupRepository.save(previousGroupOfTeacher);
+        }
+        return save(result);
     }
 
     @Override

@@ -36,12 +36,6 @@ public class GroupManageController {
         return "admin/groups/groupsManage";
     }
 
-//    @PostMapping("/admin/groups-manage/add-group")
-//    public String addGroup(@ModelAttribute("newGroup") GroupInfo modelGroup) {
-//        groupService.save(new Group(modelGroup));
-//        return "redirect:/admin/groups-manage";
-//    }
-
     @ResponseBody
     @PostMapping("/admin/add-group")
     public Group addGroup(@RequestBody GroupInfo groupInfo) {
@@ -56,15 +50,28 @@ public class GroupManageController {
         return "admin/groups/groupManage";
     }
 
-    @PostMapping("/admin/groups-manage/update")
-    public String updateGroup(@ModelAttribute("group") Group group) {
-        groupService.update(group);
-        return "redirect:/admin/groups-manage/group-" + group.getId();
+//    @PostMapping("/admin/groups-manage/update")
+//    public String updateGroup(@ModelAttribute("group") Group group) {
+//        groupService.update(group);
+//        return "redirect:/admin/groups-manage/group-" + group.getId();
+//    }
+
+    @ResponseBody
+    @PutMapping("/admin/update-group")
+    public Group updateGroupRest(@RequestBody GroupInfo groupInfo) {
+        return groupService.update(groupInfo);
     }
 
     @GetMapping("/admin/groups-manage/delete-group")
     public String deleteGroup(@RequestParam("id") int id) {
         groupService.delete(id);
         return "redirect:/admin/groups-manage";
+    }
+
+    @ResponseBody
+    @DeleteMapping("/admin/delete-group")
+    public String deleteGroupR(@RequestParam("id") int id) {
+        groupService.delete(id);
+        return "deleted";
     }
 }

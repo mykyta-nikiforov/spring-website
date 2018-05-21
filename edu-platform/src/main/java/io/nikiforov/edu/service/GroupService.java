@@ -13,7 +13,7 @@ public interface GroupService {
 
     Group save(GroupInfo groupInfo);
 
-    void update(Group group);
+    Group update(GroupInfo groupInfo);
 
     void delete(int id);
 }

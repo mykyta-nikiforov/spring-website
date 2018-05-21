@@ -1,8 +1,8 @@
 package io.nikiforov.edu.model;
 
-import io.nikiforov.edu.entity.*;
 
 public class GroupInfo {
+    private int groupId;
     private String number;
     private int specialtyId;
     private int yearOfStudy;
@@ -11,16 +11,12 @@ public class GroupInfo {
     public GroupInfo() {
     }
 
-    public GroupInfo(String number, int curatorId) {
-        this.number = number;
-        this.curatorId = curatorId;
+    public int getGroupId() {
+        return groupId;
     }
 
-    public GroupInfo(String number, int specialtyId, int yearOfStudy, int curatorId) {
-        this.number = number;
-        this.specialtyId = specialtyId;
-        this.yearOfStudy = yearOfStudy;
-        this.curatorId = curatorId;
+    public void setGroupId(int groupId) {
+        this.groupId = groupId;
     }
 
     public String getNumber() {
@@ -53,5 +49,16 @@ public class GroupInfo {
 
     public void setCuratorId(int curatorId) {
         this.curatorId = curatorId;
+    }
+
+    @Override
+    public String toString() {
+        return "GroupInfo{" +
+                "groupId=" + groupId +
+                ", number='" + number + '\'' +
+                ", specialtyId=" + specialtyId +
+                ", yearOfStudy=" + yearOfStudy +
+                ", curatorId=" + curatorId +
+                '}';
     }
 }

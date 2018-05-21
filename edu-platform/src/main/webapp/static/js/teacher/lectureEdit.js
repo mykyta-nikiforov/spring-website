@@ -115,6 +115,7 @@ $(document).ready(function () {
         }
     });
 
+    // Event for removing of lecture file
     $('.remove-lecture-file-button').click(function() {
         var button = $(this);
         var id = $(this).attr('lecture-file-id');

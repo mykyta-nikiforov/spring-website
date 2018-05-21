@@ -2,7 +2,6 @@ package io.nikiforov.edu.controller.admin;
 
 import io.nikiforov.edu.entity.Student;
 import io.nikiforov.edu.model.StudentInfo;
-import io.nikiforov.edu.model.TeacherInfo;
 import io.nikiforov.edu.service.GroupService;
 import io.nikiforov.edu.service.RoleService;
 import io.nikiforov.edu.service.StudentService;
@@ -41,12 +40,6 @@ public class StudentManageController {
         return studentService.save(studentInfo);
     }
 
-//    @GetMapping("/admin/users-manage/students/delete-student")
-//    public String deleteStudent(@RequestParam("id") int id) {
-//        studentService.delete(id);
-//        return "redirect:/admin/users-manage/students";
-//    }
-
     @ResponseBody
     @RequestMapping(value = "/admin/delete-student", method = RequestMethod.DELETE)
     public String removeStudent(@RequestParam("id") int id) {
@@ -64,17 +57,7 @@ public class StudentManageController {
     @ResponseBody
     @RequestMapping(value = "/admin/update-student", method = RequestMethod.PUT)
     public Student updateStudent(@RequestBody StudentInfo studentInfo) {
-        System.out.println(studentInfo);
         return studentService.saveWithoutPassword(studentInfo);
-    }
-
-    @PostMapping("/admin/users-manage/students/update-password")
-    public String updateStudentPassword(@ModelAttribute("student") Student student) {
-        String password = student.getPassword();
-        student = studentService.getById(student.getId());
-        student.setPassword(passwordEncoder.encode(password));
-        studentService.save(student);
-        return "redirect:/admin/users-manage/students/" + student.getId();
     }
 
     @ResponseBody

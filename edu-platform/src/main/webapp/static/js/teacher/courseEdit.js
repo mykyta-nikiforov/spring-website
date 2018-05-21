@@ -3,10 +3,6 @@ var url = window.location.href;
 var result = url.match(/courses-manage\/\d+/);
 var courseId = parseInt(result[0].match(/\d+/));
 
-// $('#edit-course-desc').val("hello");
-// console.log($('#edit-course-desc').val());
-
-
 $(document).ready(function() {
     // Events of the button to update the course
     $('#edit-course-button').click(function() {

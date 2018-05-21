@@ -56,7 +56,6 @@
                 <tr>
                     <td>${lecture.id}</td>
                     <td><a href="/courses-manage/${lecture.course.id}/edit-lecture/${lecture.id}">${lecture.name}</a></td>
-                    <%--<td><a href="/delete-lecture?id=${lecture.id}"><span class="oi oi-trash"></span></a></td>--%>
                     <td><button lecture-id='${lecture.id}' class="remove-lecture-button btn btn-outline-danger"><span><i class="oi oi-trash"></i></span></button></td>
                 </tr>
             </c:forEach>
