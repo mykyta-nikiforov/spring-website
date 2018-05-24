@@ -5,7 +5,7 @@
 <div class="container">
     <h3>Manage group ${group.number}</h3>
 
-    <form method="post" action="/admin/groups-manage/update">
+    <form method="post">
         <div class="form-group row">
             <label class="col-form-label col-md-3">Number</label>
             <div class="col-md-5">

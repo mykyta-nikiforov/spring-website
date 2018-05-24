@@ -10,21 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="79095938-a192-4c3f-9ab6-0891bdd5288d" name="Default" comment="Add view of lecture's attached documents">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/io/nikiforov/edu/controller/admin/GroupManageController.class" afterPath="$PROJECT_DIR$/target/classes/io/nikiforov/edu/controller/admin/GroupManageController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/io/nikiforov/edu/controller/admin/StudentManageController.class" afterPath="$PROJECT_DIR$/target/classes/io/nikiforov/edu/controller/admin/StudentManageController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/io/nikiforov/edu/model/GroupInfo.class" afterPath="$PROJECT_DIR$/target/classes/io/nikiforov/edu/model/GroupInfo.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/io/nikiforov/edu/service/GroupService.class" afterPath="$PROJECT_DIR$/target/classes/io/nikiforov/edu/service/GroupService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/io/nikiforov/edu/service/impl/GroupServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/io/nikiforov/edu/service/impl/GroupServiceImpl.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/controller/admin/GroupManageController.java" afterPath="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/controller/admin/GroupManageController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/controller/admin/StudentManageController.java" afterPath="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/controller/admin/StudentManageController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/model/GroupInfo.java" afterPath="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/model/GroupInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/service/GroupService.java" afterPath="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/service/GroupService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/service/impl/GroupServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/service/impl/GroupServiceImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/groups/groupManage.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/groups/groupManage.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/teacher/courseEdit.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/teacher/courseEdit.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/teacher/courseEdit.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/teacher/courseEdit.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/teacher/lectureEdit.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/teacher/lectureEdit.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/groups/groupsManage.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/groups/groupsManage.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/admin/manageGroups.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/admin/manageGroups.js" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -60,7 +49,7 @@
     <favorites_list name="edu-platform" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="vertical" split-proportion="0.43390357">
+    <splitter split-orientation="vertical" split-proportion="0.5085537">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="labWorkEdit.jsp" pinned="false" current-in-tab="false">
@@ -93,7 +82,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="lectureEdit.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="lectureEdit.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/teacher/lectureEdit.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="533">
@@ -116,9 +105,25 @@
           <file leaf-file-name="groupsManage.jsp" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/groups/groupsManage.jsp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1458">
-                  <caret line="81" column="21" lean-forward="false" selection-start-line="81" selection-start-column="21" selection-end-line="81" selection-end-column="21" />
+                <state relative-caret-position="180">
+                  <caret line="10" column="14" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="28" />
                   <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="manageGroups.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/admin/manageGroups.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="162">
+                  <caret line="35" column="52" lean-forward="true" selection-start-line="35" selection-start-column="52" selection-end-line="35" selection-end-column="52" />
+                  <folding>
+                    <marker date="1527462501546" expanded="true" signature="889:1579" ph="..." />
+                    <marker date="1527462501546" expanded="true" signature="918:1107" ph="..." />
+                    <marker date="1527462501546" expanded="true" signature="996:1077" ph="..." />
+                    <marker date="1527462501546" expanded="true" signature="1307:1553" ph="..." />
+                    <marker date="1527462501546" expanded="true" signature="1412:1523" ph="..." />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -137,11 +142,11 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="groupManage.jsp" pinned="false" current-in-tab="false">
+          <file leaf-file-name="groupManage.jsp" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/groups/groupManage.jsp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="90">
-                  <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+                <state relative-caret-position="126">
+                  <caret line="7" column="10" lean-forward="false" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
                   <folding />
                 </state>
               </provider>
@@ -157,10 +162,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="groupManage.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="groupManage.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/admin/groupManage.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="103">
+                <state relative-caret-position="774">
                   <caret line="43" column="34" lean-forward="true" selection-start-line="43" selection-start-column="34" selection-end-line="43" selection-end-column="34" />
                   <folding />
                 </state>
@@ -296,8 +301,6 @@
         <option value="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/dao/TeacherRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/service/TeacherService.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/service/impl/TeacherServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/groups/groupsManage.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/static/js/admin/manageGroups.js" />
         <option value="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/config/TomcatConnectorCustomizer.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/config/AuthenticationSuccessHandlerImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/config/GeneralConfiguration.java" />
@@ -313,8 +316,10 @@
         <option value="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/service/impl/GroupServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/js/teacher/lectureEdit.js" />
         <option value="$PROJECT_DIR$/src/main/java/io/nikiforov/edu/controller/admin/GroupManageController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/groups/groupManage.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/js/admin/groupManage.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/groups/groupManage.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/groups/groupsManage.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/static/js/admin/manageGroups.js" />
       </list>
     </option>
   </component>
@@ -924,7 +929,7 @@
       <workItem from="1526555788729" duration="6354000" />
       <workItem from="1526586323304" duration="1015000" />
       <workItem from="1526662965582" duration="771000" />
-      <workItem from="1527453192666" duration="8216000" />
+      <workItem from="1527453192666" duration="8886000" />
     </task>
     <task id="LOCAL-00001" summary="Add loading lecture files to database">
       <created>1521056258208</created>
@@ -944,7 +949,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="554484000" />
+    <option name="totallyTimeSpent" value="555154000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1051,13 +1056,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/admin/manageStudents.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="40" column="23" lean-forward="true" selection-start-line="40" selection-start-column="23" selection-end-line="40" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/users/usersManageTeachers.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="696">
@@ -1160,13 +1158,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="444">
           <caret line="84" column="51" lean-forward="false" selection-start-line="84" selection-start-column="51" selection-end-line="84" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/admin/manageGroups.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="19" lean-forward="true" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -1291,14 +1282,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/groups/groupsManage.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1458">
-          <caret line="81" column="21" lean-forward="false" selection-start-line="81" selection-start-column="21" selection-end-line="81" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/teacher/coursesManage.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
@@ -1395,14 +1378,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/teacher/lectureEdit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="533">
-          <caret line="119" column="20" lean-forward="true" selection-start-line="119" selection-start-column="20" selection-end-line="119" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/io/nikiforov/edu/controller/admin/GroupManageController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
@@ -1422,27 +1397,65 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/teacher/lectureEdit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="533">
+          <caret line="119" column="20" lean-forward="true" selection-start-line="119" selection-start-column="20" selection-end-line="119" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/admin/studentProfile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-24">
+        <state relative-caret-position="846">
           <caret line="66" column="22" lean-forward="false" selection-start-line="66" selection-start-column="15" selection-end-line="66" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/groups/groupManage.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/admin/manageStudents.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+        <state relative-caret-position="234">
+          <caret line="40" column="23" lean-forward="true" selection-start-line="40" selection-start-column="23" selection-end-line="40" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/admin/groupManage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
+        <state relative-caret-position="774">
           <caret line="43" column="34" lean-forward="true" selection-start-line="43" selection-start-column="34" selection-end-line="43" selection-end-column="34" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/groups/groupManage.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="10" lean-forward="false" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/groups/groupsManage.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="14" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/admin/manageGroups.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="35" column="52" lean-forward="true" selection-start-line="35" selection-start-column="52" selection-end-line="35" selection-end-column="52" />
+          <folding>
+            <marker date="1527462501546" expanded="true" signature="889:1579" ph="..." />
+            <marker date="1527462501546" expanded="true" signature="918:1107" ph="..." />
+            <marker date="1527462501546" expanded="true" signature="996:1077" ph="..." />
+            <marker date="1527462501546" expanded="true" signature="1307:1553" ph="..." />
+            <marker date="1527462501546" expanded="true" signature="1412:1523" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

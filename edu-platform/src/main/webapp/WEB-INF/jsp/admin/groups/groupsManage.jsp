@@ -8,7 +8,7 @@
     <h3>Manage Groups</h3>
     <hr>
     <h4>Add new group</h4>
-    <form>
+    <form id="add-group-form">
         <%--TODO--%>
         <input type="hidden" name="yearOfStudy" value="1">
         <div class="form-group row">

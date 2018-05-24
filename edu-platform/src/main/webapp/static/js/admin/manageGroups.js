@@ -32,6 +32,8 @@ $(document).ready(function () {
                     </tr>`);
 
                     $('#add-group-success').show("slow").delay(600).fadeOut();
+
+                    $('#add-group-form')[0].reset();
                 },
                 error: function () {
                     alert("bad from AJAX to '/admin/add-group'");
