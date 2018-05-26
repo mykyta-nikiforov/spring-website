@@ -7,7 +7,7 @@
 <div class="container ">
     <h3>Edit lecture</h3>
 
-    <form method="put" id="update-lecture-form">
+    <form id="update-lecture-form">
         <div class="form-group row">
             <label class="col-form-label col-md-3">Name</label>
             <div class="col-md-5">

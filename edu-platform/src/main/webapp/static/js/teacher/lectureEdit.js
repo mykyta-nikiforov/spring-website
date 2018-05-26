@@ -9,7 +9,7 @@ $(document).ready(function () {
 
     // Events of the button to update the lecture
     $('#update-lecture-button').click(function () {
-        if ($('#update-lecture-name').val() == '') {
+        if (!$('#update-lecture-name').val()) {
             $('#update-lecture-input-warning').show("slow");
         } else {
             $('#update-lecture-input-warning').hide();
