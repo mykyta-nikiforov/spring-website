@@ -1,6 +1,6 @@
 <%@page pageEncoding="UTF-8" %>
 <%@include file="templates/header.jsp"%>
-<script src="/static/js/user/userSettings.js"></script>
+<script src="/static/js/user/teacherSettings.js"></script>
 
 <div class="container">
 

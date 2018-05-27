@@ -6,7 +6,7 @@
 <div class="container">
     <h3>Teacher Profile</h3>
 
-    <form method="PUT">
+    <form>
         <div class="form-group row">
             <label class="col-form-label col-md-3">Email</label>
             <div class="col-md-5">

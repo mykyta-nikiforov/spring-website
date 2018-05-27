@@ -34,7 +34,7 @@
                 </li>
             </sec:authorize>
             <li class="nav-item">
-                <a class="nav-link text-light" href="/user-page">Profile</a>
+                <a class="nav-link text-light" href="/user-settings">Profile</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-light" href="/logout">Log out</a>

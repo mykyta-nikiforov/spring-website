@@ -56,6 +56,7 @@ public class MainController {
     @PutMapping("/save-settings")
     public User saveSettings(@AuthenticationPrincipal UserDetails userDetails,
                              @RequestBody UserSettingsModel userSettingsModel) {
+
         return userService.saveUserSettings(userDetails, userSettingsModel);
     }
 

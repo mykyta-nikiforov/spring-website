@@ -5,6 +5,7 @@ import io.nikiforov.edu.entity.*;
 import io.nikiforov.edu.model.TeacherInfo;
 import io.nikiforov.edu.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.*;
@@ -83,5 +84,22 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public List<Teacher> findFreeCurators() {
         return teacherRepository.findFreeCurators();
+    }
+
+    @Override
+    public Teacher save(UserDetails userDetails, TeacherInfo teacherInfo) {
+        Teacher result = (Teacher) userDetails;
+        result.setName(teacherInfo.getName());
+        result.setSurname(teacherInfo.getSurname());
+        result.setPatronymic(teacherInfo.getPatronymic());
+        result.setEmail(teacherInfo.getEmail());
+        return save(result);
+    }
+
+    @Override
+    public void savePassword(UserDetails userDetails, TeacherInfo teacherInfo) {
+        Teacher result = (Teacher) userDetails;
+        result.setPassword(passwordEncoder.encode(teacherInfo.getPassword()));
+        save(result);
     }
 }
